@@ -54,10 +54,6 @@ class GPACalculator:
         """
         Given a mark in two decimal places, this function
         return the mark in GPA format.
-
-        >>> gpa_dict = {range(85, 100): 4.0, range(80, 85): 3.7, range(77, 80): 3.3, range(73, 77): 3.0, range(70, 73): 2.7, range(67, 70): 2.3, range(63, 67): 2.0, range(60, 63): 1.7, range(57, 60): 1.3, range(53, 57): 1.0, range(50, 53): 0.7, range(0, 50): 0.0}
-        >>> assessments = {'a1': {'mark': 90, 'weight': 25}, 'a2': {'mark': 90, 'weight': 25}, 'a3': {'mark': 88, 'weight': 20}}
-        4.0
         """
 
         for i in self.assessment_dict:
