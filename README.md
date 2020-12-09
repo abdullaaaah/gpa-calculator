@@ -6,8 +6,8 @@ How to get started with development,
 
   MAC:
     Run this command on terminal
-    pip3 install flask
+    - pip3 install flask
     
   WINDOWS:
-    yall on your own
+    - yall on your own
     
