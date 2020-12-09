@@ -13,32 +13,27 @@ WEIGHT = 'weight'
 END_MARK = 'END'
 
 
-def calculate_mark(assessments: 'AssDict') -> float:
+def calculate_mark(gpa_assessments: 'AssDict') -> float:
     """
     Given a AssDict, <assessments> this function return the average of those
     marks out of total course weight.
 
     Round to two decimal places.
 
-    >>> marks = {
-        'test': {'mark': 100, 'weight': 50}
-    }
-    >>> calculateMarks(marks)
+    >>> marks = {'test': {'mark': 100, 'weight': 50}}
+    >>> calculate_mark(marks)
     100.0
-    >>> marks = {
-        'test1': {'mark': 100, 'weight': 10},
-        'test2': {'mark': 50, 'weight': 20}
-    }
-    >>> calculateMarks(marks)
+    >>> marks2 = {'test1': {'mark': 100, 'weight': 10}, 'test2': {'mark': 50, 'weight': 20} }
+    >>> calculate_mark(marks2)
     66.67
     """
     current_weight = 0
     current_mark = 0
 
-    for i in assessments:
-        weighted_mark = (assessments[i][MARK] * assessments[i][WEIGHT])
+    for i in gpa_assessments:
+        weighted_mark = (gpa_assessments[i][MARK] * gpa_assessments[i][WEIGHT])
         current_mark += weighted_mark
-        current_weight += assessments[i][WEIGHT]
+        current_weight += gpa_assessments[i][WEIGHT]
 
     return round(current_mark / current_weight, 2)
 
@@ -74,6 +69,7 @@ def calculate_gpa(assessments: 'AssDict') -> float:
 
     Round to two decimal places.
     """
+
     pass
 
 
