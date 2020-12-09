@@ -73,9 +73,21 @@ class GPACalculator:
         exact GPA and return
 
         Round to two decimal places.
-        """
 
-        pass
+        >>> G = GPACalculator(assessments)
+        >>> G.calculate_gpa(assessments)
+        89.43
+        """
+        total_weight = 0
+        total_grade_weight = 0
+        for assessment in self.assessment_dict:
+            grade = self.assessment_dict[assessment]['mark']
+            weight = self.assessment_dict[assessment]['weight']
+            total_weight += weight
+            total_grade_weight += grade * weight
+        if total_weight > 0:
+            return round(total_grade_weight / total_weight, 2)
+        return 0
 
     def process_assessments(self, f: TextIO) -> 'AllAssDict':
         """
