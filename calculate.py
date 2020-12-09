@@ -50,16 +50,22 @@ class GPACalculator:
 
         return round(current_mark / current_weight, 2)
 
-    def convert_to_gpa(self) -> float:
+    def convert_to_gpa(self, mark: int) -> float:
         """
         Given a mark in two decimal places, this function
         return the mark in GPA format.
-        """
 
-        for i in self.assessment_dict:
-            grade = i['mark']
-            if grade in self.gpa_dict:
-                return self.gpa_dict[grade]
+        >>> G = GPACalculator(assessments)
+        >>> G.convert_to_gpa(87)
+        4.0
+        >>> G.convert_to_gpa(84)
+        3.7
+        >>> G.convert_to_gpa(51)
+        0.7
+        """
+        for ranges in self.gpa_dict:
+            if mark in ranges:
+                return self.gpa_dict[ranges]
 
     def calculate_gpa(self, gpa_assessments: 'AssDict') -> float:
         """
