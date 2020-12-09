@@ -9,7 +9,7 @@ How to get started with development,
     - pip3 install flask
     
   WINDOWS:
-    - yall on your own
+    - pip install flask
     
 Helpful Documentation:
 - Jinga
