@@ -11,3 +11,8 @@ How to get started with development,
   WINDOWS:
     - yall on your own
     
+Helpful Documentation:
+- Jinga
+  -   https://jinja.palletsprojects.com/en/2.11.x/templates/
+- Flask 
+  - https://flask.palletsprojects.com/en/master/quickstart/
