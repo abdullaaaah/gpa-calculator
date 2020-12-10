@@ -8,19 +8,50 @@
     font-family: 'Space Mono', monospace;
 }
 
+html *:not(input) {
+    color: #dcdcdc;
+}
+
+input.form-control {
+    border-radius: 0px;
+    color: #dcdcdc !important;
+    background-color: #555555 !important;
+    border-bottom-color: rgb(104, 104, 104) !important;
+    border-bottom-width: 4px;
+}
+
+.no-space {
+    padding:none;
+    padding-top: 0px
+}
+
 #instruction {
-    font-weight: bold;
     margin-top: 2em;
     margin-bottom: 2em;
-    font-size: 1.5em
+    font-size: 1.2em;
+    text-align: center;
 }
 
 body {
-    background-color:  #e6f0ff;
+    background-color:  #292929;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-radius: unset !important;
+    border-color: #555555 !important;
+    outline-color: #555555 !important;
 }
 
 h1 {
     color: black
     font-family: 'Space Mono', monospace;
     font-weight: bold
+}
+
+.transparent {
+    opacity: 0.15;
+}
+
+input.trans-font::placeholder  {
+    color:white !important;
+    opacity:1 !important;
 }

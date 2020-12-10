@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href='dark.css' rel="stylesheet" />
     <link href='style.css' rel="stylesheet" />
     <title>Hello, world!</title>
   </head>
@@ -25,63 +26,48 @@
         <h1 class="text-center"></h1>
         <p></p>
 
-<<<<<<< HEAD
-        <table id="myTable">
-=======
         <form action='/calculate' method='post'>
->>>>>>> 67b31c83a7ab1a596213bb7354eb3afa53f2f900
+          <div class="row">
+            <div class="col"><p id="instruction">MARK (%)</p></div>
+            <div class="col"><p id="instruction">WEIGHT</p></div>
+          </div>
             <div class="row">
-                <p id="instruction">Enter your marks in percentage below to calculate your GPA</p>
-              <div class="col">
-                  <label>Mark</label>
+              <div class="col no-space">
                 <input name='a1,mark' type="text" class="form-control" placeholder="85">
               </div>
-              <div class="col">
-                  <label>Weight</label>
+              <div class="col no-space">
                 <input name='a1,weight' type="text" class="form-control" placeholder="20.0">
               </div>
             </div>
 
-            <p></p>
-
             <div class="row">
-                <div class="col">
-                    <label>Mark</label>
+                <div class="col no-space">
                   <input name='a2,mark' type="text" class="form-control" placeholder="85">
                 </div>
-                <div class="col">
-                    <label>Weight</label>
+                <div class="col no-space">
                   <input name='a2,weight' type="text" class="form-control" placeholder="20.0">
                 </div>
               </div>
 
-              <p></p>
-<<<<<<< HEAD
-
-              <div class="row">
-                <div class="col">
-                    <label>Mark</label>
-                  <input type="text" class="form-control" placeholder="85">
+              <div class="row transparent">
+                <div class="col no-space">
+                  <input name='a3,mark' type="text" class="form-control trans-font" placeholder="85">
                 </div>
-                <div class="col">
-                    <label>Weight</label>
-                  <input type="text" class="form-control" placeholder="20.0">
+                <div class="col no-space">
+                  <input name='a3,weight' type="text" class="form-control trans-font" placeholder="20.0">
                 </div>
               </div>
-            <p></p>
+
+              <p></p>
               <button type="submit" class="btn btn-danger">Calculate</button>
-              <text name="GPA"></text>
-          </table>
+
+          </form>
 
 
       </div>
-    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-
-
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
   </body>
 </html>
