@@ -13,6 +13,24 @@ WEIGHT = 'weight'
 END_MARK = 'END'
 
 
+def process_assessments(f: TextIO) -> 'AllAssDict':
+    """
+    Given an opened file, f, this function return an AssDict
+    """
+    d = {}
+    line = f.readline()
+    while line != '':
+        course_name = line.strip()
+        d[course_name] = {}
+        line = f.readline()
+        while END_MARK not in line:
+            temp = line.strip().split(",")
+            d[course_name][temp[0]] = {MARK: temp[1], WEIGHT: temp[2]}
+            line = f.readline()
+        line = f.readline()
+    return d
+
+
 class GPACalculator:
 
     def __init__(self, assessment_dict):
@@ -69,7 +87,7 @@ class GPACalculator:
             if mark in ranges:
                 return self.gpa_dict[ranges]
 
-    def calculate_gpa(self, gpa_assessments: 'AssDict') -> float:
+    def calculate_gpa(self) -> float:
         """
         Given a AssDict, <assessments> this function calculate the
         exact GPA and return
@@ -77,7 +95,7 @@ class GPACalculator:
         Round to two decimal places.
 
         >>> G = GPACalculator(assessments)
-        >>> G.calculate_gpa(assessments)
+        >>> G.calculate_gpa()
         4.0
         """
         total_weight = 0
@@ -90,20 +108,3 @@ class GPACalculator:
         if total_weight > 0:
             return self.convert_to_gpa(round(total_grade_weight / total_weight))
         return self.convert_to_gpa(0)
-
-    def process_assessments(self, f: TextIO) -> 'AllAssDict':
-        """
-        Given an opened file, f, this function return an AssDict
-        """
-        d = {}
-        line = f.readline()
-        while line != '':
-            course_name = line.strip()
-            d[course_name] = {}
-            line = f.readline()
-            while END_MARK not in line:
-                temp = line.strip().split(",")
-                d[course_name][temp[0]] = {MARK: temp[1], WEIGHT: temp[2]}
-                line = f.readline()
-            line = f.readline()
-        return d
