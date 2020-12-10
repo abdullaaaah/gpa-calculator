@@ -1,11 +1,15 @@
-from typing import TextIO
+from typing import TextIO, Dict
 
 # SAMPLE DATA
-assessments = {
+assessments = {'Linear Algebra': {
     'a1': {'mark': 90, 'weight': 25},
     'a2': {'mark': 90, 'weight': 25},
-    'a3': {'mark': 88, 'weight': 20}
-}
+    'a3': {'mark': 88, 'weight': 20}},
+    'Algebra I': {
+    'a1': {'mark': 65, 'weight': 15},
+    'a2': {'mark': 73, 'weight': 30},
+    'a3': {'mark': 33, 'weight': 5}}
+    }
 
 # CONSTANTS
 MARK = 'mark'
@@ -13,7 +17,7 @@ WEIGHT = 'weight'
 END_MARK = 'END'
 
 
-def process_assessments(f: TextIO) -> 'AllAssDict':
+def process_assessments(f: TextIO) -> Dict:
     """
     Given an opened file, f, this function return an AssDict
     """
@@ -54,8 +58,8 @@ class GPACalculator:
         >>> G.calculate_mark()
         100.0
         >>> marks2 = {'test1': {'mark': 100, 'weight': 10}, 'test2': {'mark': 50, 'weight': 20} }
-        >>> G = GPACalculator(marks2)
-        >>> G.calculate_mark()
+        >>> F = GPACalculator(marks2)
+        >>> F.calculate_mark()
         66.67
         """
         current_weight = 0
@@ -72,8 +76,8 @@ class GPACalculator:
 
     def convert_to_gpa(self, mark: int) -> float:
         """
-        Given a mark in two decimal places, this function
-        return the mark in GPA format.
+        (Helper Function) Given a mark in two decimal places,
+        this function return the mark in GPA format.
 
         >>> G = GPACalculator(assessments)
         >>> G.convert_to_gpa(87)
@@ -96,15 +100,28 @@ class GPACalculator:
 
         >>> G = GPACalculator(assessments)
         >>> G.calculate_gpa()
-        4.0
+        3.3
         """
-        total_weight = 0
-        total_grade_weight = 0
-        for assessment in self.assessment_dict:
-            grade = self.assessment_dict[assessment]['mark']
-            weight = self.assessment_dict[assessment]['weight']
-            total_weight += weight
-            total_grade_weight += grade * weight
-        if total_weight > 0:
-            return self.convert_to_gpa(round(total_grade_weight / total_weight))
+        classes = len(self.assessment_dict.keys())
+        final_grade_sum = 0
+        for class_ in self.assessment_dict.keys():
+            total_weight = 0
+            total_weight_grade_number = 0
+            for assignment in self.assessment_dict[class_]:
+                grade = float(self.assessment_dict[class_][assignment]['mark'])
+                weight = float(self.assessment_dict[class_][assignment]
+                               ['weight'])
+                total_weight += weight
+                total_weight_grade_number += grade * weight
+            if total_weight > 0:
+                final_grade_sum += round(total_weight_grade_number /
+                                         total_weight, 2)
+
+        if classes > 0:
+            return self.convert_to_gpa(round(final_grade_sum / classes))
         return self.convert_to_gpa(0)
+
+
+data = process_assessments(open('marks.txt'))
+I = GPACalculator(data)
+print(I.calculate_gpa())
