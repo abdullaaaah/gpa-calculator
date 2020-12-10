@@ -17,7 +17,8 @@ def calculate():
     if request.method == 'POST':
         data = dict_converter(request.form)
         G = GPACalculator(data)
-        return render_template('index.html', gpa=str(G.calculate_gpa()))
+        return render_template('index.html', gpa=str(G.calculate_gpa()),
+                               mark=G.calculate_mark(data))
 
 
 if __name__ == '__main__':
