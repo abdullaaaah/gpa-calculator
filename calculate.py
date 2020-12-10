@@ -109,4 +109,3 @@ class GPACalculator:
         if total_weight > 0:
             return self.convert_to_gpa(round(total_grade_weight / total_weight))
         return self.convert_to_gpa(0)
-
