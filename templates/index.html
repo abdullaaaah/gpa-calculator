@@ -25,16 +25,16 @@
         <h1 class="text-center"></h1>
         <p></p>
 
-        <form>
+        <form action='/calculate' method='post'>
             <div class="row">
                 <p id="instruction">Enter your marks in percentage below to calculate your GPA</p>
               <div class="col">
                   <label>Mark</label>
-                <input type="text" class="form-control" placeholder="85">
+                <input name='mark1' type="text" class="form-control" placeholder="85">
               </div>
               <div class="col">
                   <label>Weight</label>
-                <input type="text" class="form-control" placeholder="20.0">
+                <input name='weight1' type="text" class="form-control" placeholder="20.0">
               </div>
             </div>
 
@@ -43,27 +43,15 @@
             <div class="row">
                 <div class="col">
                     <label>Mark</label>
-                  <input type="text" class="form-control" placeholder="85">
+                  <input name='mark2' type="text" class="form-control" placeholder="85">
                 </div>
                 <div class="col">
                     <label>Weight</label>
-                  <input type="text" class="form-control" placeholder="20.0">
+                  <input name='weight2' type="text" class="form-control" placeholder="20.0">
                 </div>
               </div>
 
               <p></p>
-
-              <div class="row">
-                <div class="col">
-                    <label>Mark</label>
-                  <input type="text" class="form-control" placeholder="85">
-                </div>
-                <div class="col">
-                    <label>Weight</label>
-                  <input type="text" class="form-control" placeholder="20.0">
-                </div>
-              </div>
-            <p></p>
               <button type="submit" class="btn btn-danger">Calculate</button>
 
           </form>
