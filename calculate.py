@@ -4,7 +4,7 @@ from typing import Dict
 assessments = {
     'a1': {'mark': 90, 'weight': 25},
     'a2': {'mark': 90, 'weight': 25},
-    'a3': {'mark': 88, 'weight': 20}
+    'a3': {'mark': 20, 'weight': 20}
 }
 
 # CONSTANTS
@@ -85,5 +85,9 @@ class GPACalculator:
         classes = len(self.class_dict)
         for _ in range(len(self.class_dict)):
             total += self.calculate_mark(self.class_dict)
-        average = total/classes
+        average = total / classes
         return self.convert_to_gpa(round(average))
+
+
+G = GPACalculator(assessments)
+print(G.calculate_gpa())
