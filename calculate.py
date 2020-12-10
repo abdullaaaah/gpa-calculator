@@ -1,4 +1,4 @@
-from typing import TextIO
+from typing import TextIO, Dict
 
 # SAMPLE DATA
 assessments = {
@@ -13,7 +13,7 @@ WEIGHT = 'weight'
 END_MARK = 'END'
 
 
-def process_assessments(f: TextIO) -> 'AllAssDict':
+def process_assessments(f: TextIO) -> Dict:
     """
     Given an opened file, f, this function return an AssDict
     """
@@ -54,8 +54,8 @@ class GPACalculator:
         >>> G.calculate_mark()
         100.0
         >>> marks2 = {'test1': {'mark': 100, 'weight': 10}, 'test2': {'mark': 50, 'weight': 20} }
-        >>> G = GPACalculator(marks2)
-        >>> G.calculate_mark()
+        >>> F = GPACalculator(marks2)
+        >>> F.calculate_mark()
         66.67
         """
         current_weight = 0
@@ -72,8 +72,8 @@ class GPACalculator:
 
     def convert_to_gpa(self, mark: int) -> float:
         """
-        Given a mark in two decimal places, this function
-        return the mark in GPA format.
+        (Helper Function) Given a mark in two decimal places,
+        this function return the mark in GPA format.
 
         >>> G = GPACalculator(assessments)
         >>> G.convert_to_gpa(87)
@@ -100,11 +100,14 @@ class GPACalculator:
         """
         total_weight = 0
         total_grade_weight = 0
-        for assessment in self.assessment_dict:
-            grade = self.assessment_dict[assessment]['mark']
-            weight = self.assessment_dict[assessment]['weight']
+        for assessment in self.assessment_dict.values():
+            grade = float(assessment['mark'])
+            weight = float(assessment['weight'])
             total_weight += weight
             total_grade_weight += grade * weight
+
         if total_weight > 0:
-            return self.convert_to_gpa(round(total_grade_weight / total_weight))
+            return self.convert_to_gpa(round(total_grade_weight /
+                                             total_weight))
         return self.convert_to_gpa(0)
+
