@@ -1,4 +1,4 @@
-from typing import TextIO, Dict
+from typing import Dict
 
 # SAMPLE DATA
 assessments = {
@@ -10,30 +10,11 @@ assessments = {
 # CONSTANTS
 MARK = 'mark'
 WEIGHT = 'weight'
-END_MARK = 'END'
-
-
-def process_assessments(f: TextIO) -> Dict:
-    """
-    Given an opened file, f, this function return an AssDict
-    """
-    d = {}
-    line = f.readline()
-    while line != '':
-        course_name = line.strip()
-        d[course_name] = {}
-        line = f.readline()
-        while END_MARK not in line:
-            temp = line.strip().split(",")
-            d[course_name][temp[0]] = {MARK: temp[1], WEIGHT: temp[2]}
-            line = f.readline()
-        line = f.readline()
-    return d
 
 
 class GPACalculator:
 
-    def __init__(self, assessment_dict):
+    def __init__(self, assessment_dict: Dict):
         self.assessment_dict = assessment_dict
         self.gpa_dict = {range(85, 100): 4.0, range(80, 85): 3.7,
                          range(77, 80): 3.3, range(73, 77): 3.0,
@@ -101,8 +82,8 @@ class GPACalculator:
         total_weight = 0
         total_grade_weight = 0
         for assessment in self.assessment_dict.values():
-            grade = float(assessment['mark'])
-            weight = float(assessment['weight'])
+            grade = float(assessment[MARK])
+            weight = float(assessment[WEIGHT])
             total_weight += weight
             total_grade_weight += grade * weight
 
@@ -110,4 +91,3 @@ class GPACalculator:
             return self.convert_to_gpa(round(total_grade_weight /
                                              total_weight))
         return self.convert_to_gpa(0)
-
