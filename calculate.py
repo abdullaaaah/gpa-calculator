@@ -24,7 +24,7 @@ class GPACalculator:
                          range(57, 60): 1.3, range(53, 57): 1.0,
                          range(50, 53): 0.7, range(0, 50): 0.0}
 
-    def calculate_mark(self, marks: dict) -> float:
+    def calculate_mark(self) -> float:
         """
         Given a AssDict, <assessments> this function return the average of those
         marks out of total course weight.
@@ -32,12 +32,12 @@ class GPACalculator:
         Round to two decimal places.
 
         >>> marks1 = {'test': {'mark': 100, 'weight': 50}}
-        >>> G = GPACalculator(assessments)
-        >>> G.calculate_mark(marks1)
+        >>> G = GPACalculator(marks1)
+        >>> G.calculate_mark()
         100.0
         >>> marks2 = {'test1': {'mark': 100, 'weight': 10}, 'test2': {'mark': 50, 'weight': 20} }
-        >>> G = GPACalculator(assessments)
-        >>> G.calculate_mark(marks2)
+        >>> G = GPACalculator(marks2)
+        >>> G.calculate_mark()
         66.67
         """
         current_weight = 0
