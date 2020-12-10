@@ -63,8 +63,8 @@ class GPACalculator:
 
         for i in self.assessment_dict:
             weighted_mark = (
-                    self.assessment_dict[i][MARK] * self.assessment_dict[i][
-                WEIGHT])
+                    self.assessment_dict[i][MARK] *
+                    self.assessment_dict[i][WEIGHT])
             current_mark += weighted_mark
             current_weight += self.assessment_dict[i][WEIGHT]
 
