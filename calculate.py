@@ -1,15 +1,11 @@
 from typing import TextIO, Dict
 
 # SAMPLE DATA
-assessments = {'Linear Algebra': {
+assessments = {
     'a1': {'mark': 90, 'weight': 25},
     'a2': {'mark': 90, 'weight': 25},
-    'a3': {'mark': 88, 'weight': 20}},
-    'Algebra I': {
-    'a1': {'mark': 65, 'weight': 15},
-    'a2': {'mark': 73, 'weight': 30},
-    'a3': {'mark': 33, 'weight': 5}}
-    }
+    'a3': {'mark': 88, 'weight': 20}
+}
 
 # CONSTANTS
 MARK = 'mark'
@@ -100,28 +96,17 @@ class GPACalculator:
 
         >>> G = GPACalculator(assessments)
         >>> G.calculate_gpa()
-        3.3
+        4.0
         """
-        classes = len(self.assessment_dict.keys())
-        final_grade_sum = 0
-        for class_ in self.assessment_dict.keys():
-            total_weight = 0
-            total_weight_grade_number = 0
-            for assignment in self.assessment_dict[class_]:
-                grade = float(self.assessment_dict[class_][assignment]['mark'])
-                weight = float(self.assessment_dict[class_][assignment]
-                               ['weight'])
-                total_weight += weight
-                total_weight_grade_number += grade * weight
-            if total_weight > 0:
-                final_grade_sum += round(total_weight_grade_number /
-                                         total_weight, 2)
+        total_weight = 0
+        total_grade_weight = 0
+        for assessment in self.assessment_dict.values():
+            grade = float(assessment['mark'])
+            weight = float(assessment['weight'])
+            total_weight += weight
+            total_grade_weight += grade * weight
 
-        if classes > 0:
-            return self.convert_to_gpa(round(final_grade_sum / classes))
+        if total_weight > 0:
+            return self.convert_to_gpa(round(total_grade_weight / total_weight))
         return self.convert_to_gpa(0)
 
-
-data = process_assessments(open('marks.txt'))
-I = GPACalculator(data)
-print(I.calculate_gpa())
