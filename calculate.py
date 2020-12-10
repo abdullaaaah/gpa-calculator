@@ -76,7 +76,7 @@ class GPACalculator:
 
         >>> G = GPACalculator(assessments)
         >>> G.calculate_gpa(assessments)
-        89.43
+        4.0
         """
         total_weight = 0
         total_grade_weight = 0
@@ -86,8 +86,8 @@ class GPACalculator:
             total_weight += weight
             total_grade_weight += grade * weight
         if total_weight > 0:
-            return round(total_grade_weight / total_weight, 2)
-        return 0
+            return self.convert_to_gpa(round(total_grade_weight / total_weight))
+        return self.convert_to_gpa(0)
 
     def process_assessments(self, f: TextIO) -> 'AllAssDict':
         """
