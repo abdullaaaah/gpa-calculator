@@ -1,6 +1,8 @@
 from flask import Flask, request
 from flask import render_template
-import calculate, processor
+
+from calculate import GPACalculator
+from processor import dict_converter
 
 app = Flask(__name__)
 
@@ -13,7 +15,9 @@ def index(name="Abdullah"):
 @app.route('/calculate', methods=['POST'])
 def calculate():
     if request.method == 'POST':
-        return request.form
+        data = dict_converter(request.form)
+        G = GPACalculator(data)
+        return str(G.calculate_gpa())
 
 
 if __name__ == '__main__':

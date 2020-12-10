@@ -1,4 +1,5 @@
 from typing import Dict
+import processor
 
 # SAMPLE DATA
 assessments = {
@@ -47,7 +48,7 @@ class GPACalculator:
                     float(class_marks[assessment][MARK]) *
                     float(class_marks[assessment][WEIGHT]))
             current_mark += weighted_mark
-            current_weight += class_marks[assessment][WEIGHT]
+            current_weight += float(class_marks[assessment][WEIGHT])
         if current_weight > 0:
             return round(current_mark / current_weight, 2)
         return 0
@@ -89,5 +90,6 @@ class GPACalculator:
         return self.convert_to_gpa(round(average))
 
 
-G = GPACalculator(assessments)
+G = GPACalculator(processor.dict_converter(
+    {"a1,mark": "90", "a1,weight": "10", "a2,mark": "90", "a2,weight": "10"}))
 print(G.calculate_gpa())
