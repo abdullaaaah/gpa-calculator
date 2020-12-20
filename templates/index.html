@@ -23,10 +23,10 @@
 
       <div class="container">
         <p></p>
-        <h1 class="text-center"></h1>
+        <h1 class="text-center">MAT1355</h1>
         <p></p>
 
-        <form action='/calculate' method='post'>
+        <form id="gpaForm">
           <div class="row">
             <div class="col"><p id="instruction">MARK (%)</p></div>
             <div class="col"><p id="instruction">WEIGHT</p></div>
@@ -51,18 +51,18 @@
 
               <div class="row transparent">
                 <div class="col no-space">
-                  <input name='a3,mark' type="text" class="form-control trans-font" placeholder="85">
+                  <input name='a3,mark' type="text" class="form-control trans-font" placeholder="85" onClick="add_field()">
                 </div>
                 <div class="col no-space">
                   <input name='a3,weight' type="text" class="form-control trans-font" placeholder="20.0">
                 </div>
               </div>
 
-              <p></p>
-              <button type="submit" class="btn btn-danger">Calculate</button>
-
           </form>
-
+          <div class="row">
+            <p></p>
+          <button type="submit" class="btn btn-danger" id="calc-gpa">Calculate</button>
+          </div>
 
           {% if gpa %}
           <h1> GPA:  {{gpa}} </h1>
@@ -76,6 +76,6 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="idk.js"></script>
+    <script src="{{ url_for('static',filename='scripts/get_gpa.js') }}"></script>
   </body>
 </html>
