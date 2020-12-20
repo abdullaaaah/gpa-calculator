@@ -51,10 +51,10 @@
 
               <div class="row transparent">
                 <div class="col no-space">
-                  <input name='a3,mark' type="text" class="form-control trans-font" placeholder="85" onClick="add_field()">
+                  <input name='a3,mark' type="text" class="form-control trans-font clickadd" placeholder="85" onclick="add_field()">
                 </div>
                 <div class="col no-space">
-                  <input name='a3,weight' type="text" class="form-control trans-font" placeholder="20.0">
+                  <input name='a3,weight' type="text" class="form-control trans-font clickadd" placeholder="20.0">
                 </div>
               </div>
 
@@ -64,13 +64,8 @@
           <button type="submit" class="btn btn-danger" id="calc-gpa">Calculate</button>
           </div>
 
-          {% if gpa %}
-          <h1> GPA:  {{gpa}} </h1>
-          {% endif %}
-
-          {% if mark %}
-          <h1> MARK:  {{mark}} </h1>
-          {% endif %}
+          <h1><span id="gpaView"></span></h1>
+           <h1><span id="markView"></span></h1>
       </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
