@@ -24,6 +24,10 @@ class GPACalculator:
                          range(57, 60): 1.3, range(53, 57): 1.0,
                          range(50, 53): 0.7, range(0, 50): 0.0}
 
+    def calculate_weighted_mark(self, mark: float, weight: float) -> tuple:
+        weighted_mark = mark * weight
+        return (weighted_mark, weight)
+
     def calculate_mark(self, class_marks: Dict) -> float:
         """
         Given a AssDict, <assessments> this function return the average of those
@@ -39,16 +43,23 @@ class GPACalculator:
         >>> F = GPACalculator(assessments)
         >>> F.calculate_mark(marks2)
         66.67
+
         """
         current_weight = 0
         current_mark = 0
 
+        print(class_marks)
         for assessment in class_marks:
-            weighted_mark = (
-                    float(class_marks[assessment][MARK]) *
-                    float(class_marks[assessment][WEIGHT]))
-            current_mark += weighted_mark
-            current_weight += float(class_marks[assessment][WEIGHT])
+            print(assessment)
+            if MARK in class_marks[assessment]\
+                    and WEIGHT in class_marks[assessment]:
+                result = self.calculate_weighted_mark(
+                    float(class_marks[assessment][MARK]),
+                    float(class_marks[assessment][WEIGHT])
+                )
+                current_mark += result[0]
+                current_weight += result[1]
+
         if current_weight > 0:
             return round(current_mark / current_weight, 2)
         return 0
@@ -86,10 +97,13 @@ class GPACalculator:
         classes = len(self.class_dict)
         for _ in range(len(self.class_dict)):
             total += self.calculate_mark(self.class_dict)
-        average = total / classes
+        try:
+            average = total / classes
+        except ZeroDivisionError:
+            average = 0
         return self.convert_to_gpa(round(average))
 
 
 G = GPACalculator(processor.dict_converter(
-    {"a1,mark": "90", "a1,weight": "10", "a2,mark": "90", "a2,weight": "10"}))
+    {"a1,mark": "70", "a1,weight": "40", "a2,mark": "90", "a2,weight": "60"}))
 print(G.calculate_gpa())
