@@ -1,76 +1,74 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link href="{{ url_for('static',filename='styles/dark.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static',filename='styles/style.css') }}" rel="stylesheet" />
-    <title>Hello, world!</title>
-  </head>
-  <body>
-        <!-- As a heading -->
-    <nav class="navbar navbar-light bg-light" id="nav">
-        <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1" id='navbar' style='text-align: center;'>GPA CALCULATOR</span>
-        </div>
-    </nav>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dacss.css') }}">
+    <title>GPA Calculator</title>
+</head>
+    <body>
 
-      <div class="container">
-        <p></p>
-        <h1 class="text-center">MAT1355</h1>
-        <p></p>
 
-        <form id="gpaForm">
-          <div class="row">
-            <div class="col"><p id="instruction">MARK (%)</p></div>
-            <div class="col"><p id="instruction">WEIGHT</p></div>
-          </div>
-            <div class="row">
-              <div class="col no-space">
-                <input name='a1,mark' type="text" class="form-control" placeholder="85">
-              </div>
-              <div class="col no-space">
-                <input name='a1,weight' type="text" class="form-control" placeholder="20.0">
-              </div>
+    <h1 class="p-3 m-3 font-weight-bold">
+        MAT102H5
+        <span class="m-2" id="markView" style="color:#f3972e;">63%</span>
+    </h1>
+    <div class="p-3 m-3 container" id = "gpaForm">
+      <form>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Percent</span>
             </div>
+            <input name="a1,mark" type="text" class="form-control" placeholder="99" aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Weight</span>
+            </div>
+            <input name="a1,weight" type="text" class="form-control" placeholder="10" aria-describedby="basic-addon1">
+            <select class="custom-select">
+                <option selected>Type Of Assessment...</option>
+                <option value="1">Exam</option>
+                <option value="2">Midterm</option>
+                <option value="3">Assignment</option>
+                <option value="4">Tutorial Marks</option>
 
-            <div class="row">
-                <div class="col no-space">
-                  <input name='a2,mark' type="text" class="form-control" placeholder="85">
-                </div>
-                <div class="col no-space">
-                  <input name='a2,weight' type="text" class="form-control" placeholder="20.0">
-                </div>
-              </div>
+            </select>
+        </div>
+        <div class="input-group mb-3 transparent trans-click" id="1" onclick="add_field()">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Percent</span>
+            </div>
+            <input name = "a2,mark" type="text" class="form-control" placeholder="99" aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Weight</span>
+            </div>
+            <input name = "a2,weight" type="text" class="form-control" placeholder="10" aria-describedby="basic-addon1">
+            <select class="custom-select">
+                <option selected>Type Of Assessment...</option>
+                <option value="1">Exam</option>
+                <option value="2">Midterm</option>
+                <option value="3">Assignment</option>
+                <option value="4">Tutorial Marks</option>
+            </select>
+        </div>
+        </form>
+    </div>
+    <div class="p-3 m-3">
+        <button type="button" class="btn btn-success" id="calc-gpa">Calculate!</button>
+        <span class="p-5">
+            <button type="button" class="btn btn-danger" id="del_field" onclick="remove_field()">Delete</button>
+        </span>
+    </div>
 
-              <div class="row transparent">
-                <div class="col no-space">
-                  <input name='a3,mark' type="text" class="form-control trans-font clickadd" placeholder="85" onclick="add_field()">
-                </div>
-                <div class="col no-space">
-                  <input name='a3,weight' type="text" class="form-control trans-font clickadd" placeholder="20.0">
-                </div>
-              </div>
 
-          </form>
-          <div class="row">
-            <p></p>
-          <button type="submit" class="btn btn-danger" id="calc-gpa">Calculate</button>
-          </div>
 
-          <h1><span id="gpaView"></span></h1>
-           <h1><span id="markView"></span></h1>
-      </div>
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/add_row.js') }}"></script>
     <script src="{{ url_for('static',filename='scripts/get_gpa.js') }}"></script>
-  </body>
+    </body>
 </html>

@@ -1,7 +1,7 @@
-var START_NUM_FIELDS = 3
-var num_fields = START_NUM_FIELDS
+//var START_NUM_FIELDS = 3
+//var num_fields = START_NUM_FIELDS
 
-
+/*
 function add_field()
 {
     $(".transparent").removeClass("transparent")
@@ -21,7 +21,7 @@ function add_field()
 
     return
 }
-
+*/
 
 $(document).ready(function()
 {
@@ -29,8 +29,8 @@ $(document).ready(function()
     {
         var dic = $("form").serializeArray();
         $.post("/calculate", dic, function(data, status){
-            $('#gpaView').text("gpa: " + data['gpa'])
-            $('#markView').text("mark: " + data['mark'])
+            $('#gpaView').text(data['gpa'])
+            $('#markView').text(data['mark']+"%")
         })
     });
 
