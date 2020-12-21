@@ -1,6 +1,5 @@
 from flask import Flask, request
 from flask import render_template
-from livereload import Server #live reload so we don't have to run everytime.
 
 from calculate import GPACalculator
 from processor import dict_converter
