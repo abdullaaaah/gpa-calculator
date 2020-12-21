@@ -13,11 +13,11 @@ function add_field()
                 <div class='input-group-prepend'> \
                     <span class='input-group-text'>Percent</span> \
                 </div> \
-                <input name = 'a"+ num_fields +",mark' type='text' class='form-control' placeholder=99 aria-describedby=basic-addon1> \
+                <input name = 'a"+ num_fields +",mark' type='text' class='form-control' placeholder='0' aria-describedby=basic-addon1> \
                   <div class='input-group-prepend'> \
                       <span class='input-group-text'>Weight</span> \
                   </div> \
-                <input name = 'a" + num_fields + ",weight' type='text' class='form-control' placeholder='10' aria-describedby='basic-addon1'> \
+                <input name = 'a" + num_fields + ",weight' type='text' class='form-control' placeholder='0' aria-describedby='basic-addon1'> \
                 <select class='custom-select'> \
                             <option selected>Type Of Assessment...</option> \
                             <option value='1'>Exam</option> \
