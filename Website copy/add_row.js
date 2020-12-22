@@ -1,11 +1,12 @@
 let num_fields = 1
+let chart;
 
 function add_field()
 {
     let del_field = "#del_field" + num_fields
     $(".transparent").removeClass("transparent")
     $(del_field).removeClass("invisible")
-    $(del_field).attr("onclick", "remove_field(" + num_fields + "); update(chart)")
+    $(del_field).attr("onclick", "remove_field(" + num_fields + ")")
     $(".trans-click").attr("onclick", null)
 
 
@@ -31,7 +32,7 @@ function add_field()
                     </div>\
                </div>\
                <div class='col col-xl-2'>\
-                <button type='button' id ='del_field"+ num_fields +"' class='btn btn-danger invisible'>Delete</button>\
+                <button type='button' id ='del_field"+ num_fields +"' onclick= '' class='btn btn-danger invisible'>Delete</button>\
             </div>\
                </div>");
     return 0
@@ -57,6 +58,7 @@ function remove_field(id){
         $('#weight' + i).attr("id", "weight" + num)
         $('#percent' + i).attr("id", "percent" + num)
     }
+    update(chart)
     return 0
 }
 
@@ -124,7 +126,6 @@ function change_percent(percent){
     $('#total_percent').text(percent + "%")
     change_color()
 }
-let chart;
 
 function update(){
     let data = grab_all_data()
