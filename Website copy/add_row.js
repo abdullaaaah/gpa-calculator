@@ -100,6 +100,9 @@ function grab_all_data() {
             change_percent(Math.round((mark_total /weight_total + Number.EPSILON) * 100) / 100)
         }
     }
+    if (num_fields === 0){
+        change_percent(0)
+    }
     return data_dict
 }
 function change_chart(chart, data){
@@ -115,7 +118,7 @@ function change_chart(chart, data){
 
 }
 function change_percent(percent){
-    $('#total_percent').text(percent+"%")
+    $('#total_percent').text(percent + "%")
     change_color()
 }
 
