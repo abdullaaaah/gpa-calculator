@@ -28,6 +28,7 @@ function add_field()
                             <option value='Midterm'>Midterm</option> \
                             <option value='Assignment'>Assignment</option> \
                             <option value='Tutorial Marks'>Tutorial Marks</option> \
+                            <option value='Quiz'>Quiz</option> \
                         </select> \
                     </div>\
                </div>\
