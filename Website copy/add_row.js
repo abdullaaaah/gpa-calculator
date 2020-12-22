@@ -1,6 +1,4 @@
 let num_fields = 1
-let num_exams = 0
-let num_assignments = 0
 
 function add_field()
 {
@@ -56,6 +54,8 @@ function remove_field(id){
         $('#' + i).attr("id", ""+num)
         $('#del_field' + num).attr("onclick", "remove_field(" + num + ")")
         $('#name' + i).attr("id", "name" + num)
+        $('#weight' + i).attr("id", "weight" + num)
+        $('#percent' + i).attr("id", "percent" + num)
     }
     return 0
 }
@@ -75,9 +75,8 @@ function change_color(){
 
 }
 
-function grab_all_data(chart) {
-    chart.data.labels = []
-    chart.data.datasets[0].data = []
+function grab_all_data() {
+    let data_dict = {}
     for (let i = 0; i <= num_fields - 1; i++) {
         let mark_total = 0
         let weight_total = 0
@@ -88,17 +87,38 @@ function grab_all_data(chart) {
             weight_total += weight
         }
         if (weight_total > 0 && mark_total >= 0) {
-            chart.data.datasets.forEach((dataset) => {
-                dataset.data.push(mark_total / weight_total);
-            });
+            let counter = 2
+            let string_add = ""
+            while (($('#name' + i).val() + " " + string_add) in data_dict) {
+                string_add = ""
+                string_add += ""+counter
+                counter += 1
+            }
+            data_dict[($('#name' + i).val() + " " + string_add)] = mark_total / weight_total
         }
-        chart.data.labels.push($('#name' + i).val())
+        if (i <= num_fields - 1){
+            change_percent(Math.round((mark_total /weight_total + Number.EPSILON) * 100) / 100)
+        }
+    }
+    return data_dict
+}
+function change_chart(chart, data){
+    chart.data.labels = []
+    chart.data.datasets[0].data = []
+    for (let key in data){
+        if (data.hasOwnProperty(key)) {
+            chart.data.labels.push(key);
+            chart.data.datasets[0].data.push(data[key])
+        }
     }
     chart.update();
-    let latest_percent = chart.data.datasets[0].data
-    let index = chart.data.datasets[0].data.length;
-    $('#total_percent').text(latest_percent[index-1]+"%")
+
 }
+function change_percent(percent){
+    $('#total_percent').text(percent+"%")
+    change_color()
+}
+
 
 $(document).ready(function()
 {
@@ -108,8 +128,8 @@ $(document).ready(function()
         $.post("/calculate", dic, function(data){
             $('#total_percent').text(data['gpa'])
         })
-        grab_all_data(chart)
-        change_color()
+        let data = grab_all_data()
+        change_chart(chart, data)
     });
     let ctx = document.getElementById('myChart').getContext('2d');
     let chart = new Chart(ctx, {
@@ -118,12 +138,11 @@ $(document).ready(function()
 
         // The data for our dataset
         data: {
-            labels: [], /*Names of Assignments etc*/
+            labels: [],
             datasets: [{
                 label: 'My Performance',
-                backgroundColor: 'rgb(99,174,255)',
                 borderColor: 'rgb(99,174,255)',
-                data: [] /*Percent per thing*/
+                data: []
             }]
         },
 
