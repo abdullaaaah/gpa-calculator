@@ -10,7 +10,7 @@ function add_field()
 
 
     num_fields += 1;
-    $('#gpaForm').append(
+    $('#sideBar').append(
         "<div class='row' id='row"+num_fields+"'> \
         <div class='col'> \
         <div class='input-group mb-3 transparent trans-click' id='"+num_fields+"' onclick='add_field()'> \
@@ -30,7 +30,7 @@ function add_field()
                         </select> \
                     </div>\
                </div>\
-               <div class='col col-lg-2'>\
+               <div class='col col-xl-2'>\
                 <button type='button' id ='del_field"+ num_fields +"' class='btn btn-danger invisible'>Delete</button>\
             </div>\
                </div>");
@@ -96,8 +96,11 @@ function grab_all_data() {
             }
             data_dict[($('#name' + i).val() + " " + string_add)] = mark_total / weight_total
         }
-        if (i <= num_fields - 1){
+        if (i <= num_fields - 1 && weight_total > 0 && mark_total >= 0){
             change_percent(Math.round((mark_total /weight_total + Number.EPSILON) * 100) / 100)
+        }
+        else{
+            change_percent(0)
         }
     }
     if (num_fields === 0){
@@ -118,6 +121,7 @@ function change_chart(chart, data){
 
 }
 function change_percent(percent){
+    console.log(percent)
     $('#total_percent').text(percent + "%")
     change_color()
 }

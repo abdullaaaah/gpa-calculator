@@ -19,57 +19,62 @@
         <a class="font-weight-bold" contenteditable="true" id="course_name" style="color:#000000;">Temp</a>
         <span class="m-2 font-weight-light" id="total_percent" style="">0%</span>
     </h1>
-    <div class="chart-container p-3 m-3" style="position: relative; height:74vh; width:74vw">
-        <canvas id="myChart"></canvas>
-    </div>
-    <div class="p-3 m-3 container" id = "gpaForm">
-        <div class="row" id="row0">
-            <div class="col">
-                <div class="input-group mb-3" id="0">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Percent</span>
+    <div class="p-3 m-3 container-fluid" id = "gpaForm">
+        <div class="row">
+            <div class="col" id="sideBar">
+                <div class="row" id="row0">
+                    <div class="col">
+                        <div class="input-group mb-3" id="0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Percent</span>
+                            </div>
+                            <input type="text" id="percent0" class="form-control" placeholder="99" aria-describedby="basic-addon1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Weight</span>
+                            </div>
+                            <input type="text" id="weight0" class="form-control" placeholder="10" aria-describedby="basic-addon1">
+                            <select id = "name0" class="custom-select">
+                                <option value="Exam">Exam</option>
+                                <option value="Midterm">Midterm</option>
+                                <option value="Assignment">Assignment</option>
+                                <option value="Tutorial Marks">Tutorial Marks</option>
+                            </select>
+                        </div>
                     </div>
-                    <input type="text" id="percent0" class="form-control" placeholder="99" aria-describedby="basic-addon1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Weight</span>
+                    <div class="col col-xl-2">
+                        <button type="button" class="btn btn-danger" id="del_field0" onclick="remove_field(0)">Delete</button>
                     </div>
-                    <input type="text" id="weight0" class="form-control" placeholder="10" aria-describedby="basic-addon1">
-                    <select id = "name0" class="custom-select">
-                        <option value="Exam">Exam</option>
-                        <option value="Midterm">Midterm</option>
-                        <option value="Assignment">Assignment</option>
-                        <option value="Tutorial Marks">Tutorial Marks</option>
-                    </select>
+                </div>
+                <div class="row" id="row1">
+                    <div class="col">
+                        <div class="input-group mb-3 transparent trans-click" id="1" onclick="add_field()">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Percent</span>
+                            </div>
+                            <input type="text" id="percent1" class="form-control" placeholder="99" aria-describedby="basic-addon1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Weight</span>
+                            </div>
+                            <input type="text" id="weight1" class="form-control" placeholder="10" aria-describedby="basic-addon1">
+                            <select id = "name1" class="custom-select">
+                                <option value="Exam">Exam</option>
+                                <option value="Midterm">Midterm</option>
+                                <option value="Assignment">Assignment</option>
+                                <option value="Tutorial Marks">Tutorial Marks</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col col-xl-2">
+                        <button type="button" id = "del_field1" class="btn btn-danger invisible">Delete</button>
+                    </div>
                 </div>
             </div>
-            <div class="col col-lg-2">
-                <button type="button" class="btn btn-danger" id="del_field0" onclick="remove_field(0)">Delete</button>
-            </div>
-        </div>
-        <div class="row" id="row1">
-            <div class="col">
-                <div class="input-group mb-3 transparent trans-click" id="1" onclick="add_field()">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Percent</span>
-                    </div>
-                    <input type="text" id="percent1" class="form-control" placeholder="99" aria-describedby="basic-addon1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Weight</span>
-                    </div>
-                    <input type="text" id="weight1" class="form-control" placeholder="10" aria-describedby="basic-addon1">
-                    <select id = "name1" class="custom-select">
-                        <option value="Exam">Exam</option>
-                        <option value="Midterm">Midterm</option>
-                        <option value="Assignment">Assignment</option>
-                        <option value="Tutorial Marks">Tutorial Marks</option>
-                    </select>
+            <div class="col" id="chart">
+                <div class="chart-container">
+                    <canvas id="myChart"></canvas>
                 </div>
             </div>
-            <div class="col col-lg-2">
-                <button type="button" id = "del_field1" class="btn btn-danger invisible">Delete</button>
-            </div>
         </div>
-
     </div>
     <div class="p-3 m-3">
         <button type="button" class="btn btn-success" id="calc-gpa">Calculate!</button>
