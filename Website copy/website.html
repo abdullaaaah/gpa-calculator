@@ -16,9 +16,15 @@
     <title>GPA Calculator</title>
 </head>
     <body>
-    <h1 class="p-3 m-3">
-        <a class="font-weight-bold" contenteditable="true" id="course_name" style="color:#000000;">Temp</a>
-        <span class="m-2 font-weight-light" id="total_percent" style="">0%</span>
+    <h1 class="p-3 m-3 form-group row">
+        <div class="col-xm-1">
+        <div class="input-group input-group-lg">
+            <input type="text" maxlength = "18" id = "course_name" minlength = "1" class="form-control w-25 font-weight-bold" placeholder="Course Name" aria-describedby="basic-addon2">
+        </div>
+        </div>
+        <div class="col-xm-1">
+            <span class="m-2 font-weight-bold" id="total_percent" style="">0%</span>
+        </div>
     </h1>
     <div class="p-3 m-3 container-fluid" id = "gpaForm">
         <div class="row">
