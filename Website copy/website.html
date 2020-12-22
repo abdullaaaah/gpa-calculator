@@ -23,7 +23,7 @@
         </div>
         </div>
         <div class="col-xm-1">
-            <span class="m-2 font-weight-bold" id="total_percent" style="">0%</span>
+            <span class="m-2 font-weight-bold" id="total_percent" style="color:#ea2222;">0%</span>
         </div>
     </h1>
     <div class="p-3 m-3 container-fluid" id = "gpaForm">
@@ -35,17 +35,18 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Percent</span>
                             </div>
-                            <input type="text" id="percent0" onkeyup = "update(chart)" class="form-control" aria-describedby="basic-addon1">
+                            <input type="text" id="percent0" onkeyup = "update(line_chart)" class="form-control" aria-describedby="basic-addon1">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Weight</span>
                             </div>
-                            <input type="text" id="weight0" onkeyup = "update(chart)" class="form-control" aria-describedby="basic-addon1">
-                            <select id = "name0" onchange = "update(chart)" class="custom-select">
+                            <input type="text" id="weight0" onkeyup = "update(line_chart)" class="form-control" aria-describedby="basic-addon1">
+                            <select id = "name0" onchange = "update(line_chart)" class="custom-select">
                                 <option value="Exam">Exam</option>
                                 <option value="Midterm">Midterm</option>
                                 <option value="Assignment">Assignment</option>
                                 <option value="Tutorial Marks">Tutorial Marks</option>
                                 <option value="Quiz">Quiz</option>
+                                <option value="Lab">Lab</option>
                             </select>
                         </div>
                     </div>
@@ -59,17 +60,18 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Percent</span>
                             </div>
-                            <input type="text" id="percent1" onkeyup = "update(chart)" class="form-control" aria-describedby="basic-addon1">
+                            <input type="text" id="percent1" onkeyup = "update(line_chart)" class="form-control" aria-describedby="basic-addon1">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Weight</span>
                             </div>
-                            <input type="text" id="weight1" onkeyup = "update(chart)" class="form-control" aria-describedby="basic-addon1">
-                            <select id = "name1" onchange = "update(chart)" class="custom-select">
+                            <input type="text" id="weight1" onkeyup = "update(line_chart)" class="form-control" aria-describedby="basic-addon1">
+                            <select id = "name1" onchange = "update(line_chart)" class="custom-select">
                                 <option value="Exam">Exam</option>
                                 <option value="Midterm">Midterm</option>
                                 <option value="Assignment">Assignment</option>
                                 <option value="Tutorial Marks">Tutorial Marks</option>
                                 <option value="Quiz">Quiz</option>
+                                <option value="Lab">Lab</option>
                             </select>
                         </div>
                     </div>
@@ -78,11 +80,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col" id="chart">
-                <div class="chart-container">
-                    <canvas id="myChart"></canvas>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="chart-container">
+                            <canvas id="line_chart"></canvas>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="chart-container">
+                            <canvas id="bar_chart"></canvas>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
     </body>

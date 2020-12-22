@@ -1,5 +1,6 @@
 let num_fields = 1
-let chart;
+let line_chart;
+let bar_chart;
 
 function add_field()
 {
@@ -18,17 +19,18 @@ function add_field()
                 <div class='input-group-prepend'> \
                     <span class='input-group-text'>Percent</span> \
                 </div> \
-                <input id = 'percent"+num_fields+"' name = 'mark' onkeyup = 'update(chart)' type='text' class='form-control' aria-describedby='basic-addon1'> \
+                <input id = 'percent"+num_fields+"' name = 'mark' onkeyup = 'update(line_chart)' type='text' class='form-control' aria-describedby='basic-addon1'> \
                   <div class='input-group-prepend'> \
                       <span class='input-group-text'>Weight</span> \
                   </div> \
-                <input id = 'weight"+num_fields+"' name = 'weight' onkeyup = 'update(chart)' type='text' class='form-control' aria-describedby='basic-addon1'> \
-                <select id = 'name"+num_fields+"' onchange = 'update(chart)' class='custom-select'> \
+                <input id = 'weight"+num_fields+"' name = 'weight' onkeyup = 'update(line_chart)' type='text' class='form-control' aria-describedby='basic-addon1'> \
+                <select id = 'name"+num_fields+"' onchange = 'update(line_chart)' class='custom-select'> \
                             <option value='Exam'>Exam</option> \
                             <option value='Midterm'>Midterm</option> \
                             <option value='Assignment'>Assignment</option> \
                             <option value='Tutorial Marks'>Tutorial Marks</option> \
                             <option value='Quiz'>Quiz</option> \
+                            <option value=\"Lab\">Lab</option> \
                         </select> \
                     </div>\
                </div>\
@@ -36,11 +38,9 @@ function add_field()
                 <button type='button' id ='del_field"+ num_fields +"' onclick= '' class='btn btn-danger invisible'>Delete</button>\
             </div>\
                </div>");
-    return 0
 }
 
 function remove_field(id){
-    /*delete row id*/
     if (id > -1){
         let row_id = '#row' + id
         let del_field = '#del_field' + id
@@ -59,8 +59,7 @@ function remove_field(id){
         $('#weight' + i).attr("id", "weight" + num)
         $('#percent' + i).attr("id", "percent" + num)
     }
-    update(chart)
-    return 0
+    update(line_chart)
 }
 
 function change_color(){
@@ -111,6 +110,28 @@ function grab_all_data() {
     }
     return data_dict
 }
+function bar_graph_data() {
+    let data_dict = {}
+    let name_dict = {}
+    for (let i = 0; i <= num_fields - 1; i++){
+        if ($('#name' + i).val() in data_dict){
+            data_dict[$('#name' + i).val()] += parseFloat($('#percent' + i).val())
+        }
+        else{
+            data_dict[$('#name' + i).val()] = parseFloat($('#percent' + i).val())
+        }
+        if ($('#name' + i).val() in name_dict){
+            name_dict[$('#name' + i).val()] += 1
+        }
+        else{
+            name_dict[$('#name' + i).val()] = 1
+        }
+    }
+    for (let key in name_dict){
+        data_dict[key] = data_dict[key]/name_dict[key]
+    }
+    return data_dict
+}
 function change_chart(chart, data){
     chart.data.labels = []
     chart.data.datasets[0].data = []
@@ -129,18 +150,18 @@ function change_percent(percent){
 }
 
 function update(){
-    let data = grab_all_data()
-    change_chart(chart, data)
+    let line_data = grab_all_data()
+    let bar_data = bar_graph_data()
+    change_chart(line_chart, line_data)
+    change_chart(bar_chart, bar_data)
 }
 
 $(document).ready(function()
 {
-    let ctx = document.getElementById('myChart').getContext('2d');
-    chart = new Chart(ctx, {
-        // The type of chart we want to create
+    let ctx = document.getElementById('line_chart').getContext('2d');
+    let ctx2 = document.getElementById('bar_chart').getContext('2d');
+    line_chart = new Chart(ctx, {
         type: 'line',
-
-        // The data for our dataset
         data: {
             labels: [],
             datasets: [{
@@ -166,5 +187,31 @@ $(document).ready(function()
             }
         }
     });
+    bar_chart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Assessment Performance",
+                borderColor: 'rgb(99,174,255)',
+                backgroundColor: 'rgb(99,174,255)',
+                data: []
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        step: 5
+                    }
+                }]
+            }
+        }
+    })
 
 });
