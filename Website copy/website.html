@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="dacss.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script rel="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script rel="text/javascript" src="./add_row.js"></script>
     <title>GPA Calculator</title>
 </head>
     <body>
@@ -28,12 +29,12 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Percent</span>
                             </div>
-                            <input type="text" id="percent0" class="form-control" placeholder="99" aria-describedby="basic-addon1">
+                            <input type="text" id="percent0" onkeyup = "update(chart)" class="form-control" aria-describedby="basic-addon1">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Weight</span>
                             </div>
-                            <input type="text" id="weight0" class="form-control" placeholder="10" aria-describedby="basic-addon1">
-                            <select id = "name0" class="custom-select">
+                            <input type="text" id="weight0" onkeyup = "update(chart)" class="form-control" aria-describedby="basic-addon1">
+                            <select id = "name0" onchange = "update(chart)" class="custom-select">
                                 <option value="Exam">Exam</option>
                                 <option value="Midterm">Midterm</option>
                                 <option value="Assignment">Assignment</option>
@@ -42,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col col-xl-2">
-                        <button type="button" class="btn btn-danger" id="del_field0" onclick="remove_field(0)">Delete</button>
+                        <button type="button" class="btn btn-danger" id="del_field0" onclick="remove_field(0); update(chart)">Delete</button>
                     </div>
                 </div>
                 <div class="row" id="row1">
@@ -51,12 +52,12 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Percent</span>
                             </div>
-                            <input type="text" id="percent1" class="form-control" placeholder="99" aria-describedby="basic-addon1">
+                            <input type="text" id="percent1" onkeyup = "update(chart)" class="form-control" aria-describedby="basic-addon1">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Weight</span>
                             </div>
-                            <input type="text" id="weight1" class="form-control" placeholder="10" aria-describedby="basic-addon1">
-                            <select id = "name1" class="custom-select">
+                            <input type="text" id="weight1" onkeyup = "update(chart)" class="form-control" aria-describedby="basic-addon1">
+                            <select id = "name1" onchange = "update(chart)" class="custom-select">
                                 <option value="Exam">Exam</option>
                                 <option value="Midterm">Midterm</option>
                                 <option value="Assignment">Assignment</option>
@@ -76,9 +77,5 @@
             </div>
         </div>
     </div>
-    <div class="p-3 m-3">
-        <button type="button" class="btn btn-success" id="calc-gpa">Calculate!</button>
-    </div>
-    <script rel="text/javascript" src="./add_row.js"></script>
     </body>
 </html>

@@ -5,7 +5,7 @@ function add_field()
     let del_field = "#del_field" + num_fields
     $(".transparent").removeClass("transparent")
     $(del_field).removeClass("invisible")
-    $(del_field).attr("onclick", "remove_field(" + num_fields + ")")
+    $(del_field).attr("onclick", "remove_field(" + num_fields + "); update(chart)")
     $(".trans-click").attr("onclick", null)
 
 
@@ -17,12 +17,12 @@ function add_field()
                 <div class='input-group-prepend'> \
                     <span class='input-group-text'>Percent</span> \
                 </div> \
-                <input id = 'percent"+num_fields+"' name = 'mark' type='text' class='form-control' placeholder=99 aria-describedby=basic-addon1> \
+                <input id = 'percent"+num_fields+"' name = 'mark' onkeyup = 'update(chart)' type='text' class='form-control' aria-describedby='basic-addon1'> \
                   <div class='input-group-prepend'> \
                       <span class='input-group-text'>Weight</span> \
                   </div> \
-                <input id = 'weight"+num_fields+"' name = 'weight' type='text' class='form-control' placeholder='10' aria-describedby='basic-addon1'> \
-                <select id = 'name"+num_fields+"' class='custom-select'> \
+                <input id = 'weight"+num_fields+"' name = 'weight' onkeyup = 'update(chart)' type='text' class='form-control' aria-describedby='basic-addon1'> \
+                <select id = 'name"+num_fields+"' onchange = 'update(chart)' class='custom-select'> \
                             <option value='Exam'>Exam</option> \
                             <option value='Midterm'>Midterm</option> \
                             <option value='Assignment'>Assignment</option> \
@@ -121,25 +121,20 @@ function change_chart(chart, data){
 
 }
 function change_percent(percent){
-    console.log(percent)
     $('#total_percent').text(percent + "%")
     change_color()
 }
+let chart;
 
+function update(){
+    let data = grab_all_data()
+    change_chart(chart, data)
+}
 
 $(document).ready(function()
 {
-    $("#calc-gpa").click(function()
-    {
-        var dic = $("form").serializeArray();
-        $.post("/calculate", dic, function(data){
-            $('#total_percent').text(data['gpa'])
-        })
-        let data = grab_all_data()
-        change_chart(chart, data)
-    });
     let ctx = document.getElementById('myChart').getContext('2d');
-    let chart = new Chart(ctx, {
+    chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
 
@@ -147,7 +142,7 @@ $(document).ready(function()
         data: {
             labels: [],
             datasets: [{
-                label: 'My Performance',
+                label: "My Performance",
                 borderColor: 'rgb(99,174,255)',
                 data: []
             }]
@@ -155,6 +150,9 @@ $(document).ready(function()
 
         // Configuration options go here
         options: {
+            legend: {
+                display: false
+            },
             scales: {
                 yAxes: [{
                     ticks: {
@@ -166,4 +164,5 @@ $(document).ready(function()
             }
         }
     });
+
 });
