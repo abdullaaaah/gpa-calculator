@@ -3,6 +3,8 @@ let line_chart;
 let bar_chart;
 let final_grade;
 let final_weight;
+let data_dict;
+let num;
 
 function add_field()
 {
@@ -79,41 +81,57 @@ function change_color(){
 
 }
 
-function grab_all_data() {
-    let data_dict = {}
-    for (let i = 0; i <= num_fields - 1; i++) {
-        let mark_total = 0
-        let weight_total = 0
-        for (let n = 0; n <= i; n++) {
-            let mark = parseFloat($('#percent' + n).val())
-            let weight = parseFloat($('#weight' + n).val())
-            mark_total += mark * weight
-            weight_total += weight
-        }
-        if (weight_total > 0 && mark_total >= 0) {
-            let counter = 2
-            let string_add = ""
-            while (($('#name' + i).val() + " " + string_add) in data_dict) {
-                string_add = ""
-                string_add += ""+counter
-                counter += 1
+function line_graph_data() {
+    let line_graph_dict = {}
+    final_grade = 0
+    final_weight = 0
+    for (let row in data_dict){
+        if (data_dict.hasOwnProperty(row)) {
+            for (let type in data_dict[row]) {
+                if (data_dict[row].hasOwnProperty(type)) {
+                    for (let grade in data_dict[row][type]) {
+                        if (data_dict[row][type].hasOwnProperty(grade)) {
+                            /*grade:grade, weight:data_dict[row][type][grade]*/
+                            let weight = data_dict[row][type][grade]
+                            final_grade += grade * weight
+                            final_weight += weight
+                            num = parseInt(row.slice(-1)) + 1
+
+                        }
+                    }
+
+
+                }
             }
-            data_dict[($('#name' + i).val() + " " + string_add)] = mark_total / weight_total
+            let other_num = 0
+            let other_type;
+            let current_type = Object.keys(data_dict[row])[0]
+            for (let other_rows in data_dict){
+                if (data_dict.hasOwnProperty(other_rows)){
+                    other_num = parseInt(other_rows.slice(-1)) + 1
+                    if (num > other_num){
+                        other_type = Object.keys(data_dict[other_rows])[0]
+                    }
+                }
+            }
+            if (other_type === current_type) {
+                line_graph_dict[current_type + " " + num] = final_grade / final_weight
+            }
+            else {
+                line_graph_dict[current_type] = final_grade / final_weight
+            }
         }
-        if (i <= num_fields - 1 && weight_total > 0 && mark_total >= 0){
-            change_percent(Math.round((mark_total /weight_total + Number.EPSILON) * 100) / 100)
-            final_grade = mark_total / weight_total
-            final_weight = weight_total
-        }
-        else{
-            change_percent(0)
-        }
+
     }
-    if (num_fields === 0){
+    if (final_weight <= 0 || isNaN(final_weight)){
         change_percent(0)
     }
-    return data_dict
+    else {
+        change_percent(two_decimal_places(final_grade / final_weight))
+    }
+    return line_graph_dict
 }
+
 function bar_graph_data() {
     let data_dict = {}
     let name_dict = {}
@@ -154,11 +172,16 @@ function change_percent(percent){
 }
 
 function update(){
-    let line_data = grab_all_data()
+    scrape_data()
+    let line_data = line_graph_data()
     let bar_data = bar_graph_data()
     change_chart(line_chart, line_data)
     change_chart(bar_chart, bar_data)
     goal_percentage()
+}
+
+function two_decimal_places(num){
+    return Math.round((num + Number.EPSILON)*100)/100
 }
 
 function goal_percentage(){
@@ -167,20 +190,19 @@ function goal_percentage(){
     let g_2;
     if (isNaN(w_2)) {
         g_2 = 100
-        w_2 = (final_weight * (final_grade - goal)) / (goal - g_2)
+        w_2 = two_decimal_places(((final_weight * (final_grade - goal)) / (goal - g_2)))
         while (w_2 > (100 - final_weight) || w_2 < 0) {
             g_2 -= 1
             if (g_2 < 0) {
                 g_2 = 0
                 break
             }
-            w_2 = Math.round(((final_weight * (final_grade - goal)) / (goal - g_2) + Number.EPSILON) * 100) / 100
+            w_2 = two_decimal_places(((final_weight * (final_grade - goal)) / (goal - g_2)))
         }
     }
     else{
 
-        g_2 = Math.round((((final_weight * (final_grade - goal) - (w_2 * goal))/(-1*(w_2))) + Number.EPSILON) * 100) / 100
-        console.log(g_2)
+        g_2 = two_decimal_places(((final_weight * (final_grade - goal) - (w_2 * goal)) / (-1*(w_2))))
     }
     if (isNaN(w_2) || isNaN(g_2)){
         if (isNaN(g_2)) {
@@ -195,6 +217,25 @@ function goal_percentage(){
         $('#needed_weight').text("Needed Weight: " + w_2)
     }
 }
+
+function scrape_data(){
+    data_dict = {}
+    for (let i = 0; i <= (num_fields - 1); i++) {
+        let num_dict = {}
+        let type_dict = {}
+        let mark = parseFloat($('#percent' + i).val())
+        let type = $('#name' + i).val()
+        num_dict[mark] = parseFloat($('#weight' + i).val())
+        type_dict[type] = num_dict
+        data_dict['#row' + i] = type_dict
+        }
+    return data_dict
+}
+
+function save_data(){
+    console.log(data_dict)
+}
+
 
 $(document).ready(function()
 {
