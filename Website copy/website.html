@@ -18,83 +18,134 @@
     <body>
     <h1 class="p-3 m-3 form-group row">
         <div class="col-xm-1">
-        <div class="input-group input-group-lg">
-            <input type="text" maxlength = "18" id = "course_name" minlength = "1" class="form-control w-25 font-weight-bold" placeholder="Course Name" aria-describedby="basic-addon2">
+            <div class="input-group input-group-lg">
+                <input type="text" maxlength = "18" id = "course_name"
+                       class="form-control w-25 font-weight-bold .text-dark bg-white border-0 small input-lg"
+                       placeholder="Course Name" aria-describedby="basic-addon2">
+            </div>
         </div>
-        </div>
-        <div class="col-xm-1">
-            <span class="m-2 font-weight-bold" id="total_percent" style="color:#ea2222;">0%</span>
+        <div class="col text-right">
+            <span class="font-weight-bold" id="total_percent" style="">0%</span>
         </div>
     </h1>
-    <div class="p-3 m-3 container-fluid" id = "gpaForm">
+    <div class="p-3 m-3" id = "gpaForm">
         <div class="row">
-            <div class="col" id="sideBar">
-                <div class="row" id="row0">
-                    <div class="col">
-                        <div class="input-group mb-3" id="0">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Percent</span>
+            <div class="col">
+                <div class="card mb-4 shadow">
+                    <div class="card-body" id="sideBar">
+                        <h4 class="card-title mb-3 font-weight-bold text">Grade Input</h4>
+                        <div class="row" id="row0">
+                            <div class="col">
+                                <div class="input-group mb-3" id="0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-0 small">Percent:</span>
+                                    </div>
+                                    <input type="number" id="percent0" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                                    <div class="input-group-prepend ">
+                                        <span class="input-group-text bg-light border-0 small">Weight:</span>
+                                    </div>
+                                    <input type="number" maxlength="3" id="weight0" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                                    <select id = "name0" onchange = "update(line_chart)" class="custom-select bg-light border-0 small">
+                                        <option value="Exam">Exam</option>
+                                        <option value="Midterm">Midterm</option>
+                                        <option value="Assignment">Assignment</option>
+                                        <option value="Tutorial Marks">Tutorial Marks</option>
+                                        <option value="Quiz">Quiz</option>
+                                        <option value="Lab">Lab</option>
+                                    </select>
+                                </div>
                             </div>
-                            <input type="text" id="percent0" onkeyup = "update(line_chart)" class="form-control" aria-describedby="basic-addon1">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Weight</span>
+                            <div class="col col-xl-2">
+                                <button type="button" class="btn btn-danger" id="del_field0" onclick="remove_field(0)">Delete</button>
                             </div>
-                            <input type="text" id="weight0" onkeyup = "update(line_chart)" class="form-control" aria-describedby="basic-addon1">
-                            <select id = "name0" onchange = "update(line_chart)" class="custom-select">
-                                <option value="Exam">Exam</option>
-                                <option value="Midterm">Midterm</option>
-                                <option value="Assignment">Assignment</option>
-                                <option value="Tutorial Marks">Tutorial Marks</option>
-                                <option value="Quiz">Quiz</option>
-                                <option value="Lab">Lab</option>
-                            </select>
                         </div>
-                    </div>
-                    <div class="col col-xl-2">
-                        <button type="button" class="btn btn-danger" id="del_field0" onclick="remove_field(0)">Delete</button>
+                        <div class="row" id="row1">
+                            <div class="col">
+                                <div class="input-group mb-3 transparent trans-click" id="1" onclick="add_field()">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-0 small">Percent:</span>
+                                    </div>
+                                    <input type="number" id="percent1" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-0 small">Weight:</span>
+                                    </div>
+                                    <input type="number" id="weight1" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                                    <select id = "name1" onchange = "update(line_chart)" class="custom-select bg-light border-0 small">
+                                        <option value="Exam">Exam</option>
+                                        <option value="Midterm">Midterm</option>
+                                        <option value="Assignment">Assignment</option>
+                                        <option value="Tutorial Marks">Tutorial Marks</option>
+                                        <option value="Quiz">Quiz</option>
+                                        <option value="Lab">Lab</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col col-xl-2">
+                                <button type="button" id = "del_field1" onclick= ""
+                                        class="btn btn-danger invisible">Delete</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row" id="row1">
+                <div class="row">
                     <div class="col">
-                        <div class="input-group mb-3 transparent trans-click" id="1" onclick="add_field()">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Percent</span>
+                        <div class="card mb-4 shadow" style="size:50vw;">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3 font-weight-bold text">Grade Options</h4>
+                                <h6 class="card-title">Goal Percentage</h6>
+                                <div class="input-group">
+                                    <input type="number" id = "gpa_goal"
+                                           class="form-control w-10 font-weight-light bg-light border-0 small"
+                                           placeholder="85.0" aria-describedby="basic-addon2"
+                                           onkeyup = "goal_percentage()">
+                                </div>
+                                <h6 class="card-title mt-3">Weight</h6>
+                                <div class="input-group">
+                                    <input type="number" id = "next_weight"
+                                           class="form-control w-10 font-weight-light bg-light border-0 small"
+                                           placeholder="85.0" aria-describedby="basic-addon2"
+                                           onkeyup = "goal_percentage()">
+                                </div>
+                                <h6 class="font-weight-light mt-3" id="needed_gpa">Needed Grade:</h6>
+                                <h6 class="font-weight-light" id="needed_weight">Needed Weight:</h6>
+                                <h6 class="card-title mt-3">Extras</h6>
+                                <div class="input-group">
+                                    <input type="number" id = ""
+                                           class="form-control w-10 font-weight-light bg-light border-0 small"
+                                           placeholder="85.0" aria-describedby="basic-addon2">
+                                </div>
                             </div>
-                            <input type="text" id="percent1" onkeyup = "update(line_chart)" class="form-control" aria-describedby="basic-addon1">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Weight</span>
-                            </div>
-                            <input type="text" id="weight1" onkeyup = "update(line_chart)" class="form-control" aria-describedby="basic-addon1">
-                            <select id = "name1" onchange = "update(line_chart)" class="custom-select">
-                                <option value="Exam">Exam</option>
-                                <option value="Midterm">Midterm</option>
-                                <option value="Assignment">Assignment</option>
-                                <option value="Tutorial Marks">Tutorial Marks</option>
-                                <option value="Quiz">Quiz</option>
-                                <option value="Lab">Lab</option>
-                            </select>
                         </div>
-                    </div>
-                    <div class="col col-xl-2">
-                        <button type="button" id = "del_field1" onclick= "" class="btn btn-danger invisible">Delete</button>
                     </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <div class="chart-container">
-                            <canvas id="line_chart"></canvas>
+                <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3 font-weight-bold text">Performance Overview</h4>
+                        <div class="row">
+                            <div class="col">
+                                <div class="chart-container">
+                                    <canvas id="line_chart"></canvas>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="chart-container">
-                            <canvas id="bar_chart"></canvas>
+                <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3 font-weight-bold text">Assessment Overview</h4>
+                        <div class="row">
+                            <div class="col">
+                                <div class="chart-container">
+                                    <canvas id="bar_chart"></canvas>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
     </body>
