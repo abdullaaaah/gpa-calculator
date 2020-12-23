@@ -83,8 +83,12 @@ function change_color(){
 
 function line_graph_data() {
     let line_graph_dict = {}
+    let type_count = {'Exam': 0, 'Midterm': 0, 'Assignment': 0,
+                        'Quiz': 0, 'Lab': 0, 'Tutorial Marks': 0}
+
     final_grade = 0
     final_weight = 0
+
     for (let row in data_dict){
         if (data_dict.hasOwnProperty(row)) {
             for (let type in data_dict[row]) {
@@ -95,29 +99,19 @@ function line_graph_data() {
                             let weight = data_dict[row][type][grade]
                             final_grade += grade * weight
                             final_weight += weight
-                            num = parseInt(row.slice(-1)) + 1
 
                         }
                     }
-
-
-                }
-            }
-            let other_num = 0
-            let other_type;
-            let current_type = Object.keys(data_dict[row])[0]
-            for (let other_rows in data_dict){
-                if (data_dict.hasOwnProperty(other_rows)){
-                    other_num = parseInt(other_rows.slice(-1)) + 1
-                    if (num > other_num){
-                        other_type = Object.keys(data_dict[other_rows])[0]
+                    if (type in type_count){
+                        type_count[type] += 1
                     }
                 }
             }
-            if (other_type === current_type) {
-                line_graph_dict[current_type + " " + num] = final_grade / final_weight
+            let current_type = Object.keys(data_dict[row])[0]
+            if (type_count[current_type] > 1){
+                line_graph_dict[current_type + " " + type_count[current_type]] = final_grade / final_weight
             }
-            else {
+            else{
                 line_graph_dict[current_type] = final_grade / final_weight
             }
         }
