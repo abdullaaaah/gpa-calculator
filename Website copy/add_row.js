@@ -1,6 +1,8 @@
 let num_fields = 1
 let line_chart;
 let bar_chart;
+let final_grade;
+let final_weight;
 
 function add_field()
 {
@@ -17,14 +19,14 @@ function add_field()
         <div class='col'> \
         <div class='input-group mb-3 transparent trans-click' id='"+num_fields+"' onclick='add_field()'> \
                 <div class='input-group-prepend'> \
-                    <span class='input-group-text'>Percent</span> \
+                    <span class='input-group-text bg-light border-0 small'>Percent:</span> \
                 </div> \
-                <input id = 'percent"+num_fields+"' name = 'mark' onkeyup = 'update(line_chart)' type='text' class='form-control' aria-describedby='basic-addon1'> \
+                <input id = 'percent"+num_fields+"' name = 'mark' onkeyup = 'update(line_chart)' type='number' maxlength='3' class='form-control bg-light border-0 small' aria-describedby='basic-addon1'> \
                   <div class='input-group-prepend'> \
-                      <span class='input-group-text'>Weight</span> \
+                      <span class='input-group-text bg-light border-0 small'>Weight:</span> \
                   </div> \
-                <input id = 'weight"+num_fields+"' name = 'weight' onkeyup = 'update(line_chart)' type='text' class='form-control' aria-describedby='basic-addon1'> \
-                <select id = 'name"+num_fields+"' onchange = 'update(line_chart)' class='custom-select'> \
+                <input id = 'weight"+num_fields+"' name = 'weight' onkeyup = 'update(line_chart)' type='number' maxlength='3' class='form-control bg-light border-0 small' aria-describedby='basic-addon1'> \
+                <select id = 'name"+num_fields+"' onchange = 'update(line_chart)' class='custom-select bg-light border-0 small'> \
                             <option value='Exam'>Exam</option> \
                             <option value='Midterm'>Midterm</option> \
                             <option value='Assignment'>Assignment</option> \
@@ -100,6 +102,8 @@ function grab_all_data() {
         }
         if (i <= num_fields - 1 && weight_total > 0 && mark_total >= 0){
             change_percent(Math.round((mark_total /weight_total + Number.EPSILON) * 100) / 100)
+            final_grade = mark_total / weight_total
+            final_weight = weight_total
         }
         else{
             change_percent(0)
@@ -154,6 +158,42 @@ function update(){
     let bar_data = bar_graph_data()
     change_chart(line_chart, line_data)
     change_chart(bar_chart, bar_data)
+    goal_percentage()
+}
+
+function goal_percentage(){
+    let goal = parseInt($('#gpa_goal').val())
+    let w_2 = parseInt($('#next_weight').val())
+    let g_2;
+    if (isNaN(w_2)) {
+        g_2 = 100
+        w_2 = (final_weight * (final_grade - goal)) / (goal - g_2)
+        while (w_2 > (100 - final_weight) || w_2 < 0) {
+            g_2 -= 1
+            if (g_2 < 0) {
+                g_2 = 0
+                break
+            }
+            w_2 = Math.round(((final_weight * (final_grade - goal)) / (goal - g_2) + Number.EPSILON) * 100) / 100
+        }
+    }
+    else{
+
+        g_2 = Math.round((((final_weight * (final_grade - goal) - (w_2 * goal))/(-1*(w_2))) + Number.EPSILON) * 100) / 100
+        console.log(g_2)
+    }
+    if (isNaN(w_2) || isNaN(g_2)){
+        if (isNaN(g_2)) {
+            $('#needed_gpa').text("Needed Grade: " + 0)
+        }
+        if (isNaN(w_2)){
+            $('#needed_weight').text("Needed Weight: " + 0)
+        }
+    }
+    else {
+        $('#needed_gpa').text("Needed Grade: " + g_2)
+        $('#needed_weight').text("Needed Weight: " + w_2)
+    }
 }
 
 $(document).ready(function()
@@ -165,8 +205,18 @@ $(document).ready(function()
         data: {
             labels: [],
             datasets: [{
+                lineTension: 0.3,
+                backgroundColor: "rgba(78, 115, 223, 0.05)",
+                borderColor: "rgba(78, 115, 223, 1)",
+                pointRadius: 3,
+                pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                pointBorderColor: "rgba(78, 115, 223, 1)",
+                pointHoverRadius: 3,
+                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                pointHitRadius: 10,
+                pointBorderWidth: 2,
                 label: "My Performance",
-                borderColor: 'rgb(99,174,255)',
                 data: []
             }]
         },
@@ -177,7 +227,19 @@ $(document).ready(function()
                 display: false
             },
             scales: {
+                xAxes: [{
+                    gridLines: {
+                        drawBorder: false
+                    }
+                }],
                 yAxes: [{
+                    gridLines: {
+                        color: "rgb(234, 236, 244)",
+                        zeroLineColor: "rgb(234, 236, 244)",
+                        drawBorder: false,
+                        borderDash: [2],
+                        zeroLineBorderDash: [2]
+                    },
                     ticks: {
                         suggestedMin: 0,
                         suggestedMax: 100,
@@ -192,9 +254,10 @@ $(document).ready(function()
         data: {
             labels: [],
             datasets: [{
+                backgroundColor: "#4e73df",
+                hoverBackgroundColor: "#2e59d9",
+                borderColor: "#4e73df",
                 label: "Assessment Performance",
-                borderColor: 'rgb(99,174,255)',
-                backgroundColor: 'rgb(99,174,255)',
                 data: []
             }]
         },
@@ -203,7 +266,19 @@ $(document).ready(function()
                 display: false
             },
             scales: {
+                xAxes: [{
+                    gridLines: {
+                        drawBorder: false
+                    }
+                }],
                 yAxes: [{
+                    gridLines: {
+                        color: "rgb(234, 236, 244)",
+                        zeroLineColor: "rgb(234, 236, 244)",
+                        drawBorder: false,
+                        borderDash: [2],
+                        zeroLineBorderDash: [2]
+                    },
                     ticks: {
                         suggestedMin: 0,
                         suggestedMax: 100,
