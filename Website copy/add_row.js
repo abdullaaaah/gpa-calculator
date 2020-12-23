@@ -194,21 +194,23 @@ function goal_percentage(){
     let goal = parseInt($('#gpa_goal').val())
     let w_2 = parseInt($('#next_weight').val())
     let g_2;
+    let grade = parseFloat(final_grade) / parseFloat(final_weight)
+    let weight = parseFloat(final_weight)
     if (isNaN(w_2)) {
         g_2 = 100
-        w_2 = two_decimal_places(((final_weight * (final_grade - goal)) / (goal - g_2)))
-        while (w_2 > (100 - final_weight) || w_2 < 0) {
+        w_2 = two_decimal_places(((weight * (grade - goal)) / (goal - g_2)))
+        while (w_2 > (100 - weight) || w_2 < 0) {
             g_2 -= 1
             if (g_2 < 0) {
                 g_2 = 0
                 break
             }
-            w_2 = two_decimal_places(((final_weight * (final_grade - goal)) / (goal - g_2)))
+            w_2 = two_decimal_places(((weight * (grade - goal)) / (goal - g_2)))
         }
     }
     else{
 
-        g_2 = two_decimal_places(((final_weight * (final_grade - goal) - (w_2 * goal)) / (-1*(w_2))))
+        g_2 = two_decimal_places(((weight * (grade - goal) - (w_2 * goal)) / (-1*(w_2))))
     }
     if (isNaN(w_2) || isNaN(g_2)){
         if (isNaN(g_2)) {
