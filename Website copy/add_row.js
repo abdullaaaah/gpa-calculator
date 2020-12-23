@@ -127,26 +127,38 @@ function line_graph_data() {
 }
 
 function bar_graph_data() {
-    let data_dict = {}
-    let name_dict = {}
-    for (let i = 0; i <= num_fields - 1; i++){
-        if ($('#name' + i).val() in data_dict){
-            data_dict[$('#name' + i).val()] += parseFloat($('#percent' + i).val())
-        }
-        else{
-            data_dict[$('#name' + i).val()] = parseFloat($('#percent' + i).val())
-        }
-        if ($('#name' + i).val() in name_dict){
-            name_dict[$('#name' + i).val()] += 1
-        }
-        else{
-            name_dict[$('#name' + i).val()] = 1
+    let bar_graph_dict = {}
+    let type_freq_dict = {}
+    for (let row in data_dict) {
+        if (data_dict.hasOwnProperty(row)) {
+            for (let type in data_dict[row]) {
+                if (data_dict[row].hasOwnProperty(type)) {
+                    for (let grade in data_dict[row][type]) {
+                        if (data_dict[row][type].hasOwnProperty(grade)){
+                            if (!(type in type_freq_dict)){
+                                type_freq_dict[type] = 1
+                            }
+                            else{
+                                type_freq_dict[type] += 1
+                            }
+                            if (!(type in bar_graph_dict)){
+                                bar_graph_dict[type] = parseFloat(grade)
+                            }
+                            else{
+                                bar_graph_dict[type] += parseFloat(grade)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-    for (let key in name_dict){
-        data_dict[key] = data_dict[key]/name_dict[key]
+    for (let item in type_freq_dict){
+        if (type_freq_dict.hasOwnProperty(item)){
+            bar_graph_dict[item] = bar_graph_dict[item] / type_freq_dict[item]
+        }
     }
-    return data_dict
+    return bar_graph_dict
 }
 function change_chart(chart, data){
     chart.data.labels = []
