@@ -232,11 +232,11 @@ function goal_percentage(){
     if (isNaN(w_2) || isNaN(g_2)){
         if (isNaN(g_2)) {
             $('#needed_gpa').text("Needed Grade: " + 0)
-            $('#needed_weight').text("Needed Grade: " + 0)
-        }
-        if (isNaN(w_2)){
             $('#needed_weight').text("Needed Weight: " + 0)
-            $('#needed_gpa').text("Needed Weight: " + g_2)
+        }
+        else if (isNaN(w_2)){
+            $('#needed_weight').text("Needed Weight: " + 0)
+            $('#needed_gpa').text("Needed Grade: " + g_2)
         }
     }
     else {
