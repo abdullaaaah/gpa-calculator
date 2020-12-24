@@ -66,7 +66,7 @@ function remove_field(id){
     update(line_chart)
 }
 
-function change_color(){
+function change_percent_color(){
     let grade = $('#total_percent').text()
     grade = parseInt(grade.slice(0, 2))
     if (grade >= 85){
@@ -111,12 +111,6 @@ function line_graph_data() {
             line_graph_dict[current_type + " " + type_count[current_type]] = final_grade / final_weight
         }
 
-    }
-    if (final_weight <= 0 || isNaN(final_weight)){
-        change_percent(0)
-    }
-    else {
-        change_percent(two_decimal_places(final_grade / final_weight))
     }
     return line_graph_dict
 }
@@ -174,7 +168,30 @@ function change_percent(percent){
     else {
         $('#total_percent').text(percent + "%")
     }
-    change_color()
+    change_percent_color()
+}
+
+function change_weight_color(weight){
+    if (weight > 100){
+        $('#total_weight').attr("class", "mb-4 ml-4 text-danger")
+    }
+    else if (weight <= 100 || weight >= 0){
+        $('#total_weight').attr("class", "mb-4 ml-4 text-dark")
+    }
+    else{
+        $('#total_weight').attr("class", "mb-4 ml-4 text-danger")
+    }
+}
+
+function change_total_weight(weight){
+    if (isNaN(weight)){
+        $('#total_weight').text("Total Weight: " + "0")
+    }
+    else{
+        $('#total_weight').text("Total Weight: " + weight)
+    }
+    change_weight_color(weight)
+
 }
 
 function update(){
@@ -183,7 +200,15 @@ function update(){
     let bar_data = bar_graph_data()
     change_chart(line_chart, line_data)
     change_chart(bar_chart, bar_data)
+    if (final_weight <= 0 || isNaN(final_weight)){
+        change_percent(0)
+    }
+    else {
+        change_percent(two_decimal_places(final_grade / final_weight))
+    }
     goal_percentage()
+    change_total_weight(final_weight)
+    max_grade()
 }
 
 function two_decimal_places(num){
@@ -197,32 +222,45 @@ function goal_percentage(){
     let grade = parseFloat(final_grade) / parseFloat(final_weight)
     let weight = parseFloat(final_weight)
     if (isNaN(w_2)) {
-        g_2 = 100
-        w_2 = two_decimal_places(((weight * (grade - goal)) / (goal - g_2)))
-        while (w_2 > (100 - weight) || w_2 < 0) {
-            g_2 -= 1
-            if (g_2 < 0) {
-                g_2 = 0
-                break
-            }
-            w_2 = two_decimal_places(((weight * (grade - goal)) / (goal - g_2)))
-        }
+        let rem_weight = 100-weight
+        g_2 = two_decimal_places(((weight * (grade - goal) - (rem_weight * goal)) / (-1*(rem_weight))))
+        console.log(g_2)
     }
     else{
-
         g_2 = two_decimal_places(((weight * (grade - goal) - (w_2 * goal)) / (-1*(w_2))))
     }
     if (isNaN(w_2) || isNaN(g_2)){
         if (isNaN(g_2)) {
             $('#needed_gpa').text("Needed Grade: " + 0)
+            $('#needed_weight').text("Needed Grade: " + 0)
         }
         if (isNaN(w_2)){
             $('#needed_weight').text("Needed Weight: " + 0)
+            $('#needed_gpa').text("Needed Weight: " + g_2)
         }
     }
     else {
         $('#needed_gpa').text("Needed Grade: " + g_2)
         $('#needed_weight').text("Needed Weight: " + w_2)
+    }
+}
+
+function max_grade(){
+    let remain_weight = 100 - final_weight
+    let assume_grade = 100
+    let current_grade = final_grade / final_weight
+    let max_grade = ((current_grade * final_weight) + (assume_grade * remain_weight))/100
+    if (isNaN(max_grade) || isNaN(remain_weight)){
+        if (isNaN(max_grade)){
+            $('#max_grade').text('Max Grade: ' + 0)
+        }
+        if (isNaN(remain_weight)){
+            $('#remain_weight').text('Remaining Weight: ' + 0)
+        }
+    }
+    else {
+        $('#max_grade').text('Max Grade: ' + max_grade)
+        $('#remain_weight').text('Remaining Weight: ' + remain_weight)
     }
 }
 
