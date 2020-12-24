@@ -70,13 +70,13 @@ function change_color(){
     let grade = $('#total_percent').text()
     grade = parseInt(grade.slice(0, 2))
     if (grade >= 85){
-        $('#total_percent').attr("style", "color:#69EA22;")
+        $('#total_percent').attr("class", "text-success")
     }
-    else if (grade < 85 && grade >= 75){
-        $('#total_percent').attr("style", "color:#ea7f22;")
+    else if (grade < 85 && grade >= 70){
+        $('#total_percent').attr("class", "text-warning")
     }
-    else if (grade < 75){
-        $('#total_percent').attr("style", "color:#ea2222;")
+    else if (grade < 70){
+        $('#total_percent').attr("class", "text-danger")
     }
 
 }
@@ -108,12 +108,7 @@ function line_graph_data() {
                 }
             }
             let current_type = Object.keys(data_dict[row])[0]
-            if (type_count[current_type] > 1){
-                line_graph_dict[current_type + " " + type_count[current_type]] = final_grade / final_weight
-            }
-            else{
-                line_graph_dict[current_type] = final_grade / final_weight
-            }
+            line_graph_dict[current_type + " " + type_count[current_type]] = final_grade / final_weight
         }
 
     }
@@ -173,7 +168,12 @@ function change_chart(chart, data){
 
 }
 function change_percent(percent){
-    $('#total_percent').text(percent + "%")
+    if (isNaN(percent)){
+        $('#total_percent').text("0%")
+    }
+    else {
+        $('#total_percent').text(percent + "%")
+    }
     change_color()
 }
 
