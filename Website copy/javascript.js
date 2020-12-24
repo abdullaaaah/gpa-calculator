@@ -224,7 +224,7 @@ function goal_percentage(){
     if (isNaN(w_2)) {
         let rem_weight = 100-weight
         g_2 = two_decimal_places(((weight * (grade - goal) - (rem_weight * goal)) / (-1*(rem_weight))))
-        console.log(g_2)
+        w_2 = 100 - final_weight
     }
     else{
         g_2 = two_decimal_places(((weight * (grade - goal) - (w_2 * goal)) / (-1*(w_2))))
@@ -234,8 +234,8 @@ function goal_percentage(){
             $('#needed_gpa').text("Needed Grade: " + 0)
             $('#needed_weight').text("Needed Weight: " + 0)
         }
-        else if (isNaN(w_2)){
-            $('#needed_weight').text("Needed Weight: " + 0)
+        if (isNaN(w_2)){
+            $('#needed_weight').text("Needed Weight: " + w_2)
             $('#needed_gpa').text("Needed Grade: " + g_2)
         }
     }
