@@ -8,8 +8,14 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def index(name="Abdullah"):
+def index(name="GPATrack"):
     return render_template('index.html', name=name)
+
+@app.route("/courses/<course_name>")
+def course_mark_view(course_name):
+    return render_template('course.html',course_name=course_name)
+
+
 
 
 @app.route('/calculate', methods=['POST'])
@@ -18,7 +24,6 @@ def calculate():
         data = dict_converter(request.form)
         G = GPACalculator(data)
         return {'gpa': G.calculate_gpa(), 'mark': G.calculate_mark(data)}
-
 
 if __name__ == '__main__':
     app.run()
