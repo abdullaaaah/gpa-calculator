@@ -49,7 +49,10 @@ function render_row(end=1)
     return s;
 }
 
-
+/*
+Purpose: Helper function for render_options
+         Removes <value> from Array, <arr>
+*/
 function remove_item_once(arr, value) {
     var index = arr.indexOf(value);
     if (index > -1) {
@@ -58,14 +61,19 @@ function remove_item_once(arr, value) {
     return arr;
 }
 
-
+/*
+Purpose: Helper function for render_options
+*/
 function order_options(first, options)
 {
     remove_item_once(options, first)
     options.unshift(first);
 }
 
-
+/*
+Purpose: Renders <option></option> dynamically
+        <first> is always first on the list
+*/
 function render_options(first, options)
 {
     order_options(first, options)
@@ -98,7 +106,7 @@ function render_row_from_dict(marks)
             <div class="input-group-prepend ">
                 <span class="input-group-text bg-light border-0 small">Weight:</span>
             </div>
-            <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight0" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
             <select id="name${mark.slice(4)}" onchange="update(line_chart)" class="custom-select bg-light border-0 small">
                 ${render_options(marks[mark].Type, options)}
             </select>
@@ -122,8 +130,6 @@ $(document).ready(function() {
     {
         $("#sideBar").append(render_row_from_dict(marks_in_courses[course_name]));
         update(line_chart)
-        $("#sideBar").append(render_row(0));
-
     }
     else
     {
