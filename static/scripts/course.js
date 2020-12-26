@@ -129,6 +129,7 @@ $(document).ready(function() {
     if (course_name in marks_in_courses)
     {
         $("#sideBar").append(render_row_from_dict(marks_in_courses[course_name]));
+        num_fields = Object.keys(marks_in_courses[course_name]).length
         update(line_chart)
     }
     else

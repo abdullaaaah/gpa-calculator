@@ -4,7 +4,6 @@ let bar_chart;
 let final_grade;
 let final_weight;
 let data_dict;
-let num;
 
 function add_field()
 {
@@ -91,26 +90,16 @@ function line_graph_data() {
 
     for (let row in data_dict){
         if (data_dict.hasOwnProperty(row)) {
-            for (let type in data_dict[row]) {
-                if (data_dict[row].hasOwnProperty(type)) {
-                    for (let grade in data_dict[row][type]) {
-                        if (data_dict[row][type].hasOwnProperty(grade)) {
-                            /*grade:grade, weight:data_dict[row][type][grade]*/
-                            let weight = data_dict[row][type][grade]
-                            final_grade += grade * weight
-                            final_weight += weight
-
-                        }
-                    }
-                    if (type in type_count){
-                        type_count[type] += 1
-                    }
+                let weight = data_dict[row]['Weight']
+                let grade = data_dict[row]['Mark']
+                let type = data_dict[row]['Type']
+                final_grade += grade * weight
+                final_weight += weight
+                if (type in type_count){
+                    type_count[type] += 1
                 }
+                line_graph_dict[type + " " + type_count[type]] = final_grade / final_weight
             }
-            let current_type = Object.keys(data_dict[row])[0]
-            line_graph_dict[current_type + " " + type_count[current_type]] = final_grade / final_weight
-        }
-
     }
     return line_graph_dict
 }
@@ -120,25 +109,20 @@ function bar_graph_data() {
     let type_freq_dict = {}
     for (let row in data_dict) {
         if (data_dict.hasOwnProperty(row)) {
-            for (let type in data_dict[row]) {
-                if (data_dict[row].hasOwnProperty(type)) {
-                    for (let grade in data_dict[row][type]) {
-                        if (data_dict[row][type].hasOwnProperty(grade)){
-                            if (!(type in type_freq_dict)){
-                                type_freq_dict[type] = 1
-                            }
-                            else{
-                                type_freq_dict[type] += 1
-                            }
-                            if (!(type in bar_graph_dict)){
-                                bar_graph_dict[type] = parseFloat(grade)
-                            }
-                            else{
-                                bar_graph_dict[type] += parseFloat(grade)
-                            }
-                        }
-                    }
-                }
+            let type = data_dict[row]['Type']
+            let grade = data_dict[row]['Mark']
+            let weight = data_dict[row]['Weight']
+            if (!(type in type_freq_dict)){
+                type_freq_dict[type] = 1
+            }
+            else{
+                type_freq_dict[type] += 1
+            }
+            if (!(type in bar_graph_dict)){
+                bar_graph_dict[type] = parseFloat(grade)
+            }
+            else{
+                bar_graph_dict[type] += parseFloat(grade)
             }
         }
     }
@@ -266,14 +250,16 @@ function max_grade(){
 
 function scrape_data(){
     data_dict = {}
+
     for (let i = 0; i <= (num_fields - 1); i++) {
-        let num_dict = {}
-        let type_dict = {}
+        let inner_dict = {}
         let mark = parseFloat($('#percent' + i).val())
         let type = $('#name' + i).val()
-        num_dict[mark] = parseFloat($('#weight' + i).val())
-        type_dict[type] = num_dict
-        data_dict['#row' + i] = type_dict
+        let weight = parseFloat($('#weight' + i).val())
+        inner_dict['Mark'] = mark
+        inner_dict['Weight'] = weight
+        inner_dict['Type'] = type
+        data_dict['#row' + i] = inner_dict
         }
     return data_dict
 }
@@ -281,7 +267,6 @@ function scrape_data(){
 function save_data(){
     console.log(data_dict)
 }
-
 
 $(document).ready(function()
 {
