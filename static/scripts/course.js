@@ -4,8 +4,8 @@ Purpose: Any javascript logic regarding the course page.
 
 function render_row(end=1)
 {
-    start = 0;
-    s = '';
+    let start = 0;
+    let s = '';
 
     while (start <= end)
     {
@@ -14,7 +14,7 @@ function render_row(end=1)
                 <div class="col">
             `;
 
-        if (start == end) s += `<div class="input-group mb-3 transparent trans-click" id="${start}">`;
+        if (start === end) s += `<div class="input-group mb-3 transparent trans-click" id="${start}">`;
         else s += `<div class="input-group mb-3" id="${start}">`;
 
 
@@ -54,7 +54,7 @@ Purpose: Helper function for render_options
          Removes <value> from Array, <arr>
 */
 function remove_item_once(arr, value) {
-    var index = arr.indexOf(value);
+    let index = arr.indexOf(value);
     if (index > -1) {
       arr.splice(index, 1);
     }
@@ -77,11 +77,13 @@ Purpose: Renders <option></option> dynamically
 function render_options(first, options)
 {
     order_options(first, options)
-    s = '';
+    let s = '';
 
-    for (option in options)
+    for (let option in options)
     {
-        s += `<option value="${options[option]}">${options[option]}</option>`;
+        if (options.hasOwnProperty(option)) {
+            s += `<option value="${options[option]}">${options[option]}</option>`;
+        }
     }
 
     return s;
@@ -91,33 +93,36 @@ function render_options(first, options)
 function render_row_from_dict(marks)
 {
 
-  s = ''
+  let s = ''
 
-  for (mark in marks)
+  for (let mark in marks)
   {
-    s += `
-    <div class="row" id="${mark.slice(1)}">
-    <div class="col">
-        <div class="input-group mb-3" id="${mark.slice(4)}">
-            <div class="input-group-prepend">
-                <span class="input-group-text bg-light border-0 small">Percent:</span>
+      if (marks.hasOwnProperty(mark)){
+          console.log(marks[mark])
+        s += `
+        <div class="row" id="${mark.slice(1)}">
+        <div class="col">
+            <div class="input-group mb-3" id="${mark.slice(4)}">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0 small">Percent:</span>
+                </div>
+                <input type="number" id="percent${mark.slice(4)}" value="${marks[mark].Mark}" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text bg-light border-0 small">Weight:</span>
+                </div>
+                <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                <select id="name${mark.slice(4)}" onchange="update(line_chart)" class="custom-select bg-light border-0 small">
+                    ${render_options(marks[mark].Type, options)}
+                </select>
             </div>
-            <input type="number" id="percent${mark.slice(4)}" value="${marks[mark].Mark}" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-            <div class="input-group-prepend ">
-                <span class="input-group-text bg-light border-0 small">Weight:</span>
-            </div>
-            <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-            <select id="name${mark.slice(4)}" onchange="update(line_chart)" class="custom-select bg-light border-0 small">
-                ${render_options(marks[mark].Type, options)}
-            </select>
         </div>
-    </div>
-    <div class="col col-xl-2">
-        <button type="button" class="btn btn-danger" id="del_field${mark.slice(4)}" onclick="remove_field(${mark.slice(4)})">Delete</button>
-    </div>
-    </div>
-
-    `
+        <div class="col col-xl-2">
+            <button type="button" class="btn btn-danger" id="del_field${mark.slice(4)}" onclick="remove_field(${mark.slice(4)})">Delete</button>
+        </div>
+        </div>
+    
+        `
+    }
   }
 
   return s
