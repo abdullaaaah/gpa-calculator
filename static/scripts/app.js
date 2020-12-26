@@ -3,7 +3,7 @@ var options = ["Assignment", "Quiz", "Tutorial Activity", "Lab", "Midterm", "Exa
 var marks_in_courses  = {
     CSC108: {
         "#row0": {
-          "Mark": 100,
+          "Mark": 90,
           "Weight": 9,
           "Type": "Assignment"
         },

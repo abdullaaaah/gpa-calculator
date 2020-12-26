@@ -50,10 +50,35 @@ function render_row(end=1)
 }
 
 
-/*function render_types(first, options=options)
-{
+function remove_item_once(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+}
 
-}*/
+
+function order_options(first, options)
+{
+    remove_item_once(options, first)
+    options.unshift(first);
+}
+
+
+function render_options(first, options)
+{
+    order_options(first, options)
+    s = '';
+
+    for (option in options)
+    {
+        s += `<option value="${options[option]}">${options[option]}</option>`;
+    }
+
+    return s;
+}
+
 
 function render_row_from_dict(marks)
 {
@@ -73,14 +98,9 @@ function render_row_from_dict(marks)
             <div class="input-group-prepend ">
                 <span class="input-group-text bg-light border-0 small">Weight:</span>
             </div>
-            <input type="number" maxlength="3" value="${marks[mark].Mark}" id="weight0" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-            <select value="${marks[mark].Type}" id="name${mark.slice(4)}" onchange="update(line_chart)" class="custom-select bg-light border-0 small">
-                <option value="Exam">Exam</option>
-                <option value="Midterm">Midterm</option>
-                <option value="Assignment">Assignment</option>
-                <option value="Tutorial Marks">Tutorial Marks</option>
-                <option value="Quiz">Quiz</option>
-                <option value="Lab">Lab</option>
+            <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight0" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <select id="name${mark.slice(4)}" onchange="update(line_chart)" class="custom-select bg-light border-0 small">
+                ${render_options(marks[mark].Type, options)}
             </select>
         </div>
     </div>
@@ -96,13 +116,14 @@ function render_row_from_dict(marks)
 
 }
 
-render_row_from_dict(marks_in_courses.CSC108);
-
 $(document).ready(function() {
 
     if (course_name in marks_in_courses)
     {
         $("#sideBar").append(render_row_from_dict(marks_in_courses[course_name]));
+        update(line_chart)
+        $("#sideBar").append(render_row(0));
+
     }
     else
     {
