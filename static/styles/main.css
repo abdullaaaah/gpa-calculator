@@ -5,12 +5,24 @@ body {
 }
 
 p {
+    background-size: 100%;
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
     color: #999;
 }
+
+
+#myinfoBtn {
+    position:relative;
+    left:650%;
+    top:8px;
+    background:#40d2f2;
+    color:black;
+    border:none;
+}
+
 
 a,
 a:hover,
@@ -31,6 +43,32 @@ a:focus {
     border: none;
     outline: none;
     background:grey;
+}
+
+#main-table {
+    width:39%;
+}
+
+.table {
+    width: auto;
+    }
+
+#progressTitle {
+    text-align:center;
+}
+
+.chart-container {
+    width:auto;
+    height:500px;
+    margin-left:auto;
+    margin-bottom:auto;
+}
+
+#graphCard {
+    width:60%;
+    height:550px;
+    margin-left:auto;
+    bottom:288px;
 }
 
 #popupbtn {

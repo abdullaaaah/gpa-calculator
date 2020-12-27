@@ -1,4 +1,4 @@
-let num_fields = 0
+let num_fields = 1
 let line_chart;
 let bar_chart;
 let final_grade;
@@ -250,7 +250,6 @@ function max_grade(){
 
 function scrape_data(){
     data_dict = {}
-
     for (let i = 0; i <= (num_fields - 1); i++) {
         let inner_dict = {}
         let mark = parseFloat($('#percent' + i).val())
