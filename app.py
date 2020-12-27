@@ -1,11 +1,7 @@
 from flask import Flask, request
 from flask import render_template
 
-from calculate import GPACalculator
-from processor import dict_converter
-
 app = Flask(__name__)
-
 
 @app.route("/")
 def index(name="GPATrack"):
@@ -14,16 +10,6 @@ def index(name="GPATrack"):
 @app.route("/courses/<course_name>")
 def course_mark_view(course_name):
     return render_template('course.html',course_name=course_name, page="calc")
-
-
-
-
-@app.route('/calculate', methods=['POST'])
-def calculate():
-    if request.method == 'POST':
-        data = dict_converter(request.form)
-        G = GPACalculator(data)
-        return {'gpa': G.calculate_gpa(), 'mark': G.calculate_mark(data)}
 
 if __name__ == '__main__':
     app.run()

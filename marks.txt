@@ -1,9 +1,0 @@
-Discrete Math
-a1,90,25
-a2,90,25
-a3,88,20
-END
-MAT135
-a1,0,10
-a2, 50, 50
-END
