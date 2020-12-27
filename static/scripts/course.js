@@ -43,7 +43,7 @@ function render_row(end=0)
 function render_transparent_row()
 {
     s = '';
-    num_fields++;
+    //num_fields++;
 
     s += `
 
@@ -75,6 +75,7 @@ function render_transparent_row()
     return s;
 }
 
+
 /*
 Purpose: Helper function for render_options
          Removes <value> from Array, <arr>
@@ -85,23 +86,23 @@ function remove_item_once(arr, value) {
       arr.splice(index, 1);
     }
     return arr;
-}
+  }
 
-/*
-Purpose: Helper function for render_options
-*/
-function order_options(first, options)
-{
+  /*
+  Purpose: Helper function for render_options
+  */
+  function order_options(first, options)
+  {
     remove_item_once(options, first)
     options.unshift(first);
-}
+  }
 
-/*
-Purpose: Renders <option></option> dynamically
+  /*
+  Purpose: Renders <option></option> dynamically
         <first> is always first on the list
-*/
-function render_options(first, options)
-{
+  */
+  function render_options(first, options)
+  {
     order_options(first, options)
     let s = '';
 
@@ -113,14 +114,14 @@ function render_options(first, options)
     }
 
     return s;
-}
+  }
 
 
 function render_row_from_dict(marks)
 {
 
   let s = ''
-  num_fields = -1
+  num_fields = 0
 
   for (let mark in marks)
   {
