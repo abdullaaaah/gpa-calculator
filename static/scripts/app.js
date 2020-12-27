@@ -21,6 +21,33 @@ var marks_in_courses  = {
 }
 
 /* Database stuff */
+function load_from_cache()
+{
+  courses = JSON.parse(localStorage.getItem('courses'))
+  options = JSON.parse(localStorage.getItem('options'))
+  marks_in_courses = JSON.parse(localStorage.getItem('marks_in_courses'))
+}
+
+function reset_storage()
+{
+  localStorage.setItem('courses', "[]")
+  localStorage.setItem('options', "[]")
+  localStorage.setItem('marks_in_courses', "{}")
+
+  load_from_cache
+}
+
+function save_to_cache()
+{
+  // Save courses
+  localStorage.setItem('courses', JSON.stringify(courses))
+  // save options
+  localStorage.setItem('options', JSON.stringify(options))
+  // save mark data
+  localStorage.setItem('marks_in_courses', JSON.stringify(marks_in_courses))
+}
+
+
 if (storageAvailable('localStorage')) {
   // Yippee! We can use localStorage awesomeness
 }
