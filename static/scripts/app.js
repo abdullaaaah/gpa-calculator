@@ -96,6 +96,9 @@ function add_course(course_name)
   courses.push(course_name);
   render_all_courses()
   save_to_cache()
+  $("#no-course-msg").remove()
+  $("#course-overview-table").append(render_all_courses_table())
+  generate_graph()
   return true
 }
 
