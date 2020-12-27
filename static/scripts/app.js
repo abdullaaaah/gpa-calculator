@@ -1,24 +1,3 @@
-/*var courses = ["CSC108", "MAT135"];
-var options = ["Assignment", "Quiz", "Tutorial Activity", "Lab", "Midterm", "Exam"];
-var marks_in_courses  = {
-    CSC108: {
-        "#row0": {
-          "Mark": 90,
-          "Weight": 9,
-          "Type": "Assignment"
-        },
-        "#row1": {
-          "Mark": 100,
-          "Weight": 9,
-          "Type": "Assignment"
-        },
-        "#row2": {
-          "Mark": 75,
-          "Weight": 25,
-          "Type": "Midterm"
-        }
-      }
-}*/
 let courses = []
 let options = ["Assignment", "Quiz", "Tutorial Activity", "Lab", "Midterm", "Exam"]
 let marks_in_courses = {}
@@ -107,7 +86,15 @@ This function is invoked by the add course button in the header.
 */
 function add_course(course_name)
 {
+
+  if (courses.includes(course_name))
+  {
+    alert("course already exists")
+    return false
+  }
+
   courses.push(course_name);
   render_all_courses()
   save_to_cache()
+  return true
 }
