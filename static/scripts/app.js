@@ -1,4 +1,4 @@
-var courses = ["CSC108", "MAT135"];
+/*var courses = ["CSC108", "MAT135"];
 var options = ["Assignment", "Quiz", "Tutorial Activity", "Lab", "Midterm", "Exam"];
 var marks_in_courses  = {
     CSC108: {
@@ -18,38 +18,67 @@ var marks_in_courses  = {
           "Type": "Midterm"
         }
       }
-}
+}*/
+let courses = []
+let options = ["Assignment", "Quiz", "Tutorial Activity", "Lab", "Midterm", "Exam"]
+let marks_in_courses = {}
 
 /* Database stuff */
+
+/*
+Here is a function that detects whether localStorage is both supported and available:
+Source: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+*/
+function storageAvailable(type) {
+  var storage;
+  try {
+      storage = window[type];
+      var x = '__storage_test__';
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+  }
+  catch(e) {
+      return e instanceof DOMException && (
+          // everything except Firefox
+          e.code === 22 ||
+          // Firefox
+          e.code === 1014 ||
+          // test name field too, because code might not be present
+          // everything except Firefox
+          e.name === 'QuotaExceededError' ||
+          // Firefox
+          e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+          // acknowledge QuotaExceededError only if there's something already stored
+          (storage && storage.length !== 0);
+  }
+}
+
 function load_from_cache()
 {
   courses = JSON.parse(localStorage.getItem('courses'))
-  options = JSON.parse(localStorage.getItem('options'))
   marks_in_courses = JSON.parse(localStorage.getItem('marks_in_courses'))
 }
 
 function reset_storage()
 {
   localStorage.setItem('courses', "[]")
-  localStorage.setItem('options', "[]")
   localStorage.setItem('marks_in_courses', "{}")
 
-  load_from_cache
+  load_from_cache()
 }
 
 function save_to_cache()
 {
   // Save courses
   localStorage.setItem('courses', JSON.stringify(courses))
-  // save options
-  localStorage.setItem('options', JSON.stringify(options))
   // save mark data
   localStorage.setItem('marks_in_courses', JSON.stringify(marks_in_courses))
 }
 
 
 if (storageAvailable('localStorage')) {
-  // Yippee! We can use localStorage awesomeness
+  load_from_cache()
 }
 else {
   alert("This website won't work properly for you, please update your browser.")
@@ -80,4 +109,5 @@ function add_course(course_name)
 {
   courses.push(course_name);
   render_all_courses()
+  save_to_cache()
 }
