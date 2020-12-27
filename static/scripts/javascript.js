@@ -15,32 +15,7 @@ function add_field()
 
 
     num_fields += 1;
-    $('#sideBar').append(
-        "<div class='row' id='row"+num_fields+"'> \
-        <div class='col'> \
-        <div class='input-group mb-3 transparent trans-click' id='"+num_fields+"' onclick='add_field()'> \
-                <div class='input-group-prepend'> \
-                    <span class='input-group-text bg-light border-0 small'>Percent:</span> \
-                </div> \
-                <input id = 'percent"+num_fields+"' name = 'mark' onkeyup = 'update(line_chart)' type='number' maxlength='3' class='form-control bg-light border-0 small' aria-describedby='basic-addon1'> \
-                  <div class='input-group-prepend'> \
-                      <span class='input-group-text bg-light border-0 small'>Weight:</span> \
-                  </div> \
-                <input id = 'weight"+num_fields+"' name = 'weight' onkeyup = 'update(line_chart)' type='number' maxlength='3' class='form-control bg-light border-0 small' aria-describedby='basic-addon1'> \
-                <select id = 'name"+num_fields+"' onchange = 'update(line_chart)' class='custom-select bg-light border-0 small'> \
-                            <option value='Exam'>Exam</option> \
-                            <option value='Midterm'>Midterm</option> \
-                            <option value='Assignment'>Assignment</option> \
-                            <option value='Tutorial Marks'>Tutorial Marks</option> \
-                            <option value='Quiz'>Quiz</option> \
-                            <option value=\"Lab\">Lab</option> \
-                        </select> \
-                    </div>\
-               </div>\
-               <div class='col col-xl-2'>\
-                <button type='button' id ='del_field"+ num_fields +"' onclick= '' class='btn btn-danger invisible'>Delete</button>\
-            </div>\
-               </div>");
+    $('#sideBar').append(render_transparent_row);
 }
 
 function remove_field(id){

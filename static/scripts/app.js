@@ -44,4 +44,3 @@ function add_course(course_name)
   courses.push(course_name);
   render_all_courses()
 }
-
