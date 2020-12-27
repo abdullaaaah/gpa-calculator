@@ -9,7 +9,10 @@ def index(name="GPATrack"):
 
 @app.route("/courses/<course_name>")
 def course_mark_view(course_name):
-    return render_template('course.html',course_name=course_name, page="calc")
+    return render_template('course.html',
+                           course_name=course_name,
+                           name="GPATrack",
+                           page="calc")
 
 if __name__ == '__main__':
     app.run()

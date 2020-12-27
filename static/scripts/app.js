@@ -76,7 +76,7 @@ function render_all_courses()
 
   for (course of courses)
   {
-      $("#course-list-sidebar").append("<li><a href='/courses/" + course + "'>" + course + "</a></li>")
+      $("#course-list-sidebar").append("<li><a href='/courses/" + course.toUpperCase() + "'>" + course.toUpperCase() + "</a></li>")
   }
 }
 
@@ -93,7 +93,7 @@ function add_course(course_name)
     return false
   }
 
-  courses.push(course_name);
+  courses.push(course_name.toUpperCase());
   render_all_courses()
   save_to_cache()
   $("#no-course-msg").remove()

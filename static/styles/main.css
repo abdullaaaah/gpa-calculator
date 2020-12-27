@@ -140,6 +140,7 @@ a:focus {
     padding: 10px;
     font-size: 1.1em;
     display: block;
+    list-style: none !important;
 }
 
 #sidebar ul li a:hover {
@@ -207,4 +208,8 @@ a.article:hover {
 #no-course-msg {
     margin-top:20px;
     padding-left:20px
+}
+
+#sidebar ul {
+    list-style: none;
 }
