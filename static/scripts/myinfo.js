@@ -99,6 +99,8 @@ function render_all_courses_table()
 
     s = ''
 
+    if (courses.length == 0) s += "<p id='no-course-msg'> Add a course to get started </p>"
+
     for (course of courses)
     {
 

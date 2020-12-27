@@ -247,3 +247,8 @@ a.article:hover {
     top: 0;
     right: 0;
 }
+
+#no-course-msg {
+    text-align: center;
+    margin-top: 20px;
+  }
