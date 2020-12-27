@@ -35,6 +35,7 @@ function render_row(end=0)
         start++;
     }
 
+    // this should be fine assuming this function is only ran on empty courses
     num_fields = end + 1;
     return s;
 }
@@ -165,7 +166,8 @@ Purpose: Save / Update data in <marks_in_courses>
 */
 function save_marks_in_courses()
 {
-    console.log(data_dict)
+    marks_in_courses[course_name] = data_dict
+    save_to_cache()
 }
 
 $(document).ready(function() {
