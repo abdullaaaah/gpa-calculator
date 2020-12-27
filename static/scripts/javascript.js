@@ -239,10 +239,6 @@ function scrape_data(){
     return data_dict
 }
 
-function save_data(){
-    console.log(data_dict)
-}
-
 $(document).ready(function()
 {
     let ctx = document.getElementById('line_chart').getContext('2d');

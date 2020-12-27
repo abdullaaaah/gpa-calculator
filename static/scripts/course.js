@@ -35,7 +35,7 @@ function render_row(end=0)
         start++;
     }
 
-    num_fields = end;
+    num_fields = end + 1;
     return s;
 }
 
@@ -157,6 +157,15 @@ function render_row_from_dict(marks)
 
   return s
 
+}
+
+
+/*
+Purpose: Save / Update data in <marks_in_courses>
+*/
+function save_marks_in_courses()
+{
+    console.log(data_dict)
 }
 
 $(document).ready(function() {
