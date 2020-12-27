@@ -24,16 +24,6 @@ p {
 }
 
 
-#progressBtn {
-    position:absolute;
-    background:#40d2f2;
-    color:black;
-    border: none;
-    outline: none;
-    right:150px;
-    top:15px;
-}
-
 a,
 a:hover,
 a:focus {

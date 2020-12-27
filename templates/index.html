@@ -1,3 +1,46 @@
 {% include "helpers/header.html" %}
 
+<!--Table content-->
+<div id="main-table" class="card mb-4 shadow">
+    <table id="dataTable" class="table">
+       <thead class="thead-dark">
+          <tr>
+             <th scope="col">Course Code</th>
+             <th>Percentage</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr>
+             <th scope="row">CSC108</th>
+             <td>85</td>
+          </tr>
+          <tr>
+             <th scope="row">MAT135</th>
+             <td>95</td>
+          </tr>
+          <tr>
+             <th scope="row">RLG101</th>
+             <td>55</td>
+          </tr>
+          <tr>
+             <th scope="row">MAT102</th>
+             <td>75</td>
+          </tr>
+       </tbody>
+    </table>
+ </div>
+ <!--Graph-->
+ <div id="graphCard" class="card mb-4 shadow">
+    <div class="card-body">
+       <div class="row">
+          <div class="col">
+             <div class="chart-container">
+                <canvas id="myChart"></canvas>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- End graph-->
+
 {% include "helpers/footer.html" %}

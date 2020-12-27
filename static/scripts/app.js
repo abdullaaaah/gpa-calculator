@@ -20,6 +20,16 @@ var marks_in_courses  = {
       }
 }
 
+/* Database stuff */
+if (storageAvailable('localStorage')) {
+  // Yippee! We can use localStorage awesomeness
+}
+else {
+  alert("This website won't work properly for you, please update your browser.")
+}
+
+
+
 /*
 Renders the courses in <courses> into the sidebar
 */
