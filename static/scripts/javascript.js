@@ -15,6 +15,7 @@ function add_field()
 
 
     num_fields += 1;
+    //I made a function for this before, so ive swapped it here. -Abd
     $('#sideBar').append(render_transparent_row);
 }
 
