@@ -1,4 +1,4 @@
-let num_fields = 1
+let num_fields = 0
 let line_chart;
 let bar_chart;
 let final_grade;

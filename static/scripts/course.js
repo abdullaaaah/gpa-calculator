@@ -2,7 +2,7 @@
 Purpose: Any javascript logic regarding the course page.
 */
 
-function render_row(end=1)
+function render_row(end=0)
 {
     let start = 0;
     let s = '';
@@ -12,13 +12,7 @@ function render_row(end=1)
         s += `
             <div class="row" id="row${start}">
                 <div class="col">
-            `;
-
-        if (start === end) s += `<div class="input-group mb-3 transparent trans-click" id="${start}">`;
-        else s += `<div class="input-group mb-3" id="${start}">`;
-
-
-        s += `
+                    <div class="input-group mb-3" id="${start}">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-light border-0 small">Percent:</span>
                         </div>
@@ -28,12 +22,7 @@ function render_row(end=1)
                         </div>
                         <input type="number" maxlength="3" id="weight${start}" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                         <select id = "name${start}" onchange = "update(line_chart)" class="custom-select bg-light border-0 small">
-                            <option value="Exam">Exam</option>
-                            <option value="Midterm">Midterm</option>
-                            <option value="Assignment">Assignment</option>
-                            <option value="Tutorial Marks">Tutorial Marks</option>
-                            <option value="Quiz">Quiz</option>
-                            <option value="Lab">Lab</option>
+                            ${render_options('Assignment', options)}
                         </select>
                     </div>
                 </div>
@@ -45,6 +34,43 @@ function render_row(end=1)
 
         start++;
     }
+
+    num_fields = end;
+    return s;
+}
+
+
+function render_transparent_row()
+{
+    s = '';
+    num_fields++;
+
+    s += `
+
+    <div class="row" id="row${num_fields}">
+    <div class="col">
+        <div class="input-group mb-3 transparent trans-click" id="${num_fields}" onclick="add_field()">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-light border-0 small">Percent:</span>
+            </div>
+            <input type="number" id="percent${num_fields}" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-light border-0 small">Weight:</span>
+            </div>
+            <input type="number" id="weight${num_fields}" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <select id = "name${num_fields}" onchange = "update(line_chart)" class="custom-select bg-light border-0 small">
+                ${render_options("Assignment", options)}
+            </select>
+        </div>
+    </div>
+    <div class="col col-xl-2">
+        <button type="button" id = "del_field${num_fields}" onclick= ""
+                class="btn btn-danger invisible">Delete</button>
+    </div>
+</div>
+
+    `;
+
 
     return s;
 }
@@ -94,6 +120,7 @@ function render_row_from_dict(marks)
 {
 
   let s = ''
+  num_fields = -1
 
   for (let mark in marks)
   {
@@ -123,6 +150,8 @@ function render_row_from_dict(marks)
     
         `
     }
+
+    num_fields++;
   }
 
   return s
@@ -134,12 +163,13 @@ $(document).ready(function() {
     if (course_name in marks_in_courses)
     {
         $("#sideBar").append(render_row_from_dict(marks_in_courses[course_name]));
-        num_fields = Object.keys(marks_in_courses[course_name]).length
         update(line_chart)
+        $("#sideBar").append(render_transparent_row())
     }
     else
     {
         $("#sideBar").append(render_row());
+        $("#sideBar").append(render_transparent_row())
     }
 
 
