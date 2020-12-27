@@ -13,16 +13,13 @@ p {
     color: #999;
 }
 
-
 #myinfoBtn {
-    position:relative;
-    left:650%;
-    top:8px;
+    position:absolute;
     background:#40d2f2;
     color:black;
     border:none;
+    left:700px;
 }
-
 
 a,
 a:hover,
@@ -37,7 +34,20 @@ a:focus {
     color:black;
     border: none;
     outline: none;
+    display:inline-block;
+    text-align:right;
 }
+
+#progressBtn {
+    position:absolute;
+    background:#40d2f2;
+    color:black;
+    border: none;
+    outline: none;
+    right:150px;
+    top:15px;
+}
+
 #cancelbtn {
     color:black;
     border: none;
@@ -52,11 +62,7 @@ a:focus {
 .table {
     width: auto;
     }
-
-#progressTitle {
-    text-align:center;
-}
-
+  
 .chart-container {
     width:auto;
     height:500px;
