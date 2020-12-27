@@ -5,20 +5,11 @@ body {
 }
 
 p {
-    background-size: 100%;
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
     color: #999;
-}
-
-#myinfoBtn {
-    position:absolute;
-    background:#40d2f2;
-    color:black;
-    border:none;
-    left:700px;
 }
 
 a,
@@ -34,47 +25,12 @@ a:focus {
     color:black;
     border: none;
     outline: none;
-    display:inline-block;
-    text-align:right;
 }
-
-#progressBtn {
-    position:absolute;
-    background:#40d2f2;
-    color:black;
-    border: none;
-    outline: none;
-    right:150px;
-    top:15px;
-}
-
 #cancelbtn {
     color:black;
     border: none;
     outline: none;
     background:grey;
-}
-
-#main-table {
-    width:39%;
-}
-
-.table {
-    width: auto;
-    }
-  
-.chart-container {
-    width:auto;
-    height:500px;
-    margin-left:auto;
-    margin-bottom:auto;
-}
-
-#graphCard {
-    width:60%;
-    height:550px;
-    margin-left:auto;
-    bottom:288px;
 }
 
 #popupbtn {
@@ -249,6 +205,6 @@ a.article:hover {
 }
 
 #no-course-msg {
-    text-align: center;
-    margin-top: 20px;
-  }
+    margin-top:20px;
+    padding-left:20px
+}
