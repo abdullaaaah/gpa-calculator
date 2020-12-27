@@ -37,13 +37,13 @@
                 <form>
                     <div class="form-row">
                       <div class="col">
-                        <input maxlength="8" type="text" class="form-control" placeholder="Course Code">
+                        <input maxlength="8" type="text" class="form-control" placeholder="Course Code" id="course-name">
                       </div>
                     </div>
                   </form>
                 <div class="modal-footer">
                   <button id = "cancelbtn" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button id = "popupbtn" type="button" class="btn btn-primary">Add <i class="fas fa-plus"></i></button>
+                  <button id = "popupbtn" type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_course(document.getElementById('course-name').value)">Add <i class="fas fa-plus"></i></button>
                 </div>
               </div>
             </div>
