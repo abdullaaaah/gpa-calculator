@@ -2,6 +2,7 @@
 Purpose: Any javascript logic regarding the sidebar page.
 */
 
+
 $(document).ready(function() {
 
 

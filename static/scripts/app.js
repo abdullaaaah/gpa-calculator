@@ -98,3 +98,23 @@ function add_course(course_name)
   save_to_cache()
   return true
 }
+
+/* Round to two decimal places */
+function two_decimal_places(num){
+  return Math.round((num + Number.EPSILON)*100)/100
+}
+
+
+/* calculate % given data_dict */
+function calculate_percentage(marks)
+{
+	total_grade = 0
+  total_weight = 0
+  for (mark in marks)
+  {
+		total_grade += marks[mark].Mark * marks[mark].Weight;
+    total_weight += marks[mark].Weight;
+  }
+	return two_decimal_places(total_grade / total_weight)
+
+}

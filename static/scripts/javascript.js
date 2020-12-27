@@ -171,10 +171,6 @@ function update(){
     max_grade()
 }
 
-function two_decimal_places(num){
-    return Math.round((num + Number.EPSILON)*100)/100
-}
-
 function goal_percentage(){
     let goal = parseInt($('#gpa_goal').val())
     let w_2 = parseInt($('#next_weight').val())

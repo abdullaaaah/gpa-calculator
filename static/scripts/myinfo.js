@@ -1,3 +1,7 @@
+/* Purpose of file: Any js for the main page */
+
+
+/* Chart functions */
 function BuildChart(labels, values, chartTitle) {
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
@@ -52,33 +56,71 @@ function BuildChart(labels, values, chartTitle) {
   return myChart;
 }
 
-var table = document.getElementById('dataTable');
-var json = [];
-var headers =[];
-for (var i = 0; i < table.rows[0].cells.length; i++) {
-  headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi, '');
-}
+function generate_graph()
+{
 
-
-for (var i = 1; i < table.rows.length; i++) {
-  var tableRow = table.rows[i];
-  var rowData = {};
-  for (var j = 0; j < tableRow.cells.length; j++) {
-    rowData[headers[j]] = tableRow.cells[j].innerHTML;
+  var table = document.getElementById('dataTable');
+  var json = [];
+  var headers =[];
+  for (var i = 0; i < table.rows[0].cells.length; i++) {
+    headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi, '');
   }
 
-  json.push(rowData);
+
+  for (var i = 1; i < table.rows.length; i++) {
+    var tableRow = table.rows[i];
+    var rowData = {};
+    for (var j = 0; j < tableRow.cells.length; j++) {
+      rowData[headers[j]] = tableRow.cells[j].innerHTML;
+    }
+
+    json.push(rowData);
+  }
+
+
+
+  var labels = json.map(function (e) {
+    return e.coursecode;
+  });
+  console.log(labels);
+
+  var values = json.map(function (e) {
+    return e.percentage;
+  });
+
+  var chart = BuildChart(labels, values, "%");
+
+}
+/* Chart function ends */
+
+
+function render_all_courses_table()
+{
+
+    s = ''
+
+    for (course of courses)
+    {
+
+        mark = calculate_percentage(marks_in_courses[course])
+
+        s += `
+        <tr>
+        <th scope="row">${course}</th>
+        <td>${mark}</td>
+        </tr>
+
+        `
+    }
+
+    return s
 }
 
 
+$(document).ready(function() {
 
-var labels = json.map(function (e) {
-  return e.coursecode;
-});
-console.log(labels); 
+    $("#course-overview-table").append(render_all_courses_table())
 
-var values = json.map(function (e) {
-  return e.percentage;
-});
+    generate_graph()
 
-var chart = BuildChart(labels, values, "%");
+})

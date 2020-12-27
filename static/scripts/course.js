@@ -168,6 +168,7 @@ function save_marks_in_courses()
 {
     marks_in_courses[course_name] = data_dict
     save_to_cache()
+    console.log(data_dict)
 }
 
 $(document).ready(function() {
