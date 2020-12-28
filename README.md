@@ -7,6 +7,7 @@ How to get started with development,
   MAC:
     Run this command on terminal
     - pip3 install flask
+    - pip3 install flask-cachebuster
     
   WINDOWS:
     - pip install flask
