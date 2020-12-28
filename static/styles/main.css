@@ -41,8 +41,6 @@ a:focus {
 .navbar {
     padding: 15px 10px;
     background: #fff;
-    border: none;
-    border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -140,7 +138,6 @@ a:focus {
     padding: 10px;
     font-size: 1.1em;
     display: block;
-    list-style: none !important;
 }
 
 #sidebar ul li a:hover {
@@ -195,15 +192,16 @@ a.article:hover {
     color: #fff !important;
 }
 
+
 #content {
     width: 100%;
-    padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;
     top: 0;
     right: 0;
 }
+
 
 #no-course-msg {
     margin-top:20px;
