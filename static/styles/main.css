@@ -242,3 +242,15 @@ a.article:hover {
 #sidebar ul {
     list-style: none;
 }
+
+#nav-itemss {
+    margin-left:25px;
+}
+
+#nav-itemss li {
+    font-weight: bold;
+}
+
+#nav-itemss li a {
+    //color: black !important;
+}

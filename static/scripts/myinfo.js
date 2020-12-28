@@ -104,6 +104,7 @@ function render_all_courses_table()
     for (course of courses)
     {
 
+
         mark = calculate_percentage(marks_in_courses[course])
 
         s += `
@@ -113,6 +114,7 @@ function render_all_courses_table()
         </tr>
 
         `
+
     }
 
     return s

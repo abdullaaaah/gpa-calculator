@@ -1,6 +1,6 @@
 let courses = []
 let options = ["Assignment", "Quiz", "Tutorial Activity", "Lab", "Midterm", "Exam"]
-let marks_in_courses = {}
+var marks_in_courses = {}
 
 /* Database stuff */
 
@@ -37,6 +37,8 @@ function load_from_cache()
 {
   courses = JSON.parse(localStorage.getItem('courses'))
   marks_in_courses = JSON.parse(localStorage.getItem('marks_in_courses'))
+
+  if(courses === null) reset_storage()
 }
 
 function reset_storage()
