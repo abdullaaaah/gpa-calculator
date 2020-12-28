@@ -76,20 +76,23 @@ function generate_graph()
 
     json.push(rowData);
   }
+  console.log(json);
 
 
 
   var labels = json.map(function (e) {
-    return e.coursecode;
+    var beg = e.coursecode.substring(18)
+    var end = beg.indexOf('">')
+    return beg.substring(0, end)
   });
   console.log(labels);
 
   var values = json.map(function (e) {
     return e.percentage;
   });
+console.log(values)
 
   var chart = BuildChart(labels, values, "%");
-
 }
 /* Chart function ends */
 
