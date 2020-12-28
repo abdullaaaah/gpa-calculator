@@ -99,6 +99,7 @@ function add_course(course_name)
   render_all_courses()
   save_to_cache()
   $("#no-course-msg").remove()
+  $("#course-overview-table").html("")
   $("#course-overview-table").append(render_all_courses_table())
   generate_graph()
   return true
@@ -120,6 +121,9 @@ function calculate_percentage(marks)
 		total_grade += marks[mark].Mark * marks[mark].Weight;
     total_weight += marks[mark].Weight;
   }
+
+  if (total_grade === 0) return "N/A"
+
 	return two_decimal_places(total_grade / total_weight)
 
 }

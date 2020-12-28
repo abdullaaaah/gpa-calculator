@@ -109,7 +109,7 @@ function render_all_courses_table()
 
         s += `
         <tr>
-        <th scope="row">${course}</th>
+        <th scope="row"><a href="/courses/${course}">${course}</a></th>
         <td>${mark}</td>
         </tr>
 
