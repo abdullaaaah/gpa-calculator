@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    font-family: 'Poppins', sans-serif;
+    //font-family: 'Poppins', sans-serif;
     background: #fafafa;
 }
 
@@ -20,12 +20,37 @@ a:focus {
     transition: all 0.3s;
 }
 
-#addbtn {
-    background:#40d2f2;
-    color:black;
-    border: none;
-    outline: none;
+
+.outline-btn-blue
+{
+    background: #fff !important;
+    border-color: #0060df !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    color:  #0060df !important;
+    font-weight: 600 !important;
 }
+
+#sidebarIcon {
+    color: #0060df !important;
+}
+
+.outline-btn-blue:hover * {
+    color: #fff !important;
+}
+
+#addbtn {
+    outline: #000;
+}
+
+.outline-btn-blue:hover
+{
+background-color: #0250bb !important;;
+border-color: transparent !important;
+box-shadow: none !important;
+color: #fff !important;
+}
+
 #cancelbtn {
     color:black;
     border: none;
@@ -190,6 +215,12 @@ a.article,
 a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
+}
+
+
+.navbar.navbar-expand-lg.navbar-light.bg-light
+{
+    background-color: white !important;
 }
 
 
