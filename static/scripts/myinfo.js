@@ -76,7 +76,6 @@ function generate_graph()
 
     json.push(rowData);
   }
-  console.log(json);
 
 
 
@@ -85,14 +84,21 @@ function generate_graph()
     var end = beg.indexOf('">')
     return beg.substring(0, end)
   });
-  console.log(labels);
 
   var values = json.map(function (e) {
     return e.percentage;
   });
-console.log(values)
 
   var chart = BuildChart(labels, values, "%");
+  
+  var sum = 0;
+  for( var i = 0; i < values.length; i++ ){
+        sum += parseInt(values[i]);
+    }
+
+    var avg = sum/values.length;
+    document.getElementById("averageGrade").innerHTML = avg;
+  
 }
 /* Chart function ends */
 
