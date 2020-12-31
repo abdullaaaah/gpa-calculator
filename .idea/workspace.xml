@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b80607b8-12c3-427d-8b8e-13f01da1023a" name="Default Changelist" comment="Fixed Empty Page Bug">
+      <change beforePath="$PROJECT_DIR$/static/scripts/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/javascript.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="1lQuxRTf9W4r2ChEQgRoFAISpY9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.gpa-calculator">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="gpa-calculator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="calculate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="gpa-calculator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/calculate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="gpa-calculator" type="PythonConfigurationType" factoryName="Python">
+      <module name="gpa-calculator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Doctest GPACalculator.calculate_gpa" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="gpa-calculator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/calculate.py" />
+      <option name="CLASS_NAME" value="GPACalculator" />
+      <option name="METHOD_NAME" value="calculate_gpa" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Doctest GPACalculator.calculate_mark" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="gpa-calculator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/calculate.py" />
+      <option name="CLASS_NAME" value="GPACalculator" />
+      <option name="METHOD_NAME" value="calculate_mark" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Doctest GPACalculator.convert_to_gpa" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="gpa-calculator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/calculate.py" />
+      <option name="CLASS_NAME" value="GPACalculator" />
+      <option name="METHOD_NAME" value="convert_to_gpa" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b80607b8-12c3-427d-8b8e-13f01da1023a" name="Default Changelist" comment="" />
+      <created>1607541883703</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607541883703</updated>
+      <workItem from="1607541887730" duration="4506000" />
+      <workItem from="1607562099044" duration="1014000" />
+      <workItem from="1607564323268" duration="12024000" />
+      <workItem from="1608439082824" duration="3329000" />
+      <workItem from="1608517678680" duration="71000" />
+      <workItem from="1608522571589" duration="621000" />
+      <workItem from="1608525803233" duration="1164000" />
+      <workItem from="1608531103215" duration="612000" />
+      <workItem from="1608532881204" duration="149000" />
+      <workItem from="1608538212831" duration="202000" />
+      <workItem from="1608539159228" duration="623000" />
+      <workItem from="1608576144260" duration="11000" />
+      <workItem from="1608588911498" duration="406000" />
+      <workItem from="1608865798450" duration="445000" />
+      <workItem from="1608963427287" duration="1041000" />
+      <workItem from="1609036208798" duration="138000" />
+      <workItem from="1609036369116" duration="531000" />
+      <workItem from="1609043171145" duration="248000" />
+      <workItem from="1609043493563" duration="375000" />
+      <workItem from="1609119248069" duration="620000" />
+      <workItem from="1609120651428" duration="616000" />
+      <workItem from="1609395210225" duration="5942000" />
+      <workItem from="1609444908666" duration="516000" />
+      <workItem from="1609445460651" duration="850000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fixed some style errors">
+      <created>1607543302985</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607543302985</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Changed to OOP [lots of bugs]">
+      <created>1607544682083</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607544682083</updated>
+    </task>
+    <task id="LOCAL-00003" summary="deleted doctests">
+      <created>1607544860932</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607544860932</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed convert_to_gpa added doctests">
+      <created>1607545370116</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607545370116</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Coded calculate_gpa&#10;[Watch for edge case div by 0]">
+      <created>1607546165947</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607546165947</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Changed calculate_gpa">
+      <created>1607562279213</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607562279213</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Changed calculate_gpa">
+      <created>1607562568489</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607562568489</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixed calculate_mark">
+      <created>1607562691619</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1607562691619</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed File UP">
+      <created>1607562843709</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1607562843709</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Style Error fix">
+      <created>1607562983675</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1607562983675</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Fixed calculate_gpa">
+      <created>1607566627356</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1607566627356</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fixed calculate_gpa again">
+      <created>1607567247321</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1607567247322</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Updated Version">
+      <created>1607568882299</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1607568882299</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Updated Version">
+      <created>1607569156803</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1607569156803</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updated Version Style">
+      <created>1607569235193</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1607569235193</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Updated File Structure">
+      <created>1607570322124</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1607570322124</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Final calculate_gpa">
+      <created>1607571832502</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1607571832502</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Tested calculate_gpa">
+      <created>1607571974459</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1607571974459</updated>
+    </task>
+    <task id="LOCAL-00019" summary="app testing">
+      <created>1607573460851</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1607573460851</updated>
+    </task>
+    <task id="LOCAL-00020" summary="app testing">
+      <created>1607574082677</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1607574082677</updated>
+    </task>
+    <task id="LOCAL-00021" summary="app testing">
+      <created>1607575868496</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1607575868496</updated>
+    </task>
+    <task id="LOCAL-00022" summary="added HTML">
+      <created>1607576353031</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1607576353031</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fixed Empty Page Bug">
+      <created>1608442430205</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1608442430205</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed some style errors" />
+    <MESSAGE value="Changed to OOP [lots of bugs]" />
+    <MESSAGE value="deleted doctests" />
+    <MESSAGE value="Fixed convert_to_gpa added doctests" />
+    <MESSAGE value="Coded calculate_gpa&#10;[Watch for edge case div by 0]" />
+    <MESSAGE value="Changed calculate_gpa" />
+    <MESSAGE value="Fixed calculate_mark" />
+    <MESSAGE value="Fixed File UP" />
+    <MESSAGE value="Style Error fix" />
+    <MESSAGE value="Fixed calculate_gpa" />
+    <MESSAGE value="Fixed calculate_gpa again" />
+    <MESSAGE value="Updated Version" />
+    <MESSAGE value="Updated Version Style" />
+    <MESSAGE value="Updated File Structure" />
+    <MESSAGE value="Final calculate_gpa" />
+    <MESSAGE value="Tested calculate_gpa" />
+    <MESSAGE value="app testing" />
+    <MESSAGE value="added HTML" />
+    <MESSAGE value="Fixed Empty Page Bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Empty Page Bug" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/gpa_calculator$gpa_calculator.coverage" NAME="gpa-calculator Coverage Results" MODIFIED="1609446270543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/app_py$gpa_calculator.coverage" NAME="gpa-calculator Coverage Results" MODIFIED="1609444944837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>

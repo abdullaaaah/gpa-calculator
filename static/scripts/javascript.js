@@ -153,7 +153,7 @@ function change_total_weight(weight){
 
 }
 
-function percent_check() {
+function percent_check(percent) {
     let final_percent = 0
     for (let row in data_dict) {
         if (data_dict.hasOwnProperty(row)) {
@@ -161,66 +161,45 @@ function percent_check() {
             final_percent += grade
         }
     }
-    if (data_dict !== undefined) {
-        console.log(data_dict['#row'+(num_fields-1)])
-        if (Object.keys(data_dict['#row'+(num_fields-1)]).indexOf("Mark") > -1) {
-            let percent = data_dict['#row' + (num_fields - 1)]['Mark']
-            return !(percent < 0 || final_percent > data_dict.length * 100 || percent > 100 || isNaN(percent));
-        }
-        else{
-            return true
-        }
-    }
-    else {
-        return true
-    }
+    return !(percent < 0 || final_percent > data_dict.length * 100 || percent > 100 || isNaN(percent));
 }
 
-function weight_check() {
+function weight_check(weight) {
     let final_weight = 0
     for (let row in data_dict) {
         if (data_dict.hasOwnProperty(row)) {
-            let weight = data_dict[row]['Weight']
-            final_weight += weight
+            let row_weight = data_dict[row]['Weight']
+            final_weight += row_weight
         }
     }
-    if (data_dict !== undefined) {
-        if (Object.keys(data_dict['#row'+(num_fields-1)]).indexOf("Weight") > -1) {
-            let weight = data_dict['#row' + (num_fields - 1)]['Weight']
-            return !(final_weight > 100 || weight < 0 || isNaN(weight));
-        }
-        else{
-            return true
-        }
-    }
-    else {
-        return true
-    }
-
+    return !(final_weight > 100 || weight < 0 || isNaN(weight));
 }
 
 function update(){
     scrape_data()
     let line_data = line_graph_data()
     let bar_data = bar_graph_data()
-
-    console.log(weight_check(), percent_check())
-    if (percent_check() && weight_check()){
-        change_chart(line_chart, line_data)
-        change_chart(bar_chart, bar_data)
-        if (final_weight <= 0 || isNaN(final_weight)){
-            change_percent(0)
+    for (let row in data_dict){
+        if (data_dict.hasOwnProperty(row)){
+            let percent = data_dict[row]['Mark']
+            let weight = data_dict[row]['Weight']
+            if (percent_check(percent) && weight_check(weight)) {
+                change_chart(line_chart, line_data)
+                change_chart(bar_chart, bar_data)
+                if (final_weight <= 0 || isNaN(final_weight)) {
+                    change_percent(0)
+                } else {
+                    change_percent(two_decimal_places(final_grade / final_weight))
+                }
+                goal_percentage()
+                change_total_weight(final_weight)
+                max_grade()
+            } else{
+                change_total_weight(final_weight)
+                $("#"+row.slice(4)).
+                console.log("change " + row + "to red")
+            }
         }
-        else {
-            change_percent(two_decimal_places(final_grade / final_weight))
-        }
-        goal_percentage()
-        change_total_weight(final_weight)
-        max_grade()
-    }
-    else{
-        change_total_weight(final_weight)
-        console.log("test")
     }
 }
 
