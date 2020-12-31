@@ -16,12 +16,12 @@ function render_row(end=0)
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-light border-0 small">Percent:</span>
                         </div>
-                        <input type="number" id="percent${start}" onkeyup = "update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                        <input type="number" id="percent${start}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                         <div class="input-group-prepend ">
                             <span class="input-group-text bg-light border-0 small">Weight:</span>
                         </div>
-                        <input type="number" maxlength="3" id="weight${start}" onkeyup = "update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-                        <select id = "name${start}" onchange = "update(line_chart)" class="custom-select bg-light border-0 small">
+                        <input type="number" maxlength="3" id="weight${start}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                        <select id = "name${start}" onchange = "update()" class="custom-select bg-light border-0 small">
                             ${render_options('Assignment', options)}
                         </select>
                     </div>
@@ -54,12 +54,12 @@ function render_transparent_row()
             <div class="input-group-prepend">
                 <span class="input-group-text bg-light border-0 small">Percent:</span>
             </div>
-            <input type="number" id="percent${num_fields}" onkeyup = "update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <input type="number" id="percent${num_fields}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-light border-0 small">Weight:</span>
             </div>
-            <input type="number" id="weight${num_fields}" onkeyup = "update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-            <select id = "name${num_fields}" onchange = "update(line_chart)" class="custom-select bg-light border-0 small">
+            <input type="number" id="weight${num_fields}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <select id = "name${num_fields}" onchange = "update()" class="custom-select bg-light border-0 small">
                 ${render_options("Assignment", options)}
             </select>
         </div>
@@ -135,12 +135,12 @@ function render_row_from_dict(marks)
                 <div class="input-group-prepend">
                     <span class="input-group-text bg-light border-0 small">Percent:</span>
                 </div>
-                <input type="number" id="percent${mark.slice(4)}" value="${marks[mark].Mark}" onkeyup="update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                <input type="number" id="percent${mark.slice(4)}" value="${marks[mark].Mark}" onkeyup="update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                 <div class="input-group-prepend ">
                     <span class="input-group-text bg-light border-0 small">Weight:</span>
                 </div>
-                <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-                <select id="name${mark.slice(4)}" onchange="update(line_chart)" class="custom-select bg-light border-0 small">
+                <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                <select id="name${mark.slice(4)}" onchange="update()" class="custom-select bg-light border-0 small">
                     ${render_options(marks[mark].Type, options)}
                 </select>
             </div>
