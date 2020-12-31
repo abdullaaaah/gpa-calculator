@@ -36,7 +36,15 @@
 
                               </ul>
                             </div>
+                        {% if page == 'main' %}
                         <button id="addbtn" type="button" class="btn btn-primary outline-btn-blue" data-toggle="modal" data-target=".bd-example-modal-sm">Add Course</button>
+                        {% endif %}
+
+                        {% if page == 'calc' %}
+                        <button type="button" id="saveBtn" class="btn btn-primary outline-btn-blue" onclick="save_marks_in_courses()"><i class="fas fa-check"></i> Saved</button>
+                        {% endif %}
+
+
 
                         <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-sm">

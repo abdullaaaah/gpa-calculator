@@ -178,6 +178,7 @@ function change_total_weight(weight){
 }
 
 function update(){
+
     scrape_data()
     let line_data = line_graph_data()
     let bar_data = bar_graph_data()
@@ -192,6 +193,9 @@ function update(){
     goal_percentage()
     change_total_weight(final_weight)
     max_grade()
+
+
+
 }
 
 function two_decimal_places(num){
@@ -259,6 +263,8 @@ function scrape_data(){
         inner_dict['Type'] = type
         data_dict['#row' + i] = inner_dict
         }
+
+
     return data_dict
 }
 

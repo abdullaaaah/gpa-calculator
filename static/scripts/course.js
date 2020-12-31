@@ -16,18 +16,18 @@ function render_row(end=0)
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-light border-0 small">Percent:</span>
                         </div>
-                        <input type="number" id="percent${start}" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                        <input type="number" id="percent${start}" onkeyup = "update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                         <div class="input-group-prepend ">
                             <span class="input-group-text bg-light border-0 small">Weight:</span>
                         </div>
-                        <input type="number" maxlength="3" id="weight${start}" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                        <input type="number" maxlength="3" id="weight${start}" onkeyup = "update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                         <select id = "name${start}" onchange = "update(line_chart)" class="custom-select bg-light border-0 small">
                             ${render_options('Assignment', options)}
                         </select>
                     </div>
                 </div>
                 <div class="col col-xl-2">
-                    <button type="button" class="btn btn-danger" id="del_field${start}" onclick="remove_field(${start})">Delete</button>
+                    <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${start}" onclick="remove_field(${start})"><i class="fas fa-times"></i></button>
                 </div>
             </div>
         `;
@@ -54,11 +54,11 @@ function render_transparent_row()
             <div class="input-group-prepend">
                 <span class="input-group-text bg-light border-0 small">Percent:</span>
             </div>
-            <input type="number" id="percent${num_fields}" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <input type="number" id="percent${num_fields}" onkeyup = "update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-light border-0 small">Weight:</span>
             </div>
-            <input type="number" id="weight${num_fields}" onkeyup = "update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <input type="number" id="weight${num_fields}" onkeyup = "update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
             <select id = "name${num_fields}" onchange = "update(line_chart)" class="custom-select bg-light border-0 small">
                 ${render_options("Assignment", options)}
             </select>
@@ -66,7 +66,7 @@ function render_transparent_row()
     </div>
     <div class="col col-xl-2">
         <button type="button" id = "del_field${num_fields}" onclick= ""
-                class="btn btn-danger invisible">Delete</button>
+                class="btn btn-danger btn-danger-outline invisible"><i class="fas fa-times"></i></button>
     </div>
 </div>
 
@@ -135,18 +135,18 @@ function render_row_from_dict(marks)
                 <div class="input-group-prepend">
                     <span class="input-group-text bg-light border-0 small">Percent:</span>
                 </div>
-                <input type="number" id="percent${mark.slice(4)}" value="${marks[mark].Mark}" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                <input type="number" id="percent${mark.slice(4)}" value="${marks[mark].Mark}" onkeyup="update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                 <div class="input-group-prepend ">
                     <span class="input-group-text bg-light border-0 small">Weight:</span>
                 </div>
-                <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(line_chart)" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+                <input type="number" maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(line_chart); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                 <select id="name${mark.slice(4)}" onchange="update(line_chart)" class="custom-select bg-light border-0 small">
                     ${render_options(marks[mark].Type, options)}
                 </select>
             </div>
         </div>
         <div class="col col-xl-2">
-            <button type="button" class="btn btn-danger" id="del_field${mark.slice(4)}" onclick="remove_field(${mark.slice(4)})">Delete</button>
+            <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${mark.slice(4)}" onclick="remove_field(${mark.slice(4)})"><i class="fas fa-times"></i></button>
         </div>
         </div>
     
@@ -166,9 +166,15 @@ Purpose: Save / Update data in <marks_in_courses>
 */
 function save_marks_in_courses()
 {
+    $("#saveBtn").html("<i class='fas fa-check'></i> Saved")
     marks_in_courses[course_name] = data_dict
     save_to_cache()
     console.log(data_dict)
+}
+
+let updateSaveBtn = function() {
+        // Change save button
+        $("#saveBtn").html("<i class='fas fa-exclaimation'></i> Click To Save")
 }
 
 $(document).ready(function() {
