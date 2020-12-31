@@ -289,3 +289,10 @@ a.article:hover {
     margin-bottom:30px
 }
 
+.btn-danger {
+    background-color: #b30000;
+}
+
+.text-success {
+    color:  #006622 !important;
+}
