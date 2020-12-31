@@ -1,7 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    //font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background: #f5f9ff
 }
 
 p {
@@ -129,8 +128,9 @@ background-color: #071136 !important;
     -o-transition: all 0.3s;
     transition: all 0.3s;
     color:#071136;
-    background: #071136;
-    color: white
+    //background: #071136;
+    //color: white;
+    border-radius: 2px;
 }
 
 #course-list-sidebar {
@@ -161,12 +161,9 @@ background-color: #071136 !important;
 #sidebar .sidebar-header {
     padding: 20px;
     background: #071136;
-    //background: #eee;
-    //color: #071136;
-    color: #eee
+    color: #eee;
 }
 
-#
 
 #sidebar ul.components {
     padding: 20px 0;
@@ -261,12 +258,16 @@ a.article:hover {
 #sidebar ul {
     list-style: none;
     font-weight: 600;
-    letter-spacing: 2px
+    letter-spacing: 2px;
+    padding: 0px;
 }
 
 #sidebar ul li a {
-    border-bottom: 1px solid silver;
-    padding-bottom: 6px
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 6px;
+    padding-left: 0px;
+    padding-bottom: 10px;
+    text-align: center
 }
 
 
@@ -278,10 +279,13 @@ a.article:hover {
     font-weight: bold;
 }
 
-#nav-itemss li a {
-    //color: black !important;
+
+#main-table thead th
+{
+    background-color: #071136 !important;
 }
 
-
-
+.header-main {
+    margin-bottom:30px
+}
 
