@@ -25,14 +25,17 @@ a:focus {
 {
     background: #fff !important;
     border-color: #0060df !important;
+    border-color: #071136 !important;
     border-width: 2px !important;
     border-style: solid !important;
     color:  #0060df !important;
+    color: #071136 !important;
     font-weight: 600 !important;
 }
 
 #sidebarIcon {
     color: #0060df !important;
+    color: #071136 !important;
 }
 
 .outline-btn-blue:hover * {
@@ -49,6 +52,7 @@ background-color: #0250bb !important;;
 border-color: transparent !important;
 box-shadow: none !important;
 color: #fff !important;
+background-color: #071136 !important;
 }
 
 #cancelbtn {
@@ -90,11 +94,13 @@ color: #fff !important;
     left: -250px;
     height: 100vh;
     z-index: 999;
-    background: #40d2f2;
-    color: black;
+    background: #0250bb;
+    color: white;
     transition: all 0.3s;
     overflow-y: scroll;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    background: #eee;
+    color: #071136;
 }
 
 #sidebarCollapse {
@@ -114,7 +120,7 @@ color: #fff !important;
     height: 35px;
     line-height: 35px;
     text-align: center;
-    background: #39caeb;
+    background: #eee;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -122,7 +128,15 @@ color: #fff !important;
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
+    color:#071136;
+    background: #071136;
+    color: white
 }
+
+#course-list-sidebar {
+    margin-top: 40px;
+}
+
 
 #dismiss:hover {
     background: #fff;
@@ -146,8 +160,13 @@ color: #fff !important;
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #39caeb;
+    background: #071136;
+    //background: #eee;
+    //color: #071136;
+    color: #eee
 }
+
+#
 
 #sidebar ul.components {
     padding: 20px 0;
@@ -241,7 +260,15 @@ a.article:hover {
 
 #sidebar ul {
     list-style: none;
+    font-weight: 600;
+    letter-spacing: 2px
 }
+
+#sidebar ul li a {
+    border-bottom: 1px solid silver;
+    padding-bottom: 6px
+}
+
 
 #nav-itemss {
     margin-left:25px;
@@ -254,3 +281,7 @@ a.article:hover {
 #nav-itemss li a {
     //color: black !important;
 }
+
+
+
+
