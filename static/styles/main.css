@@ -19,7 +19,6 @@ a:focus {
     transition: all 0.3s;
 }
 
-
 .outline-btn-blue
 {
     background: #fff !important;
@@ -270,6 +269,9 @@ a.article:hover {
     text-align: center
 }
 
+#averageGrade {
+    text-align:center;
+}
 
 #nav-itemss {
     margin-left:25px;
@@ -278,7 +280,6 @@ a.article:hover {
 #nav-itemss li {
     font-weight: bold;
 }
-
 
 #main-table thead th
 {

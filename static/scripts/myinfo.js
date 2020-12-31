@@ -93,11 +93,11 @@ function generate_graph()
   
   var sum = 0;
   for( var i = 0; i < values.length; i++ ){
-        sum += parseInt(values[i]);
+        sum += parseFloat(values[i]);
     }
 
     var avg = sum/values.length;
-    document.getElementById("averageGrade").innerHTML = avg;
+    document.getElementById("averageGrade").innerHTML = "Your overall average is " + avg + "%";
   
 }
 /* Chart function ends */
