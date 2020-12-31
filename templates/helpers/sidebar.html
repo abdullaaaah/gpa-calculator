@@ -55,16 +55,15 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form>
+                <form id="addCourseForm">
                     <div class="form-row">
                       <div class="col">
-                        <input maxlength="8" type="text" class="form-control" placeholder="Course Code" id="course-name">
+                        <input maxlength="8" type="text" class="form-control" placeholder="Course Code" id="course-name" value="" name="coursename" autocomplete="off">
                       </div>
                     </div>
                   </form>
                 <div class="modal-footer">
-                  <button id = "cancelbtn" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button id = "popupbtn" type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_course(document.getElementById('course-name').value)">Add <i class="fas fa-plus"></i></button>
+                  <button id = "popupbtn" type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_course(document.getElementById('course-name').value)"> <i class="fas fa-plus"></i> Add</button>
                 </div>
               </div>
             </div>

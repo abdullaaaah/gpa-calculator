@@ -89,6 +89,9 @@ This function is invoked by the add course button in the header.
 function add_course(course_name)
 {
 
+  $('#course-name').val("")
+
+
   if (courses.includes(course_name))
   {
     alert("course already exists")

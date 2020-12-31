@@ -62,8 +62,8 @@ background-color: #071136 !important;
 }
 
 #popupbtn {
-    background:#40d2f2;
-    color:black;
+    background:#071136;
+    color:white;
     border:none;
 }
 .navbar {
@@ -295,4 +295,29 @@ a.article:hover {
 
 .text-success {
     color:  #006622 !important;
+}
+
+
+div.modal-header {
+    background-color: #071136;
+    color: white;
+    border:none;
+}
+
+div.modal-header span {
+    color: white;
+    font-weight: 100;
+}
+
+div.modal-header .close {
+    opacity: 1;
+}
+
+div.modal-content form {
+    margin-top: 25px;
+}
+
+div.modal-content .form-row{
+    padding:20px;
+    padding-top: 0px;
 }
