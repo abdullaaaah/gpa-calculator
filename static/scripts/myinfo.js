@@ -92,12 +92,17 @@ function generate_graph()
   var chart = BuildChart(labels, values, "%");
   
   var sum = 0;
+  var course_count = 0
   for( var i = 0; i < values.length; i++ ){
-        sum += parseFloat(values[i]);
+        if (values[i] !== 'N/A')
+        {
+          sum += parseFloat(values[i]);
+          course_count++;
+        }
     }
 
-    var avg = sum/values.length;
-    document.getElementById("averageGrade").innerHTML = "Your overall average is " + avg + "%";
+    var avg = sum/course_count;
+    document.getElementById("averageGrade").innerHTML =  two_decimal_places(avg) + "%";
   
 }
 /* Chart function ends */

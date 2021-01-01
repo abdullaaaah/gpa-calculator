@@ -299,7 +299,7 @@ a.article:hover {
 }
 
 
-div.modal-header {
+div.modal-header, .card-header {
     background-color: #071136;
     color: white;
     border:none;
