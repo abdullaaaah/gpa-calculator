@@ -196,7 +196,7 @@ function update(){
                 max_grade()
             } else{
                 change_total_weight(final_weight)
-                $("#"+row.slice(4)).
+                //$("#"+row.slice(4)).
                 console.log("change " + row + "to red")
             }
         }
