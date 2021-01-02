@@ -1,19 +1,21 @@
 {% include "helpers/header.html" %}
+<div class="container-fluid">
     <h2 class="form-group">
         <div class="pl-3 pt-3 pr-3 m-3 row justify-content-between">
             <div class="col-xm-1">
-                <div class="input-group input-group-lg">
+                <!--<div class="input-group input-group-lg">
                     <input type="text" maxlength = "18" id = "course_name"
                            class="form-control font-weight-bold text-dark bg-white border-0 small input-lg"
                            placeholder="{{course_name}}" style = "height:10vh; width:30vw; font-size:150%;" aria-describedby="basic-addon2">
-                </div>
+                </div>-->
+                <h3 class="header-main font-weight-bold" style = "height:10vh; width:30vw; font-size:150%; padding-top:31px;"> {{course_name}} </h3>
             </div>
             <div class="col-xm-1 align-self-center">
                 <span class="font-weight-bold text-dark" style = "height:10vh; width:30vw; font-size:150%" id="total_percent">0%</span>
             </div>
         </div>
     </h2>
-    <div class="p-3 m-3" id = "gpaForm">
+    <div class="" id = "gpaForm">
         <div class="row">
             <div class="col">
                 <div class="card mb-4 shadow">
@@ -84,5 +86,6 @@
             </div>
         </div>
     </div>
+</div> <!-- container fluid -->
 
 {% include "/helpers/footer.html" %}

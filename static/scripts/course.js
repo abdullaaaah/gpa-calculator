@@ -11,7 +11,7 @@ function render_row(end=0)
     {
         s += `
             <div class="row" id="row${start}">
-                <div class="col">
+                <div class="col-sm-11">
                     <div class="input-group mb-3" id="${start}">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-light border-0 small">Percent:</span>
@@ -26,7 +26,7 @@ function render_row(end=0)
                         </select>
                     </div>
                 </div>
-                <div class="col col-xl-2">
+                <div class="col col-sm-1">
                     <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${start}" onclick="remove_field(${start})"><i class="fas fa-times"></i></button>
                 </div>
             </div>
