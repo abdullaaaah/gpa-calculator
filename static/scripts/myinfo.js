@@ -102,7 +102,9 @@ function generate_graph()
     }
 
     var avg = sum/course_count;
-    document.getElementById("averageGrade").innerHTML =  two_decimal_places(avg) + "%";
+    //document.getElementById("averageGrade").innerHTML =  two_decimal_places(avg) + "%";
+    document.getElementById("averageGrade").innerHTML =  calculate_cpercent(marks_in_courses)+ "%";
+
   
 }
 /* Chart function ends */
@@ -120,6 +122,9 @@ function render_all_courses_table()
 
 
         mark = calculate_percentage(marks_in_courses[course])
+
+        if (mark === 0) mark = "Not enough data"
+
 
         s += `
         <tr>
@@ -142,5 +147,6 @@ $(document).ready(function() {
     generate_graph()
 
     $("#cgpaText").html(calculate_cgpa(marks_in_courses))
+    $("#stats-msg").html(get_status_msg())
 
 })

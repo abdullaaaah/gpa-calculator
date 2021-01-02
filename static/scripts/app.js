@@ -128,7 +128,7 @@ function calculate_percentage(marks)
 		total_grade += ass_mark * ass_weight
     total_weight += ass_weight
   }
-
+  if (total_grade === 0 && total_weight === 0) return 0
 	return two_decimal_places(total_grade / total_weight)
 
 }
@@ -184,7 +184,51 @@ let calculate_cgpa = function(data)
       count++
     }
   }
-  console.log(total_gpa)
   return two_decimal_places(total_gpa / count).toFixed(2)
 
+}
+
+
+/* return cGPA given data_dict */
+let calculate_cpercent = function(data)
+{
+  let total_percent = 0
+  let count = 0
+	for(course in marks_in_courses)
+  {
+    // if average of the course isnt null
+    let percentage = calculate_percentage(marks_in_courses[course])
+		if (percentage)
+    {
+    	total_percent += parseFloat(percentage)
+      count++
+    }
+  }
+
+  let cpercent = two_decimal_places(total_percent / count)
+
+  if (cpercent === Math.trunc(cpercent)) return cpercent
+  return cpercent.toFixed(2)
+
+}
+
+
+/* messages */
+let status_msg = {
+  // >= 3.3
+  good: "Good job! <span class='emoji'>&#128515;</span> </br> Your academic performance is great this semester.",
+  // >= 2.0
+  okay: "You got this! <span class='emoji'>&#128578;</span> </br> Your academic performance is okay this semester.",
+  // < 2.0
+  bad: "Fix up mf <span class='emoji'>&#128545;</span> </br> You can do better."
+}
+
+/* this function return the approprirate message based on your gpa */
+let get_status_msg = function()
+{
+  let cgpa = calculate_cgpa(marks_in_courses)
+
+  if (cgpa >= 3.3) return status_msg.good
+  else if (cgpa >= 2.0) return status_msg.okay
+  else return status_msg.bad
 }
