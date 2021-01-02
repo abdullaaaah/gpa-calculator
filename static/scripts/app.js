@@ -121,18 +121,18 @@ function calculate_percentage(marks)
   total_weight = 0
   for (mark in marks)
   {
-		total_grade += marks[mark].Mark * marks[mark].Weight;
-    total_weight += marks[mark].Weight;
-  }
 
-  if (total_grade === 0) return "N/A"
+    ass_mark = parseFloat(marks[mark].Mark)
+    ass_weight = parseFloat(marks[mark].Weight)
+
+		total_grade += ass_mark * ass_weight
+    total_weight += ass_weight
+  }
 
 	return two_decimal_places(total_grade / total_weight)
 
 }
 
-
-/* return cGPA given data_dict */
 
 /*
 source: https://dev.to/ycmjason/how-to-create-range-in-javascript-539i
@@ -166,3 +166,24 @@ for(scale in gpa_scale) {
 
 return 0
 }
+
+
+/* return cGPA given data_dict */
+calculate_cgpa = function(data)
+{
+  let total_gpa = 0
+  let count = 0
+	for(course in marks_in_courses)
+  {
+    let percentage = calculate_percentage(marks_in_courses[course])
+		if (percentage)
+    {
+    	total_gpa += convert_to_gpa(percentage)
+    }
+    count++
+  }
+  return two_decimal_places(total_gpa / count)
+
+}
+
+calculate_cgpa(marks_in_courses)
