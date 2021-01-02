@@ -24,4 +24,4 @@ def course_mark_view(course_name):
                            page="calc")
 
 if __name__ == '__main__':
-    application.run()
+    application.run(debug=True)
