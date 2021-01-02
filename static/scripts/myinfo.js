@@ -130,6 +130,7 @@ function render_all_courses_table()
         <tr>
         <th scope="row"><a href="/courses/${course}">${course}</a></th>
         <td>${mark}</td>
+        <td><button type="button" class="btn btn-danger btn-danger-outline align-content-center btn-drop-course" onclick="delete_course('${course}')"><i class="fas fa-times"></i></button></td>
         </tr>
 
         `

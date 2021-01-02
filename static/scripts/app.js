@@ -81,8 +81,6 @@ let delete_course = function(course_name)
   if (courses.includes(course_name)) courses = arrayRemove(courses, course_name)
   save_to_cache()
   refresh_table()
-  console.log('test')
-
 }
 
 /*
