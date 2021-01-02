@@ -103,7 +103,7 @@ function generate_graph()
 
     var avg = sum/course_count;
     //document.getElementById("averageGrade").innerHTML =  two_decimal_places(avg) + "%";
-    document.getElementById("averageGrade").innerHTML =  calculate_cpercent(marks_in_courses)+ "%";
+    document.getElementById("averageGrade").innerHTML =  calculate_cpercent(marks_in_courses)+ " %";
 
   
 }
@@ -149,5 +149,6 @@ $(document).ready(function() {
 
     $("#cgpaText").html(calculate_cgpa(marks_in_courses))
     $("#stats-msg").html(get_status_msg())
+
 
 })

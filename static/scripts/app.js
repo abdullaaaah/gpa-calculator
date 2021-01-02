@@ -210,6 +210,7 @@ let calculate_cgpa = function(data)
       count++
     }
   }
+  if (total_gpa === 0) return 0
   return two_decimal_places(total_gpa / count).toFixed(2)
 
 }
@@ -233,6 +234,7 @@ let calculate_cpercent = function(data)
 
   let cpercent = two_decimal_places(total_percent / count)
 
+  if (total_percent === 0) return 0
   if (cpercent === Math.trunc(cpercent)) return cpercent
   return cpercent.toFixed(2)
 
@@ -246,7 +248,9 @@ let status_msg = {
   // >= 2.0
   okay: "You got this! <span class='emoji'>&#128578;</span> </br> Your academic performance is okay this semester.",
   // < 2.0
-  bad: "Fix up mf <span class='emoji'>&#128545;</span> </br> You can do better."
+  bad: "Are you even trying? <span class='emoji'>&#128545;</span> </br> Your academic performance is horrible this semester.",
+  // === 0
+  none: "Welcome to SemTrack! <span class='emoji'>&#128063;</span> <span class='emoji'>&#x1F973;</span> </br> Add a course to begin tracking your academic performance."
 }
 
 /* this function return the approprirate message based on your gpa */
@@ -256,5 +260,6 @@ let get_status_msg = function()
 
   if (cgpa >= 3.3) return status_msg.good
   else if (cgpa >= 2.0) return status_msg.okay
-  else return status_msg.bad
+  else if (cgpa > 0) return status_msg.bad
+  else return status_msg.none
 }
