@@ -2,6 +2,15 @@ let courses = []
 let options = ["Assignment", "Quiz", "Tutorial Activity", "Lab", "Midterm", "Exam"]
 var marks_in_courses = {}
 
+
+function arrayRemove(arr, value) {
+
+  return arr.filter(function(ele){
+      return ele !== value
+  })
+}
+
+
 /* Database stuff */
 
 /*
@@ -65,7 +74,16 @@ else {
   alert("This website won't work properly for you, please update your browser.")
 }
 
+/* delete course given course_name */
+let delete_course = function(course_name)
+{
+  if (course_name in marks_in_courses) delete marks_in_courses[course_name]
+  if (courses.includes(course_name)) courses = arrayRemove(courses, course_name)
+  save_to_cache()
+  refresh_table()
+  console.log('test')
 
+}
 
 /*
 Renders the courses in <courses> into the sidebar
@@ -81,6 +99,19 @@ function render_all_courses()
       $("#course-list-sidebar").append("<li><a href='/courses/" + course.toUpperCase() + "'>" + course.toUpperCase() + "</a></li>")
   }
 }
+
+/*
+Helper for add_course and delete_course
+It refreshes table.
+*/
+let refresh_table = function ()
+{
+  $("#no-course-msg").remove()
+  $("#course-overview-table").html("")
+  $("#course-overview-table").append(render_all_courses_table())
+  generate_graph()
+}
+
 
 /*
 Adds a course, <course_name> to the array, <courses> above.
@@ -101,10 +132,7 @@ function add_course(course_name)
   courses.push(course_name.toUpperCase());
   render_all_courses()
   save_to_cache()
-  $("#no-course-msg").remove()
-  $("#course-overview-table").html("")
-  $("#course-overview-table").append(render_all_courses_table())
-  generate_graph()
+  refresh_table()
   return true
 }
 
