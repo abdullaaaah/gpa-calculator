@@ -1,13 +1,13 @@
 from flask import Flask, request
 from flask import render_template
-from flask_cachebuster import CacheBuster
+#from flask_cachebuster import CacheBuster
 
 app = Flask(__name__)
 
 #Cache buster
-config = { 'extensions': ['.js', '.css', '.csv'], 'hash_size': 5 }
-cache_buster = CacheBuster(config=config)
-cache_buster.init_app(app)
+#config = { 'extensions': ['.js', '.css', '.csv'], 'hash_size': 5 }
+#cache_buster = CacheBuster(config=config)
+#cache_buster.init_app(app)
 
 appName = 'SemTrack'
 
@@ -24,4 +24,4 @@ def course_mark_view(course_name):
                            page="calc")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
