@@ -141,4 +141,6 @@ $(document).ready(function() {
 
     generate_graph()
 
+    $("#cgpaText").html(calculate_cgpa(marks_in_courses))
+
 })

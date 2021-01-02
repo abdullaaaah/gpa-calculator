@@ -160,7 +160,7 @@ convert_to_gpa = function(percentage)
 {
 for(scale in gpa_scale) {
   if(gpa_scale[scale].includes(percentage)) {
-    return scale
+    return parseFloat(scale)
   }
 }
 
@@ -169,21 +169,22 @@ return 0
 
 
 /* return cGPA given data_dict */
-calculate_cgpa = function(data)
+let calculate_cgpa = function(data)
 {
   let total_gpa = 0
   let count = 0
 	for(course in marks_in_courses)
   {
+    // if average of the course isnt null
     let percentage = calculate_percentage(marks_in_courses[course])
 		if (percentage)
     {
-    	total_gpa += convert_to_gpa(percentage)
+      let gpa = convert_to_gpa(Math.trunc(percentage))
+    	total_gpa += parseFloat(gpa)
+      count++
     }
-    count++
   }
-  return two_decimal_places(total_gpa / count)
+  console.log(total_gpa)
+  return two_decimal_places(total_gpa / count).toFixed(2)
 
 }
-
-calculate_cgpa(marks_in_courses)
