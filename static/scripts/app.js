@@ -130,3 +130,39 @@ function calculate_percentage(marks)
 	return two_decimal_places(total_grade / total_weight)
 
 }
+
+
+/* return cGPA given data_dict */
+
+/*
+source: https://dev.to/ycmjason/how-to-create-range-in-javascript-539i
+*/
+function range(start, end) {
+  return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
+}
+
+gpa_scale = {
+0.0: range(0, 49),
+0.7: range(50, 52),
+1.0: range(53, 56),
+1.3: range(57, 59),
+1.7: range(60, 62),
+2.0: range(63, 66),
+2.3: range(67, 69),
+2.7: range(70, 72),
+3.0: range(73, 76),
+3.3: range(77, 79),
+3.7: range(80, 84),
+4.0: range(85, 100)
+}
+
+convert_to_gpa = function(percentage)
+{
+for(scale in gpa_scale) {
+  if(gpa_scale[scale].includes(percentage)) {
+    return scale
+  }
+}
+
+return 0
+}
