@@ -92,6 +92,11 @@ function render_all_courses()
   //Reset it
   $("#course-list-sidebar").html("")
 
+  //Static
+  $("#course-list-sidebar").append(`<li id=""><a href="/">Home</a><li>`)
+
+
+
   for (course of courses)
   {
       $("#course-list-sidebar").append("<li><a href='/courses/" + course.toUpperCase() + "'>" + course.toUpperCase() + "</a></li>")
