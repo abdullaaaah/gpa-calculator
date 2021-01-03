@@ -1,8 +1,7 @@
 <div class="card mb-4 shadow" style="size:50vw;">
     <div class="card-body">
-        <h4 class="card-title mb-3 font-weight-bold text">Assessment Mark Calculator</h4>
-        <p style="color:gray"> Use this tool to calculate what you need on your next assesment to achieve your target mark.
-        <br>(I.E, what you need on a final exam to achieve a certain mark)
+        <h4 class="card-title mb-3 font-weight-bold text">Final Grade Calculator</h4>
+        <p style="color:gray"> This tool will calculate what you need on the final exam in order to achieve your target final grade
         </p>
         <h6 class="card-title">Enter the mark you WANT your grade to be </h6>
         <div class="input-group">
@@ -11,15 +10,15 @@
                    placeholder="85.0" aria-describedby="basic-addon2"
                    onkeyup = "goal_percentage()">
         </div>
-        <h6 class="card-title mt-3">Enter the weight of the assessment</h6>
+        <!--<h6 class="card-title mt-3">Enter the weight of the exam</h6>
         <div class="input-group">
             <input type="number" id = "next_weight"
                    class="form-control w-10 font-weight-light bg-light border-0 small"
                    placeholder="40" aria-describedby="basic-addon2"
                    onkeyup = "goal_percentage()">
-        </div>
+        </div>-->
         <h6 class="font-weight-light mt-3">The mark you need to achieve this grade is <strong><span id="needed_gpa"></span></strong></h6>
-        <h6 class="font-weight-light">The weight of the assessment must be <strong><span id="needed_weight"></span></strong></h6>
+        <h6 class="font-weight-light">Assuming that the weight of your exam is <strong><span id="needed_weight"></span></strong></h6>
     </div>
 </div>
 
