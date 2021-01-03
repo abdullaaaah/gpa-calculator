@@ -206,9 +206,9 @@ function update(){
                 } else {
                     change_percent(two_decimal_places(final_grade / final_weight))
                 }
+                max_grade()
                 goal_percentage()
                 change_total_weight(final_weight)
-                max_grade()
             } else{
                 if (!(percent_check(percent))){
                     console.log("changing percent")
@@ -243,19 +243,28 @@ function goal_percentage(){
     else{
         g_2 = two_decimal_places(((weight * (grade - goal) - (w_2 * goal)) / (-1*(w_2))))
     }
-    if (isNaN(w_2) || isNaN(g_2)){
-        if (isNaN(g_2)) {
+    if (isNaN(w_2) || isNaN(g_2) || w_2 === Infinity || w_2 === -Infinity ||
+        g_2 === Infinity || g_2 === -Infinity){
+        if (isNaN(g_2) || g_2 === Infinity || g_2 === -Infinity) {
             $('#needed_gpa').text(0 + "%")
             $('#needed_weight').text(0)
         }
-        if (isNaN(w_2)){
+        if (isNaN(w_2) || w_2 === Infinity || w_2 === -Infinity){
             $('#needed_weight').text(w_2 + "%")
             $('#needed_gpa').text(g_2)
         }
     }
     else {
-        $('#needed_gpa').text(g_2 + "%")
-        $('#needed_weight').text(w_2)
+        if (!(percent_check(g_2))){
+            $('#needed_gpa').text(g_2 + "%")
+            $('#needed_gpa').addClass('text-danger')
+            $('#needed_weight').text(w_2)
+        }
+        else {
+            $('#needed_gpa').removeClass('text-danger')
+            $('#needed_gpa').text(g_2 + "%")
+            $('#needed_weight').text(w_2)
+        }
     }
 }
 
@@ -276,6 +285,7 @@ function max_grade(){
         $('#max_grade').text(max_grade + "%")
         $('#remain_weight').text(remain_weight)
     }
+    return max_grade
 }
 
 function scrape_data(){
