@@ -38,7 +38,7 @@ function remove_field(id){
         $('#weight' + i).attr("id", "weight" + num)
         $('#percent' + i).attr("id", "percent" + num)
     }
-    update(line_chart)
+    update();
 }
 
 function change_percent_color(){
@@ -211,14 +211,12 @@ function update(){
                 change_total_weight(final_weight)
             } else{
                 if (!(percent_check(percent))){
-                    console.log("changing percent")
                     change_to_red(row, 'percent')
                 }else{
                     change_to_white(row, 'percent')
                 }
 
                 if (!(weight_check(weight))){
-                    console.log("changing weight")
                     change_to_red(row, 'weight')
                 }else{
                     change_to_white(row, 'weight')
@@ -226,6 +224,16 @@ function update(){
                 change_total_weight(final_weight)
             }
         }
+    }
+    if (!Object.keys(data_dict).length){
+        final_grade = 0
+        final_weight = 0
+        change_chart(line_chart, line_data)
+        change_chart(bar_chart, bar_data)
+        change_percent(0)
+        max_grade()
+        goal_percentage()
+        change_total_weight(final_weight)
     }
 }
 
@@ -291,16 +299,20 @@ function max_grade(){
         if (isNaN(max_grade)){
             $('#max_grade').text(0 + "%")
         }
+        else{
+            $('#max_grade').text(max_grade + "%")
+        }
         if (isNaN(remain_weight)){
             $('#remain_weight').text(0)
         }
+        else{
+            $('#remain_weight').text(remain_weight)
+        }
     }
     else {
-
         $('#max_grade').text(max_grade + "%")
         $('#remain_weight').text(remain_weight)
     }
-    return max_grade
 }
 
 function scrape_data(){
