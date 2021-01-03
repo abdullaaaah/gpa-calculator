@@ -313,14 +313,14 @@ $(document).ready(function()
             labels: [],
             datasets: [{
                 lineTension: 0.3,
-                backgroundColor: "rgba(78, 115, 223, 0.05)",
-                borderColor: "rgba(78, 115, 223, 1)",
+                backgroundColor: "rgba(7, 17, 54, 0.05)",
+                borderColor: "#071136",
                 pointRadius: 3,
-                pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                pointBorderColor: "rgba(78, 115, 223, 1)",
+                pointBackgroundColor: "#071136",
+                pointBorderColor: "#071136",
                 pointHoverRadius: 3,
-                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                pointHoverBackgroundColor: "#071136",
+                pointHoverBorderColor: "#071136",
                 pointHitRadius: 10,
                 pointBorderWidth: 2,
                 label: "My Performance",
@@ -361,9 +361,9 @@ $(document).ready(function()
         data: {
             labels: [],
             datasets: [{
-                backgroundColor: "#4e73df",
-                hoverBackgroundColor: "#2e59d9",
-                borderColor: "#4e73df",
+                backgroundColor: "#071136",
+                hoverBackgroundColor: "#071136",
+                borderColor: "#071136",
                 label: "Assessment Performance",
                 data: []
             }]
