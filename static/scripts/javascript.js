@@ -244,17 +244,17 @@ function goal_percentage(){
     }
     if (isNaN(w_2) || isNaN(g_2)){
         if (isNaN(g_2)) {
-            $('#needed_gpa').text("Needed Grade: " + 0)
-            $('#needed_weight').text("Needed Weight: " + 0)
+            $('#needed_gpa').text(0 + "%")
+            $('#needed_weight').text(0)
         }
         if (isNaN(w_2)){
-            $('#needed_weight').text("Needed Weight: " + w_2)
-            $('#needed_gpa').text("Needed Grade: " + g_2)
+            $('#needed_weight').text(w_2 + "%")
+            $('#needed_gpa').text(g_2)
         }
     }
     else {
-        $('#needed_gpa').text("Needed Grade: " + g_2)
-        $('#needed_weight').text("Needed Weight: " + w_2)
+        $('#needed_gpa').text(g_2 + "%")
+        $('#needed_weight').text(w_2)
     }
 }
 
@@ -265,15 +265,15 @@ function max_grade(){
     let max_grade = ((current_grade * final_weight) + (assume_grade * remain_weight))/100
     if (isNaN(max_grade) || isNaN(remain_weight)){
         if (isNaN(max_grade)){
-            $('#max_grade').text('Max Grade: ' + 0)
+            $('#max_grade').text(0 + "%")
         }
         if (isNaN(remain_weight)){
-            $('#remain_weight').text('Remaining Weight: ' + 0)
+            $('#remain_weight').text(0)
         }
     }
     else {
-        $('#max_grade').text('Max Grade: ' + max_grade)
-        $('#remain_weight').text('Remaining Weight: ' + remain_weight)
+        $('#max_grade').text(max_grade + "%")
+        $('#remain_weight').text(remain_weight)
     }
 }
 

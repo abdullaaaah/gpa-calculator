@@ -1,26 +1,36 @@
 <div class="card mb-4 shadow" style="size:50vw;">
     <div class="card-body">
-        <h4 class="card-title mb-3 font-weight-bold text">Grade Options</h4>
-        <h6 class="card-title">Goal Percentage</h6>
+        <h4 class="card-title mb-3 font-weight-bold text">Assessment Mark Calculator</h4>
+        <p style="color:gray"> Use this tool to calculate what you need on your next assesment to achieve your target mark.
+        <br>(I.E, what you need on a final exam to achieve a certain mark)
+        </p>
+        <h6 class="card-title">Enter the mark you WANT your grade to be </h6>
         <div class="input-group">
             <input type="number" id = "gpa_goal"
                    class="form-control w-10 font-weight-light bg-light border-0 small"
                    placeholder="85.0" aria-describedby="basic-addon2"
                    onkeyup = "goal_percentage()">
         </div>
-        <h6 class="card-title mt-3">Weight</h6>
+        <h6 class="card-title mt-3">Enter the weight of the assessment</h6>
         <div class="input-group">
             <input type="number" id = "next_weight"
                    class="form-control w-10 font-weight-light bg-light border-0 small"
-                   placeholder="85.0" aria-describedby="basic-addon2"
+                   placeholder="40" aria-describedby="basic-addon2"
                    onkeyup = "goal_percentage()">
         </div>
-        <h6 class="font-weight-light mt-3" id="needed_gpa">Needed Grade:</h6>
-        <h6 class="font-weight-light" id="needed_weight">Needed Weight:</h6>
-        <h6 class="card-title mt-3">Max Grade Achievable (MGA)</h6>
+        <h6 class="font-weight-light mt-3">The mark you need to achieve this grade is <strong><span id="needed_gpa"></span></strong></h6>
+        <h6 class="font-weight-light">The weight of the assessment must be <strong><span id="needed_weight"></span></strong></h6>
+    </div>
+</div>
+
+<div class="card mb-4 shadow" style="size:50vw;">
+    <div class="card-body">
+        <h4 class="card-title mb-3 font-weight-bold text">Final Mark</h4>
+        <h6 class="card-title mt-3">Below is the maximum mark you can achieve in this course.</h6>
         <div>
-            <h6 class="font-weight-light mt-3" id="max_grade">Max Grade:</h6>
-            <h6 class="font-weight-light" id="remain_weight">Remaining Weight:</h6>
+            <h6 class="font-weight-light mt-3">Max Grade: <strong><span id="max_grade"></span></strong></h6>
+            <h6 class="font-weight-light">Remaining Weight: <strong><span id="remain_weight"></span></strong></h6>
         </div>
     </div>
 </div>
+
