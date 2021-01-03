@@ -91,7 +91,7 @@ background-color: #071136 !important;
     top: 0;
     left: -250px;
     height: 100vh;
-    z-index: 999;
+    z-index: 999999;
     background: #0250bb;
     color: white;
     transition: all 0.3s;
