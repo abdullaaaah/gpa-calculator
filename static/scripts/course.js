@@ -14,11 +14,11 @@ function render_row(end=0)
                 <div class="col-auto">
                     <div class="input-group" id="${start}">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-light border-0 small">Percent:</span>
+                            <span class="input-group-text bg-light border-0 small">%</span>
                         </div>
                         <input id="percent${start}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                         <div class="input-group-prepend ">
-                            <span class="input-group-text bg-light border-0 small">Weight:</span>
+                            <span class="input-group-text bg-light border-0 small">-</span>
                         </div>
                         <input maxlength="3" id="weight${start}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                         <select id = "name${start}" onchange = "update()" class="custom-select bg-light border-0 small">
@@ -51,11 +51,11 @@ function render_transparent_row()
     <div class="col-auto">
         <div class="input-group mb-3 transparent trans-click" id="${num_fields}" onclick="add_field()">
             <div class="input-group-prepend">
-                <span class="input-group-text bg-light border-0 small">Percent:</span>
+                <span class="input-group-text bg-light border-0 small">%</span>
             </div>
             <input id="percent${num_fields}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
-                <span class="input-group-text bg-light border-0 small">Weight:</span>
+                <span class="input-group-text bg-light border-0 small">-</span>
             </div>
             <input id="weight${num_fields}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
             <select id = "name${num_fields}" onchange = "update()" class="custom-select bg-light border-0 small">
@@ -130,11 +130,11 @@ function render_row_from_dict(marks)
         <div class="col-auto">
             <div class="input-group mb-3" id="${mark.slice(4)}">
                 <div class="input-group-prepend">
-                    <span class="input-group-text bg-light border-0 small">Percent:</span>
+                    <span class="input-group-text bg-light border-0 small">%</span>
                 </div>
                 <input id="percent${mark.slice(4)}" value="${marks[mark].Mark}" onkeyup="update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                 <div class="input-group-prepend ">
-                    <span class="input-group-text bg-light border-0 small">Weight:</span>
+                    <span class="input-group-text bg-light border-0 small">-</span>
                 </div>
                 <input maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
                 <select id="name${mark.slice(4)}" onchange="update()" class="custom-select bg-light border-0 small">

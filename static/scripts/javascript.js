@@ -235,6 +235,19 @@ function goal_percentage(){
     let g_2;
     let grade = parseFloat(final_grade) / parseFloat(final_weight)
     let weight = parseFloat(final_weight)
+    if (!percent_check(goal)){
+        $('#gpa_goal').addClass('text-danger')
+    }
+    else{
+        $('#gpa_goal').removeClass('text-danger')
+    }
+    if (!weight_check(w_2)){
+        $('#next_weight').addClass('text-danger')
+    }
+    else{
+        $('#next_weight').removeClass('text-danger')
+    }
+
     if (isNaN(w_2)) {
         let rem_weight = 100-weight
         g_2 = two_decimal_places(((weight * (grade - goal) - (rem_weight * goal)) / (-1*(rem_weight))))
@@ -255,15 +268,16 @@ function goal_percentage(){
         }
     }
     else {
+        $('#needed_gpa').removeClass('text-danger')
+        $('#needed_weight').removeClass('text-danger')
+        $('#needed_gpa').text(g_2 + "%")
+        $('#needed_weight').text(w_2)
         if (!(percent_check(g_2))){
-            $('#needed_gpa').text(g_2 + "%")
             $('#needed_gpa').addClass('text-danger')
-            $('#needed_weight').text(w_2)
         }
-        else {
-            $('#needed_gpa').removeClass('text-danger')
-            $('#needed_gpa').text(g_2 + "%")
-            $('#needed_weight').text(w_2)
+        if (!(weight_check(w_2))){
+            $('#needed_weight').addClass('text-danger')
+
         }
     }
 }
@@ -282,6 +296,7 @@ function max_grade(){
         }
     }
     else {
+
         $('#max_grade').text(max_grade + "%")
         $('#remain_weight').text(remain_weight)
     }
@@ -313,14 +328,14 @@ $(document).ready(function()
             labels: [],
             datasets: [{
                 lineTension: 0.3,
-                backgroundColor: "rgba(78, 115, 223, 0.05)",
-                borderColor: "rgba(78, 115, 223, 1)",
+                backgroundColor: "rgba(7, 17, 54, 0.05)",
+                borderColor: "#071136",
                 pointRadius: 3,
-                pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                pointBorderColor: "rgba(78, 115, 223, 1)",
+                pointBackgroundColor: "#071136",
+                pointBorderColor: "#071136",
                 pointHoverRadius: 3,
-                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                pointHoverBackgroundColor: "#071136",
+                pointHoverBorderColor: "#071136",
                 pointHitRadius: 10,
                 pointBorderWidth: 2,
                 label: "My Performance",
@@ -361,9 +376,9 @@ $(document).ready(function()
         data: {
             labels: [],
             datasets: [{
-                backgroundColor: "#4e73df",
-                hoverBackgroundColor: "#2e59d9",
-                borderColor: "#4e73df",
+                backgroundColor: "#071136",
+                hoverBackgroundColor: "#071136",
+                borderColor: "#071136",
                 label: "Assessment Performance",
                 data: []
             }]
