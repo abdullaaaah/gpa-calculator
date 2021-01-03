@@ -1,62 +1,34 @@
 {% include "helpers/header.html" %}
 <div class="container-fluid">
+
+
     <h2 class="form-group">
         <div class="pl-3 pt-3 pr-3 m-3 row justify-content-between">
             <div class="col-xm-1">
-                <!--<div class="input-group input-group-lg">
-                    <input type="text" maxlength = "18" id = "course_name"
-                           class="form-control font-weight-bold text-dark bg-white border-0 small input-lg"
-                           placeholder="{{course_name}}" style = "height:10vh; width:30vw; font-size:150%;" aria-describedby="basic-addon2">
-                </div>-->
-                <h3 class="header-main font-weight-bold" style = "height:10vh; width:30vw; font-size:150%; padding-top:31px;"> {{course_name}} </h3>
+                <h3 class="font-weight-bold course-header-text" id="course_name"> {{course_name}} </h3>
             </div>
             <div class="col-xm-1 align-self-center">
-                <span class="font-weight-bold text-dark" style = "height:10vh; width:30vw; font-size:150%" id="total_percent">0%</span>
+                <span class="font-weight-bold text-dark course-header-text" id="total_percent">0%</span>
             </div>
         </div>
     </h2>
+
+
     <div class="" id = "gpaForm">
-        <div class="row">
+        <div class="row"> <!-- First row start -->
             <div class="col">
                 <div class="card mb-4 shadow">
                     <div class="card-body" id="sideBar">
                         <h4 class="card-title mb-3 font-weight-bold text">Grade Input</h4>
+                        <form class="form-inline">
                     <!-- This part will be rendered by js -->
                     <!--  end of Js rendered parts-->
+                        </form>
                     </div>
                     <span class="text mb-4 ml-4" id="total_weight">Total Weight:</span>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="card mb-4 shadow" style="size:50vw;">
-                            <div class="card-body">
-                                <h4 class="card-title mb-3 font-weight-bold text">Grade Options</h4>
-                                <h6 class="card-title">Goal Percentage</h6>
-                                <div class="input-group">
-                                    <input type="number" id = "gpa_goal"
-                                           class="form-control w-10 font-weight-light bg-light border-0 small"
-                                           placeholder="85.0" aria-describedby="basic-addon2"
-                                           onkeyup = "goal_percentage()">
-                                </div>
-                                <h6 class="card-title mt-3">Weight</h6>
-                                <div class="input-group">
-                                    <input type="number" id = "next_weight"
-                                           class="form-control w-10 font-weight-light bg-light border-0 small"
-                                           placeholder="85.0" aria-describedby="basic-addon2"
-                                           onkeyup = "goal_percentage()">
-                                </div>
-                                <h6 class="font-weight-light mt-3" id="needed_gpa">Needed Grade:</h6>
-                                <h6 class="font-weight-light" id="needed_weight">Needed Weight:</h6>
-                                <h6 class="card-title mt-3">Max Grade Achievable (MGA)</h6>
-                                <div>
-                                    <h6 class="font-weight-light mt-3" id="max_grade">Max Grade:</h6>
-                                    <h6 class="font-weight-light" id="remain_weight">Remaining Weight:</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </div> <!-- First row end -->
 
             <div class="col">
                 <div class="card mb-4 shadow">

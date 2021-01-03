@@ -10,9 +10,9 @@ function render_row(end=0)
     while (start <= end)
     {
         s += `
-            <div class="row" id="row${start}">
-                <div class="col-sm-11">
-                    <div class="input-group mb-3" id="${start}">
+            <div class="form-row align-items-center" id="row${start}">
+                <div class="col-auto">
+                    <div class="input-group" id="${start}">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-light border-0 small">Percent:</span>
                         </div>
@@ -24,10 +24,9 @@ function render_row(end=0)
                         <select id = "name${start}" onchange = "update()" class="custom-select bg-light border-0 small">
                             ${render_options('Assignment', options)}
                         </select>
+                        <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${start}" onclick="remove_field(${start})"><i class="fas fa-times"></i></button>
+
                     </div>
-                </div>
-                <div class="col col-sm-1">
-                    <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${start}" onclick="remove_field(${start})"><i class="fas fa-times"></i></button>
                 </div>
             </div>
         `;
@@ -48,8 +47,8 @@ function render_transparent_row()
 
     s += `
 
-    <div class="row" id="row${num_fields}">
-    <div class="col">
+    <div class="form-row align-items-center" id="row${num_fields}">
+    <div class="col-auto">
         <div class="input-group mb-3 transparent trans-click" id="${num_fields}" onclick="add_field()">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-light border-0 small">Percent:</span>
@@ -62,11 +61,9 @@ function render_transparent_row()
             <select id = "name${num_fields}" onchange = "update()" class="custom-select bg-light border-0 small">
                 ${render_options("Assignment", options)}
             </select>
+            <button type="button" id = "del_field${num_fields}" onclick= ""
+            class="btn btn-danger btn-danger-outline invisible"><i class="fas fa-times"></i></button>
         </div>
-    </div>
-    <div class="col col-xl-2">
-        <button type="button" id = "del_field${num_fields}" onclick= ""
-                class="btn btn-danger btn-danger-outline invisible"><i class="fas fa-times"></i></button>
     </div>
 </div>
 
@@ -129,8 +126,8 @@ function render_row_from_dict(marks)
       if (marks.hasOwnProperty(mark)){
           console.log(marks[mark])
         s += `
-        <div class="row" id="${mark.slice(1)}">
-        <div class="col">
+        <div class="form-row align-items-center" id="${mark.slice(1)}">
+        <div class="col-auto">
             <div class="input-group mb-3" id="${mark.slice(4)}">
                 <div class="input-group-prepend">
                     <span class="input-group-text bg-light border-0 small">Percent:</span>
@@ -143,10 +140,8 @@ function render_row_from_dict(marks)
                 <select id="name${mark.slice(4)}" onchange="update()" class="custom-select bg-light border-0 small">
                     ${render_options(marks[mark].Type, options)}
                 </select>
+                <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${mark.slice(4)}" onclick="remove_field(${mark.slice(4)})"><i class="fas fa-times"></i></button>
             </div>
-        </div>
-        <div class="col col-xl-2">
-            <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${mark.slice(4)}" onclick="remove_field(${mark.slice(4)})"><i class="fas fa-times"></i></button>
         </div>
         </div>
     

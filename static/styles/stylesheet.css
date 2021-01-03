@@ -1,24 +1,44 @@
 .transparent{
-    opacity: 0.5;
+  opacity: 0.5;
 }
 .invisible{
-    opacity: 0.0;
+  opacity: 0.0;
 }
 
 #course_name {
-    background-color:#f5f9ff !important;
-    color: red;
+  background-color:#f5f9ff !important;
 }
 
 #course_name::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #071136 !important;;
-  opacity: 1; /* Firefox */
+color: #071136 !important;;
+opacity: 1; /* Firefox */
 }
 
 #course_name:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #071136 !important;;
+color: #071136 !important;;
 }
 
 #course_name::-ms-input-placeholder { /* Microsoft Edge */
-  color: #071136 !important;;
+color: #071136 !important;;
 }
+
+  #gpaForm .input-group {
+    padding-bottom: 20px;
+    }
+
+.course-header-text
+{
+  font-size: 150%;
+}
+
+
+@media only screen and (max-width: 720px) {
+  .course-header-text {
+    width:30vw; font-size:110%;
+  }
+
+  #course_name {
+    padding-top:10px
+  }
+}
+
