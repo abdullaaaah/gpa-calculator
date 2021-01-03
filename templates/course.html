@@ -17,41 +17,21 @@
     <div class="" id = "gpaForm">
         <!-- First row start -->
         <div class="row">
-
             <div class="col">
-                <div class="card mb-4 shadow">
-                    <div class="card-body" id="sideBar">
-                        <h4 class="card-title mb-3 font-weight-bold text">Grade Input</h4>
-                        <form class="form-inline">
-                    <!-- This part will be rendered by js -->
-                    <!--  end of Js rendered parts-->
-                        </form>
-                    </div>
-                    <span class="text mb-4 ml-4" id="total_weight">Total Weight:</span>
-                </div>
+                {% include "helpers/course/gpaform.html" %}
+                {% include "helpers/course/grade_options.html" %}
             </div>
 
 
             <div class="col">
                 {% include "helpers/course/performance_overview.html" %}
+                {% include "helpers/course/assessment_overview.html"%}
             </div>
 
 
         </div>
         <!-- First row end -->
 
-
-        <!-- Second row start-->
-        <div class="row">
-            <div class="col">
-                {% include "helpers/course/grade_options.html" %}
-            </div>
-
-            <div class="col">
-                {% include "helpers/course/assessment_overview.html"%}
-            </div>
-        </div>
-        <!-- Second row end -->
 
         </div> <!-- gpa form -->
 </div> <!-- container fluid -->
