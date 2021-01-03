@@ -292,6 +292,7 @@ function goal_percentage(){
 
 function max_grade(){
     let remain_weight = 100 - final_weight
+    console.log(final_weight)
     let assume_grade = 100
     let current_grade = final_grade / final_weight
     let max_grade = ((current_grade * final_weight) + (assume_grade * remain_weight))/100
@@ -312,6 +313,12 @@ function max_grade(){
     else {
         $('#max_grade').text(max_grade + "%")
         $('#remain_weight').text(remain_weight)
+        if (!(percent_check(max_grade))){
+            $('#max_grade').addClass('text-danger')
+        }
+        else{
+            $('#max_grade').removeClass('text-danger')
+        }
     }
 }
 
