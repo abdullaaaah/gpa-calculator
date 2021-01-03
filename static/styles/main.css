@@ -327,3 +327,9 @@ div.modal-content .form-row{
     font-size: 1.3em;
     margin-left:5px;
 }
+
+/* sticky top fix
+.modal-backdrop {
+    z-index: 999 !important;
+}
+*/
