@@ -174,28 +174,18 @@ function weight_check(weight) {
     }
     return !(final_weight > 100 || weight < 0 || isNaN(weight));
 }
-function change_to_red(row){
-    let percentid = '#percent'+row.slice(4)
-    let weightid = '#weight'+row.slice(4)
-    $(percentid).removeClass('border-0')
-    $(percentid).addClass('border-2')
-    $(percentid).addClass('border-danger')
-    $(weightid).removeClass('border-0')
-    $(weightid).addClass('border-2')
-    $(weightid).addClass('border-danger')
+function change_to_red(row, type){
+    let type_id = '#'+type+row.slice(4)
+    $(type_id).removeClass('border-0')
+    $(type_id).addClass('border-2')
+    $(type_id).addClass('border-danger')
 }
 
-function change_to_white(row){
-    let percentid = '#percent'+row.slice(4)
-    let weightid = '#weight'+row.slice(4)
-    $(percentid).removeClass('border-2')
-    $(percentid).removeClass('border-danger')
-    $(percentid).addClass('border-0')
-    $(weightid).removeClass('border-2')
-    $(weightid).removeClass('border-danger')
-    $(weightid).addClass('border-0')
-
-
+function change_to_white(row, type){
+    let type_id = '#'+type+row.slice(4)
+    $(type_id).removeClass('border-2')
+    $(type_id).removeClass('border-danger')
+    $(type_id).addClass('border-0')
 }
 
 function update(){
@@ -206,9 +196,9 @@ function update(){
         if (data_dict.hasOwnProperty(row)){
             let percent = data_dict[row]['Mark']
             let weight = data_dict[row]['Weight']
-            let id = row.slice(4)
             if (percent_check(percent) && weight_check(weight)) {
-                change_to_white(row)
+                change_to_white(row, 'percent')
+                change_to_white(row, 'weight')
                 change_chart(line_chart, line_data)
                 change_chart(bar_chart, bar_data)
                 if (final_weight <= 0 || isNaN(final_weight)) {
@@ -220,9 +210,20 @@ function update(){
                 change_total_weight(final_weight)
                 max_grade()
             } else{
+                if (!(percent_check(percent))){
+                    console.log("changing percent")
+                    change_to_red(row, 'percent')
+                }else{
+                    change_to_white(row, 'percent')
+                }
+
+                if (!(weight_check(weight))){
+                    console.log("changing weight")
+                    change_to_red(row, 'weight')
+                }else{
+                    change_to_white(row, 'weight')
+                }
                 change_total_weight(final_weight)
-                change_to_red(row)
-                console.log("change " + row + "to red")
             }
         }
     }
