@@ -2,6 +2,7 @@
 Purpose: Any javascript logic regarding the sidebar page.
 */
 
+load_gpa_scale()
 
 $(document).ready(function() {
 

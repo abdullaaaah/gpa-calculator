@@ -60,7 +60,7 @@ background-color: #071136 !important;
     background:grey;
 }
 
-#popupbtn {
+#popupbtn, #saveBtn {
     background:#071136;
     color:white;
     border:none;

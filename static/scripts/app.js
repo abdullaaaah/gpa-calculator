@@ -2,6 +2,24 @@ let courses = []
 let options = ["Assignment", "Quiz", "Tutorial Activity", "Lab", "Midterm", "Exam"]
 var marks_in_courses = {}
 
+gpa_scale = {
+  0.0: range(0, 49),
+  0.7: range(50, 52),
+  1.0: range(53, 56),
+  1.3: range(57, 59),
+  1.7: range(60, 62),
+  2.0: range(63, 66),
+  2.3: range(67, 69),
+  2.7: range(70, 72),
+  3.0: range(73, 76),
+  3.3: range(77, 79),
+  3.7: range(80, 84),
+  3.9: ['dne', 'dne'],
+  4.0: range(85, 100)
+  }
+
+  gpa_scale.order = [0, 0.7, 1, 1.3, 1.7, 2, 2.3, 2.7, 3, 3.3, 3.7, 3.9, 4.0]
+
 
 function arrayRemove(arr, value) {
 
@@ -66,6 +84,24 @@ function save_to_cache()
   localStorage.setItem('marks_in_courses', JSON.stringify(marks_in_courses))
 }
 
+function load_gpa_scale()
+{
+  let temp = JSON.parse(localStorage.getItem('gpa_scale'))
+
+  if (temp)
+  {
+    gpa_scale = temp
+  }
+
+}
+
+
+function save_gpa_scale()
+{
+  localStorage.setItem('gpa_scale', JSON.stringify(gpa_scale))
+  alert("Saved!")
+}
+
 
 if (storageAvailable('localStorage')) {
   load_from_cache()
@@ -95,12 +131,14 @@ function render_all_courses()
   //Static
   $("#course-list-sidebar").append(`<li id=""><a href="/">Home</a><li>`)
 
-
-
   for (course of courses)
   {
       $("#course-list-sidebar").append("<li><a href='/courses/" + course.toUpperCase() + "'>" + course.toUpperCase() + "</a></li>")
   }
+
+  $("#course-list-sidebar").append(`<li id=""><a href="/settings">Settings</a><li>`)
+
+
 }
 
 /*
@@ -170,21 +208,6 @@ source: https://dev.to/ycmjason/how-to-create-range-in-javascript-539i
 */
 function range(start, end) {
   return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
-}
-
-gpa_scale = {
-0.0: range(0, 49),
-0.7: range(50, 52),
-1.0: range(53, 56),
-1.3: range(57, 59),
-1.7: range(60, 62),
-2.0: range(63, 66),
-2.3: range(67, 69),
-2.7: range(70, 72),
-3.0: range(73, 76),
-3.3: range(77, 79),
-3.7: range(80, 84),
-4.0: range(85, 100)
 }
 
 convert_to_gpa = function(percentage)

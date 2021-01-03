@@ -23,5 +23,14 @@ def course_mark_view(course_name):
                            name=appName,
                            page="calc")
 
+@application.route("/settings")
+def settings():
+    return render_template('settings.html',
+                           name=appName,
+                           page="settings")
+
+
+
+
 if __name__ == '__main__':
     application.run(debug=True)
