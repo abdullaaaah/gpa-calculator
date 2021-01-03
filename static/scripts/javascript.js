@@ -174,6 +174,29 @@ function weight_check(weight) {
     }
     return !(final_weight > 100 || weight < 0 || isNaN(weight));
 }
+function change_to_red(row){
+    let percentid = '#percent'+row.slice(4)
+    let weightid = '#weight'+row.slice(4)
+    $(percentid).removeClass('border-0')
+    $(percentid).addClass('border-2')
+    $(percentid).addClass('border-danger')
+    $(weightid).removeClass('border-0')
+    $(weightid).addClass('border-2')
+    $(weightid).addClass('border-danger')
+}
+
+function change_to_white(row){
+    let percentid = '#percent'+row.slice(4)
+    let weightid = '#weight'+row.slice(4)
+    $(percentid).removeClass('border-2')
+    $(percentid).removeClass('border-danger')
+    $(percentid).addClass('border-0')
+    $(weightid).removeClass('border-2')
+    $(weightid).removeClass('border-danger')
+    $(weightid).addClass('border-0')
+
+
+}
 
 function update(){
     scrape_data()
@@ -183,7 +206,9 @@ function update(){
         if (data_dict.hasOwnProperty(row)){
             let percent = data_dict[row]['Mark']
             let weight = data_dict[row]['Weight']
+            let id = row.slice(4)
             if (percent_check(percent) && weight_check(weight)) {
+                change_to_white(row)
                 change_chart(line_chart, line_data)
                 change_chart(bar_chart, bar_data)
                 if (final_weight <= 0 || isNaN(final_weight)) {
@@ -196,7 +221,7 @@ function update(){
                 max_grade()
             } else{
                 change_total_weight(final_weight)
-                //$("#"+row.slice(4)).
+                change_to_red(row)
                 console.log("change " + row + "to red")
             }
         }
