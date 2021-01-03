@@ -15,7 +15,9 @@
 
 
     <div class="" id = "gpaForm">
-        <div class="row"> <!-- First row start -->
+        <!-- First row start -->
+        <div class="row">
+
             <div class="col">
                 <div class="card mb-4 shadow">
                     <div class="card-body" id="sideBar">
@@ -28,36 +30,30 @@
                     <span class="text mb-4 ml-4" id="total_weight">Total Weight:</span>
                 </div>
             </div>
-        </div> <!-- First row end -->
+
 
             <div class="col">
-                <div class="card mb-4 shadow">
-                    <div class="card-body">
-                        <h4 class="card-title mb-3 font-weight-bold text">Performance Overview</h4>
-                        <div class="row">
-                            <div class="col">
-                                <div class="chart-container">
-                                    <canvas id="line_chart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4 shadow">
-                    <div class="card-body">
-                        <h4 class="card-title mb-3 font-weight-bold text">Assessment Overview</h4>
-                        <div class="row">
-                            <div class="col">
-                                <div class="chart-container">
-                                    <canvas id="bar_chart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% include "helpers/course/performance_overview.html" %}
+            </div>
+
+
+        </div>
+        <!-- First row end -->
+
+
+        <!-- Second row start-->
+        <div class="row">
+            <div class="col">
+                {% include "helpers/course/grade_options.html" %}
+            </div>
+
+            <div class="col">
+                {% include "helpers/course/assessment_overview.html"%}
             </div>
         </div>
-    </div>
+        <!-- Second row end -->
+
+        </div> <!-- gpa form -->
 </div> <!-- container fluid -->
 
 {% include "/helpers/footer.html" %}
