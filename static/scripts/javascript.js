@@ -211,14 +211,12 @@ function update(){
                 change_total_weight(final_weight)
             } else{
                 if (!(percent_check(percent))){
-                    console.log("changing percent")
                     change_to_red(row, 'percent')
                 }else{
                     change_to_white(row, 'percent')
                 }
 
                 if (!(weight_check(weight))){
-                    console.log("changing weight")
                     change_to_red(row, 'weight')
                 }else{
                     change_to_white(row, 'weight')
@@ -294,11 +292,9 @@ function goal_percentage(){
 
 function max_grade(){
     let remain_weight = 100 - final_weight
-    console.log(remain_weight)
     let assume_grade = 100
     let current_grade = final_grade / final_weight
     let max_grade = ((current_grade * final_weight) + (assume_grade * remain_weight))/100
-    console.log(max_grade, remain_weight)
     if (isNaN(max_grade) || isNaN(remain_weight)){
         if (isNaN(max_grade)){
             $('#max_grade').text(0 + "%")
