@@ -5,79 +5,29 @@ Purpose: Any javascript logic regarding the course page.
 const PERCENT_TEXT = '<i class="fas fa-percentage"></i>'
 const WEIGHT_TEXT = '<i class="fas fa-weight-hanging"></i>'
 
-function render_row(end=0)
-{
-    let start = 0;
-    let s = '';
+  /*
+  Purpose: Renders <option></option> dynamically
+        <first> is always first on the list
+        options array is found in app.js
+  */
+ function render_options(first, options)
+ {
 
-    while (start <= end)
-    {
-        s += `
-            <div class="form-row align-items-center" id="row${start}">
-                <div class="col-auto">
-                    <div class="input-group" id="${start}">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-light border-0 small">${PERCENT_TEXT}</span>
-                        </div>
-                        <input maxlength="3" id="percent${start}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-                        <div class="input-group-prepend ">
-                            <span class="input-group-text bg-light border-0 small">${WEIGHT_TEXT}</span>
-                        </div>
-                        <input maxlength="3" id="weight${start}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-                        <select id = "name${start}" onchange = "update()" class="custom-select bg-light border-0 small">
-                            ${render_options('Assignment', options)}
-                        </select>
-                        <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${start}" onclick="remove_field(${start})"><i class="fas fa-times"></i></button>
+    // orders the array
+   order_options(first, options)
+   let s = '';
 
-                    </div>
-                </div>
-            </div>
-        `;
+   for (let option in options)
+   {
+       if (options.hasOwnProperty(option)) {
+           s += `<option value="${options[option]}">${options[option]}</option>`;
+       }
+   }
 
-        start++;
-    }
+   return s;
+ }
 
-    // this should be fine assuming this function is only ran on empty courses
-    num_fields = end + 1;
-    return s;
-}
-
-
-function render_transparent_row()
-{
-    s = '';
-    //num_fields++;
-
-    s += `
-
-    <div class="form-row align-items-center" id="row${num_fields}">
-    <div class="col-auto">
-        <div class="input-group mb-3 transparent trans-click" id="${num_fields}" onclick="add_field()">
-            <div class="input-group-prepend">
-                <span class="input-group-text bg-light border-0 small">${PERCENT_TEXT}</span>
-            </div>
-            <input maxlength="3" id="percent${num_fields}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-            <div class="input-group-prepend">
-                <span class="input-group-text bg-light border-0 small">${WEIGHT_TEXT}</span>
-            </div>
-            <input maxlength="3" id="weight${num_fields}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-            <select id = "name${num_fields}" onchange = "update()" class="custom-select bg-light border-0 small">
-                ${render_options("Assignment", options)}
-            </select>
-            <button type="button" id = "del_field${num_fields}" onclick= ""
-            class="btn btn-danger btn-danger-outline invisible"><i class="fas fa-times"></i></button>
-        </div>
-    </div>
-</div>
-
-    `;
-
-
-    return s;
-}
-
-
-/*
+ /*
 Purpose: Helper function for render_options
          Removes <value> from Array, <arr>
 */
@@ -98,25 +48,66 @@ function remove_item_once(arr, value) {
     options.unshift(first);
   }
 
-  /*
-  Purpose: Renders <option></option> dynamically
-        <first> is always first on the list
-  */
-  function render_options(first, options)
-  {
-    order_options(first, options)
+
+/*
+Renders a single row, can also be transparent if is_trans is true.
+ass_name is the name of assessment which comes first in the selection
+ AKA the one user saved
+*/
+let render_one_row = function (id, mark = '', weight = '', ass_name = "Assignment", is_trans = false) {
+    let s = ''
+
+    s += `
+    <div class="form-row align-items-center" id="row${id}">
+    <div class="col-auto">
+        <div class="input-group ${is_trans ? 'transparent trans-click' : ''}" id="${id}" ${is_trans ? 'onclick="add_field()"' : ''}>
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-light border-0 small">${PERCENT_TEXT}</span>
+            </div>
+            <input value="${mark}" maxlength="3" id="percent${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <div class="input-group-prepend ">
+                <span class="input-group-text bg-light border-0 small">${WEIGHT_TEXT}</span>
+            </div>
+            <input value="${weight}" maxlength="3" id="weight${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <select id = "name${id}" onchange = "update()" class="custom-select bg-light border-0 small">
+                ${render_options(ass_name, options)}
+            </select>
+            <button type="button" class="btn btn-danger btn-danger-outline ${is_trans ? 'invisible' : '' }" id="del_field${id}" onclick="remove_field(${id})"><i class="fas fa-times"></i></button>
+
+        </div>
+    </div>
+</div>
+    `
+
+
+    return s
+}
+
+
+function render_row(end=0)
+{
+    let start = 0;
     let s = '';
 
-    for (let option in options)
+    while (start <= end)
     {
-        if (options.hasOwnProperty(option)) {
-            s += `<option value="${options[option]}">${options[option]}</option>`;
-        }
+        s += render_one_row(start)
+        start++;
     }
 
+    // this should be fine assuming this function is only ran on empty courses
+    num_fields = end + 1;
     return s;
-  }
+}
 
+
+function render_transparent_row()
+{
+    s = '';
+    //num_fields++;
+    s += render_one_row(num_fields, "Assignment", true)
+    return s;
+}
 
 function render_row_from_dict(marks)
 {
@@ -127,28 +118,7 @@ function render_row_from_dict(marks)
   for (let mark in marks)
   {
       if (marks.hasOwnProperty(mark)){
-          console.log(marks[mark])
-        s += `
-        <div class="form-row align-items-center" id="${mark.slice(1)}">
-        <div class="col-auto">
-            <div class="input-group mb-3" id="${mark.slice(4)}">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-light border-0 small">${PERCENT_TEXT}</span>
-                </div>
-                <input maxlength="3" id="percent${mark.slice(4)}" value="${marks[mark].Mark}" onkeyup="update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-                <div class="input-group-prepend ">
-                    <span class="input-group-text bg-light border-0 small">${WEIGHT_TEXT}</span>
-                </div>
-                <input maxlength="3" value="${marks[mark].Weight}" id="weight${mark.slice(4)}" onkeyup="update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-                <select id="name${mark.slice(4)}" onchange="update()" class="custom-select bg-light border-0 small">
-                    ${render_options(marks[mark].Type, options)}
-                </select>
-                <button type="button" class="btn btn-danger btn-danger-outline" id="del_field${mark.slice(4)}" onclick="remove_field(${mark.slice(4)})"><i class="fas fa-times"></i></button>
-            </div>
-        </div>
-        </div>
-    
-        `
+        s += render_one_row(mark.slice(4), marks[mark].Mark, marks[mark].Weight, marks[mark].Type)
     }
 
     num_fields++;
