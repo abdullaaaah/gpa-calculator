@@ -6,14 +6,8 @@ let light = true
 let load_light_settings = function ()
 {
     let temp = JSON.parse(localStorage.getItem('light'))
-    if (temp === undefined || temp === null)
-    {
-        light = true
-    }
-    else
-    {
-        light = temp
-    }
+    if (temp === undefined || temp === null) light = true // by default
+    else light = temp
     return temp
 }
 
@@ -40,13 +34,19 @@ let turn_lights_off = function ()
     light = false
 }
 
-let change_site_mode = function ()
+let toggle_lights = function ()
 {
     if (light) turn_lights_off()
     else turn_lights_on()
 }
 
+let apply_light_settings = function ()
+{
+    if (light) turn_lights_on()
+    else turn_lights_off()
+}
+
 $(document).ready(function() {
     load_light_settings()
-    change_site_mode()
+    apply_light_settings()
 })

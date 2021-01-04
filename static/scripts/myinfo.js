@@ -150,5 +150,12 @@ $(document).ready(function() {
     $("#cgpaText").html(calculate_cgpa(marks_in_courses))
     $("#stats-msg").html(get_status_msg())
 
+    //Enter on add course
+    document.querySelector("#course-name").addEventListener("keyup", event => {
+      if(event.key !== "Enter") return; // Use `.key` instead.
+      document.querySelector("#popupbtn").click(); // Things you want to do.
+      event.preventDefault(); // No need to `return false;`.
+  });
+
 
 })
