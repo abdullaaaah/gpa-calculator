@@ -62,16 +62,18 @@ let render_one_row = function (id, mark = '', weight = '', ass_name = "Assignmen
     <div class="col-auto">
         <div class="input-group ${is_trans ? 'transparent trans-click' : ''}" id="${id}" ${is_trans ? 'onclick="add_field()"' : ''}>
             <div class="input-group-prepend">
-                <span class="input-group-text bg-light border-0 small">${PERCENT_TEXT}</span>
+                <span class="input-group-text bg-light border-1 small">${PERCENT_TEXT}</span>
             </div>
-            <input value="${mark}" maxlength="3" id="percent${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
+            <input value="${mark}" maxlength="3" id="percent${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small" aria-describedby="basic-addon1">
             <div class="input-group-prepend ">
-                <span class="input-group-text bg-light border-0 small">${WEIGHT_TEXT}</span>
+                <span class="input-group-text bg-light border-1 small">${WEIGHT_TEXT}</span>
             </div>
-            <input value="${weight}" maxlength="3" id="weight${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-0 small" aria-describedby="basic-addon1">
-            <select id = "name${id}" onchange = "update()" class="custom-select bg-light border-0 small">
+            <input value="${weight}" maxlength="3" id="weight${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+            <select id = "name${id}" onchange = "update()" class="custom-select bg-light border-1 small input-group-append">
                 ${render_options(ass_name, options)}
             </select>
+            </div>
             <button type="button" class="btn btn-danger btn-danger-outline ${is_trans ? 'invisible' : '' }" id="del_field${id}" onclick="remove_field(${id})"><i class="fas fa-times"></i></button>
 
         </div>
@@ -105,7 +107,7 @@ function render_transparent_row()
 {
     s = '';
     //num_fields++;
-    s += render_one_row(num_fields, "Assignment", true)
+    s += render_one_row(num_fields, '', '', "Assignment", true)
     return s;
 }
 
