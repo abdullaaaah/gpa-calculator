@@ -59,7 +59,7 @@ function change_percent_color(){
 function line_graph_data() {
     let line_graph_dict = {}
     let type_count = {'Exam': 0, 'Midterm': 0, 'Assignment': 0,
-                        'Quiz': 0, 'Lab': 0, 'Tutorial Marks': 0}
+                        'Quiz': 0, 'Lab': 0, 'Tutorial Activity': 0}
 
     final_grade = 0
     final_weight = 0
