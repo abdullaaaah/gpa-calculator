@@ -25,4 +25,13 @@ $(document).ready(function() {
 
     render_all_courses()
 
+
+    //Enter on add course
+    document.querySelector("#course-name").addEventListener("keyup", event => {
+        if(event.key !== "Enter") return; // Use `.key` instead.
+        document.querySelector("#popupbtn").click(); // Things you want to do.
+        event.preventDefault(); // No need to `return false;`.
+    });
+
+
 })

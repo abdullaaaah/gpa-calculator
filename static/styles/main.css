@@ -326,7 +326,7 @@ div.modal-header .close {
     opacity: 1;
 }
 
-div.modal-content form {
+#addCourseForm {
     margin-top: 25px;
 }
 
