@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b80607b8-12c3-427d-8b8e-13f01da1023a" name="Default Changelist" comment="Fixed Empty Page Bug">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/scripts/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/javascript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/helpers/course/grade_options.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/helpers/course/grade_options.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +202,7 @@
       <workItem from="1609445460651" duration="1464000" />
       <workItem from="1609642171781" duration="2816000" />
       <workItem from="1609702513084" duration="2388000" />
+      <workItem from="1609720741620" duration="67000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some style errors">
       <created>1607543302985</created>
