@@ -5,10 +5,6 @@
   opacity: 0.0;
 }
 
-#course_name {
-  background-color:#f5f9ff !important;
-}
-
 #course_name::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 color: #071136 !important;;
 opacity: 1; /* Firefox */
