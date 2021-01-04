@@ -207,6 +207,7 @@ function update(){
                     change_percent(two_decimal_places(final_grade / final_weight))
                 }
                 max_grade()
+                min_grade()
                 goal_percentage()
                 change_total_weight(final_weight)
             } else{
@@ -289,37 +290,46 @@ function goal_percentage(){
         }
     }
 }
-
-function max_grade(){
-    let remain_weight = 100 - final_weight
-    console.log(final_weight)
-    let assume_grade = 100
-    let current_grade = final_grade / final_weight
-    let max_grade = ((current_grade * final_weight) + (assume_grade * remain_weight))/100
-    if (isNaN(max_grade) || isNaN(remain_weight)){
-        if (isNaN(max_grade)){
-            $('#max_grade').text(0 + "%")
+function max_min_check(grade, weight, type){
+    if (isNaN(grade) || isNaN(weight)){
+        if (isNaN(grade)){
+            $('#'+type+'_grade').text(0 + "%")
         }
         else{
-            $('#max_grade').text(max_grade + "%")
+            $('#'+type+'_grade').text(max_grade + "%")
         }
-        if (isNaN(remain_weight)){
+        if (isNaN(weight)){
             $('#remain_weight').text(0)
         }
         else{
-            $('#remain_weight').text(remain_weight)
+            $('#remain_weight').text(weight)
         }
     }
     else {
-        $('#max_grade').text(max_grade + "%")
-        $('#remain_weight').text(remain_weight)
-        if (!(percent_check(max_grade))){
-            $('#max_grade').addClass('text-danger')
+        $('#'+type+'_grade').text(grade + "%")
+        $('#remain_weight').text(weight)
+        if (!(percent_check(grade))){
+            $('#'+type+'_grade').addClass('text-danger')
         }
         else{
-            $('#max_grade').removeClass('text-danger')
+            $('#'+type+'_grade').removeClass('text-danger')
         }
     }
+}
+
+function max_grade(){
+    let remain_weight = 100 - final_weight
+    let assume_grade = 100
+    let current_grade = final_grade / final_weight
+    let max_grade = ((current_grade * final_weight) + (assume_grade * remain_weight))/100
+    max_min_check(max_grade, remain_weight, 'max')
+}
+
+function min_grade(){
+    let remain_weight = 100 - final_weight
+    let current_grade = final_grade / final_weight
+    let min_grade = (current_grade * final_weight)/100
+    max_min_check(min_grade, remain_weight, 'min')
 }
 
 function scrape_data(){

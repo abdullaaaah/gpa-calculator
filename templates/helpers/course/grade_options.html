@@ -5,7 +5,7 @@
         </p>
         <h6 class="card-title">Enter the mark you WANT your grade to be </h6>
         <div class="input-group">
-            <input id = "gpa_goal"
+            <input maxlength = "3" id = "gpa_goal"
                    class="form-control w-10 font-weight-light bg-light border-0 small"
                    placeholder="85.0" aria-describedby="basic-addon2"
                    onkeyup = "goal_percentage()">
@@ -25,11 +25,17 @@
 <div class="card mb-4 shadow" style="size:50vw;">
     <div class="card-body">
         <h4 class="card-title mb-3 font-weight-bold text">Final Mark</h4>
-        <h6 class="card-title mt-3">Below is the maximum mark you can achieve in this course.</h6>
+        <h6 class="card-title mt-3">Maximum mark achievable in the course</h6>
         <div>
             <h6 class="font-weight-light mt-3">Max Grade: <strong><span id="max_grade"></span></strong></h6>
-            <h6 class="font-weight-light">Remaining Weight: <strong><span id="remain_weight"></span></strong></h6>
         </div>
+        <h6 class="card-title mt-3">Minimum mark achievable in the course</h6>
+        <div>
+            <h6 class="font-weight-light mt-3">Min Grade: <strong><span id="min_grade"></span></strong></h6>
+        </div>
+        <h6 class="card-title mt-3">Current Remaining Weight</h6>
+        <h6 class="font-weight-light">Remaining Weight: <strong><span id="remain_weight"></span></strong></h6>
+
     </div>
 </div>
 
