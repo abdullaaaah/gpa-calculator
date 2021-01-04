@@ -176,16 +176,12 @@ function weight_check(weight) {
 }
 function change_to_red(row, type){
     let type_id = '#'+type+row.slice(4)
-    $(type_id).removeClass('border-0')
-    $(type_id).addClass('border-2')
     $(type_id).addClass('border-danger')
 }
 
 function change_to_white(row, type){
     let type_id = '#'+type+row.slice(4)
-    $(type_id).removeClass('border-2')
     $(type_id).removeClass('border-danger')
-    $(type_id).addClass('border-0')
 }
 
 function update(){
