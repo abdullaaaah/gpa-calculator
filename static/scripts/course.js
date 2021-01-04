@@ -65,16 +65,16 @@ let render_one_row = function (id, mark = '', weight = '', ass_name = "Assignmen
                 <span class="input-group-text bg-light border-1 small">${PERCENT_TEXT}</span>
             </div>
             <input value="${mark}" maxlength="3" id="percent${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small" aria-describedby="basic-addon1">
-            <div class="input-group-prepend ">
+            <div class="input-group-append">
                 <span class="input-group-text bg-light border-1 small">${WEIGHT_TEXT}</span>
             </div>
-            <input value="${weight}" maxlength="3" id="weight${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small" aria-describedby="basic-addon1">
+            <input value="${weight}" maxlength="3" id="weight${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small input-group-append" aria-describedby="basic-addon1">
             <div class="input-group-append">
-            <select id = "name${id}" onchange = "update()" class="custom-select bg-light border-1 small input-group-append">
-                ${render_options(ass_name, options)}
-            </select>
+                <select id = "name${id}" onchange = "update()" class="custom-select bg-light border-1 small input-group-append">
+                    ${render_options(ass_name, options)}
+                </select>
             </div>
-            <button type="button" class="btn btn-danger btn-danger-outline ${is_trans ? 'invisible' : '' }" id="del_field${id}" onclick="remove_field(${id})"><i class="fas fa-times"></i></button>
+            <button type="button" class="btn btn-danger ml-2 btn-danger-outline ${is_trans ? 'invisible' : '' }" id="del_field${id}" onclick="remove_field(${id})"><i class="fas fa-times"></i></button>
 
         </div>
     </div>
