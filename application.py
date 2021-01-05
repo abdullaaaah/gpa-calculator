@@ -5,7 +5,7 @@ from flask_cachebuster import CacheBuster
 application = Flask(__name__)
 
 #Cache buster
-config = { 'extensions': ['.js', '.css', '.csv'], 'hash_size': 5 }
+config = { 'extensions': ['.js', '.css', '.csv'], 'hash_size': 6 }
 cache_buster = CacheBuster(config=config)
 cache_buster.init_app(application)
 

@@ -5,6 +5,10 @@ body:not(.loaded)
     display:none;
 }
 
+.darkmode-layer, .darkmode-toggle {
+    z-index: 11500;
+  }
+
 body {
     background: #f5f9ff
 }
