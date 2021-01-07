@@ -17,25 +17,23 @@
 <script src="{{ url_for('static', filename='scripts/myinfo.js') }}"></script>
 {% endif %}
 
-<!-- Global -->
+<!-- Global (Everywhere) -->
 <script src="{{ url_for('static', filename='scripts/global/helpers.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/global/app.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/global/database.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/global/calculations.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/global/renders.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/global/theme_settings.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/global/main.js') }}"></script>
 
-<script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 
-
-<!-- Kyle -->
+<!-- Course Page -->
 {% if page == "calc" %}
-<script>
-    var course_name = "{{ course_name }}";
-</script>
-<script rel="text/javascript" src="{{ url_for('static', filename='scripts/javascript.js') }}"></script>
-<script rel="text/javascript" src="{{ url_for('static', filename='scripts/course.js') }}"></script>
-
+<script>var course_name = "{{ course_name }}"</script>
+<script src="{{ url_for('static', filename='scripts/course/helpers.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/course/javascript.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/course/render.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/course/course.js') }}"></script>
 {% endif %}
 
 

@@ -1,9 +1,12 @@
 /*
-Purpose: Any javascript logic regarding the course page.
+This page contains any functions involving HTML output
 */
 
+// Constants
 const PERCENT_TEXT = '<i class="fas fa-percentage"></i>'
 const WEIGHT_TEXT = '<i class="fas fa-weight-hanging"></i>'
+
+
 
   /*
   Purpose: Renders <option></option> dynamically
@@ -27,26 +30,6 @@ const WEIGHT_TEXT = '<i class="fas fa-weight-hanging"></i>'
    return s;
  }
 
- /*
-Purpose: Helper function for render_options
-         Removes <value> from Array, <arr>
-*/
-function remove_item_once(arr, value) {
-    let index = arr.indexOf(value);
-    if (index > -1) {
-      arr.splice(index, 1);
-    }
-    return arr;
-  }
-
-  /*
-  Purpose: Helper function for render_options
-  */
-  function order_options(first, options)
-  {
-    remove_item_once(options, first)
-    options.unshift(first);
-  }
 
 
 /*
@@ -127,37 +110,3 @@ function render_row_from_dict(marks)
   return s
 
 }
-
-
-/*
-Purpose: Save / Update data in <marks_in_courses>
-*/
-function save_marks_in_courses()
-{
-    $("#saveBtn").html("<i class='fas fa-check'></i> Saved")
-    marks_in_courses[course_name] = data_dict
-    save_to_cache()
-    console.log(data_dict)
-}
-
-let updateSaveBtn = function() {
-        // Change save button
-        $("#saveBtn").html("<i class='far fa-save'></i> Click To Save")
-}
-
-$(document).ready(function() {
-
-    if (course_name in marks_in_courses)
-    {
-        $("#sideBar").append(render_row_from_dict(marks_in_courses[course_name]));
-        update(line_chart)
-        $("#sideBar").append(render_transparent_row())
-    }
-    else
-    {
-        $("#sideBar").append(render_row());
-        $("#sideBar").append(render_transparent_row())
-    }
-
-
-})

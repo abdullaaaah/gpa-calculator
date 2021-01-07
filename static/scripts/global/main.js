@@ -1,5 +1,6 @@
 /*
-Purpose: Any javascript logic regarding the sidebar page.
+Purpose: Any javascript logic regarding the all the pages.
+         And has to be executed after the DOM has loaded
 */
 
 load_gpa_scale()
