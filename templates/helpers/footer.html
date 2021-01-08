@@ -21,6 +21,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 {% if page == "main" %}
 <script src="{{ url_for('static', filename='scripts/myinfo.js') }}"></script>
+<style>
+#toggle {
+    position: absolute;
+    height:36px;
+    right:80px;
+}
+</style>>
 {% endif %}
 
 <!-- Global (Everywhere) -->
@@ -40,10 +47,17 @@
 <script src="{{ url_for('static', filename='scripts/course/javascript.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/course/render.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/course/course.js') }}"></script>
+<style>
+#toggle {
+    position: absolute;
+    right:162px;
+}
+</style>
 {% endif %}
 
 {% if page == 'settings' %}
 <script rel="text/javascript" src="{{ url_for('static', filename='scripts/settings.js') }}"></script>
 {% endif %}
+
 
 </html>
