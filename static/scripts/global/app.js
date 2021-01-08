@@ -29,17 +29,21 @@ let status_msg = {
   okay: "You got this! <span class='emoji'>&#128578;</span> </br> Your academic performance is okay this semester.",
   // < 2.0
   bad: "Are you even trying? <span class='emoji'>&#128545;</span> </br> Your academic performance is horrible this semester.",
-  // === 0
-  none: "Welcome to SemTrack! <span class='emoji'>&#128063;</span> <span class='emoji'>&#x1F973;</span> </br> Add a course to begin tracking your academic performance."
+  // no marks
+  welcome_back: "Great! 👍 You've added a course. <br> Add some marks to allow semtrack to begin tracking your gpa.",
+  // no courses
+  welcome: "Welcome to SemTrack! <span class='emoji'>&#128063;</span> <span class='emoji'>&#x1F973;</span> </br> Add a course to begin tracking your academic performance."
 }
 
 /* this function return the approprirate message based on your gpa */
 let get_status_msg = function()
 {
   let cgpa = calculate_cgpa(marks_in_courses)
+  let cpercent = calculate_cpercent()
 
   if (cgpa >= 3.3) return status_msg.good
   else if (cgpa >= 2.0) return status_msg.okay
-  else if (cgpa > 0) return status_msg.bad
-  else return status_msg.none
+  else if (cgpa > 0 && cpercent > 0) return status_msg.bad
+  else if (courses.length === 0) return status_msg.welcome
+  else return status_msg.welcome_back
 }

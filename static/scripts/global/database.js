@@ -91,6 +91,7 @@ let delete_course = function(course_name)
   if (course_name in marks_in_courses) delete marks_in_courses[course_name]
   if (courses.includes(course_name)) courses = arrayRemove(courses, course_name)
   save_to_cache()
+  $("#stats-msg").html(get_status_msg())
   refresh_table()
 }
 
@@ -119,6 +120,7 @@ function add_course(course_name)
   render_all_courses()
   save_to_cache()
   refresh_table()
+  $("#stats-msg").html(get_status_msg())
   return true
 }
 
