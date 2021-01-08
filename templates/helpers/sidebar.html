@@ -36,8 +36,60 @@
 
                               </ul>
                             </div>
+
+                        <style>
+    .onoffswitch {
+        position: relative; width: 60px;
+        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    .onoffswitch-checkbox {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .onoffswitch-label {
+        display: block; overflow: hidden; cursor: pointer;
+        height: 36px; padding: 0; line-height: 36px;
+        border: 2px solid #E3E3E3; border-radius: 36px;
+        background-color: #FFFFFF;
+        transition: background-color 0.3s ease-in;
+    }
+    .onoffswitch-label:before {
+        content: "";
+        display: block; width: 36px; margin: 0px;
+        background: #FFFFFF;
+        position: absolute; top: 0; bottom: 0;
+        right: 22px;
+        border: 2px solid #E3E3E3; border-radius: 36px;
+        transition: all 0.3s ease-in 0s;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label {
+        background-color: #071136;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+       border-color: #071136;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+        right: 0px;
+    }
+
+                            #toggle {
+                                position: absolute;
+                                height:36px;
+                                right:80px;
+                            }
+                        </style>
+                        <div id="toggle"  onclick="toggle_lights();save_light_settings();" >
+                            <div class="onoffswitch">
+                                <input  onclick="toggle_lights();save_light_settings();"  type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" >
+                                <label class="onoffswitch-label" for="myonoffswitch"></label>
+                            </div>
+
+                        </div>
+
+
                         {% if page == 'main' %}
-                        <button id="addbtn" type="button" class="btn btn-primary outline-btn-blue" data-toggle="modal" data-target=".bd-example-modal-sm">Add Course</button>
+                        <button id="addbtn" type="button" class="btn btn-primary outline-btn-blue" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fas fa-plus"></i></button>
                         {% endif %}
 
                         {% if page == 'calc' %}

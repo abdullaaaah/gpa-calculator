@@ -18,18 +18,12 @@ let save_light_settings = function ()
 
 let turn_lights_on = function ()
 {
-    $("#mode_button").text("Light Mode")
-    $("#mode_button").removeClass("btn-dark")
-    $("#mode_button").addClass("btn-light")
     document.getElementById("css_main").setAttribute('href', '/static/styles/main.css');
     light = true
 }
 
 let turn_lights_off = function ()
 {
-    $("#mode_button").text("Dark Mode")
-    $("#mode_button").removeClass("btn-light")
-    $("#mode_button").addClass("btn-dark")
     document.getElementById("css_main").setAttribute('href', '/static/styles/dark-main.css');
     light = false
 }
@@ -49,4 +43,9 @@ let apply_light_settings = function ()
 $(document).ready(function() {
     load_light_settings()
     apply_light_settings()
+
+    if(!light) {
+        document.getElementById("myonoffswitch").checked = true
+    }
+    //else $('#light-switch').attr
 })

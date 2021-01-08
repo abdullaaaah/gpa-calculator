@@ -32,7 +32,7 @@ let status_msg = {
   // no marks
   welcome_back: "Great! 👍 You've added a course. <br> Add some marks to allow semtrack to begin tracking your gpa.",
   // no courses
-  welcome: "Welcome to SemTrack! <span class='emoji'>&#128063;</span> <span class='emoji'>&#x1F973;</span> </br> Add a course to begin tracking your academic performance."
+  welcome: "Welcome to SemTrack! <span class='emoji'>&#128063;</span> <span class='emoji'>&#x1F973;</span> <br> To add a course, click the plus button on the top right."
 }
 
 /* this function return the approprirate message based on your gpa */
