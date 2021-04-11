@@ -51,7 +51,7 @@ let render_one_row = function (id, mark = '', weight = '', ass_name = "Assignmen
             <div class="input-group-append">
                 <span class="input-group-text bg-light border-1 small">${WEIGHT_TEXT}</span>
             </div>
-            <input value="${weight}" maxlength="3" id="weight${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small input-group-append" aria-describedby="basic-addon1">
+            <input value="${weight}" maxlength="5" id="weight${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small input-group-append" aria-describedby="basic-addon1">
             <select id = "name${id}" onchange = "update()" class="custom-select bg-light border-1 border-round small input-group-append">
                 ${render_options(ass_name, options)}
             </select>

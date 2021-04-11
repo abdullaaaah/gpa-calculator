@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b80607b8-12c3-427d-8b8e-13f01da1023a" name="Default Changelist" comment="Fixed Empty Page Bug">
+    <list default="true" id="b80607b8-12c3-427d-8b8e-13f01da1023a" name="Default Changelist" comment="Fixed max length on course page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts/course/render.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/course/render.js" afterDir="false" />
     </list>
@@ -209,7 +209,8 @@
       <workItem from="1609796375494" duration="764000" />
       <workItem from="1609797212497" duration="2681000" />
       <workItem from="1609974525178" duration="45000" />
-      <workItem from="1618169434016" duration="405000" />
+      <workItem from="1618169434016" duration="468000" />
+      <workItem from="1618170170507" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some style errors">
       <created>1607543302985</created>
@@ -372,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608442430205</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Fixed max length on course page">
+      <created>1618169914138</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1618169914138</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,6 +418,7 @@
     <MESSAGE value="app testing" />
     <MESSAGE value="added HTML" />
     <MESSAGE value="Fixed Empty Page Bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Empty Page Bug" />
+    <MESSAGE value="Fixed max length on course page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed max length on course page" />
   </component>
 </project>
