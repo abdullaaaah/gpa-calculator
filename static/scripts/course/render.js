@@ -47,7 +47,7 @@ let render_one_row = function (id, mark = '', weight = '', ass_name = "Assignmen
             <div class="input-group-prepend">
                 <span class="input-group-text bg-light border-1 small">${PERCENT_TEXT}</span>
             </div>
-            <input value="${mark}" maxlength="3" id="percent${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small" aria-describedby="basic-addon1">
+            <input value="${mark}" maxlength="5" id="percent${id}" onkeyup = "update(); updateSaveBtn()" class="form-control bg-light border-1 small" aria-describedby="basic-addon1">
             <div class="input-group-append">
                 <span class="input-group-text bg-light border-1 small">${WEIGHT_TEXT}</span>
             </div>
